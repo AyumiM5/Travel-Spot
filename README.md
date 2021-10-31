@@ -20,7 +20,7 @@
 旅行が終了して旅行計画をシェアする時
 
 ## 設計書
-<...>
+今後追加予定
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1vzIoMLEoSJboj2mFdBZvZ04lFh9cI2qo4NinGBDPK_U/edit?usp=sharing
