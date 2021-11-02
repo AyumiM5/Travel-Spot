@@ -12,16 +12,16 @@
 旅行スケジュールをシェアし合う事で、オリジナルで最高な旅の計画が立てられると思ったので、このテーマに選びました。
 
 ### ターゲットユーザ
-20代以上の全ユーザーが対象
-主に20～40代の世代で、アクティブに色々な観光地を回ることを目的にした旅行者が対象
+・20代以上の全ユーザーが対象
+・主に20～40代の世代で、アクティブに色々な観光地を回ることを目的にした旅行者が対象
 
 ### 主な利用シーン
-旅行の計画を立てている時
-旅行が終了して旅行計画をシェアする時
+・旅行の計画を立てている時
+・旅行が終了して旅行計画をシェアする時
 
 ## 設計書
-UI Flow:https://drive.google.com/file/d/1ZDuSsHf4PCciTxt1bzlfFoHEhMp4yH-4/view?usp=sharing
-ワイヤーフレーム:https://drive.google.com/file/d/1yPkYSrepZyEohwCOhA2ed7pPW--1NAW8/view?usp=sharing
+・UI Flow:https://drive.google.com/file/d/1ZDuSsHf4PCciTxt1bzlfFoHEhMp4yH-4/view?usp=sharing
+・ワイヤーフレーム:https://drive.google.com/file/d/1yPkYSrepZyEohwCOhA2ed7pPW--1NAW8/view?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1vzIoMLEoSJboj2mFdBZvZ04lFh9cI2qo4NinGBDPK_U/edit?usp=sharing
