@@ -28,9 +28,9 @@
 地域活性化のための観光PR
 
 ## 設計書
-UI Flow:  
-ワイヤーフレーム:  
-ER図:
+UI Flow:https://drive.google.com/file/d/1ZDuSsHf4PCciTxt1bzlfFoHEhMp4yH-4/view?usp=sharing  
+ワイヤーフレーム:https://drive.google.com/file/d/1yPkYSrepZyEohwCOhA2ed7pPW--1NAW8/view?usp=sharing  
+ER図:https://drive.google.com/file/d/1PhBF-tOHbOXiJeyxMZYwOApWqbwhA5zP/view?usp=sharing  
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1vzIoMLEoSJboj2mFdBZvZ04lFh9cI2qo4NinGBDPK_U/edit?usp=sharing
