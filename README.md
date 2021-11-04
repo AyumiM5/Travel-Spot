@@ -1,5 +1,4 @@
 
-=======
 # Travel notes
 
 ## サイト概要
@@ -43,4 +42,3 @@ https://docs.google.com/spreadsheets/d/1vzIoMLEoSJboj2mFdBZvZ04lFh9cI2qo4NinGBDP
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
->>>>>>> origin/main
