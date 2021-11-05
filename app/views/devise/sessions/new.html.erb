@@ -1,0 +1,41 @@
+<div class="login">
+  <div class="container py-5">
+    <div class="row w-50 mx-auto shadow-lg bg-white bg-opacity-50">
+      <div class="col-12 mt-3 text-center">
+        <span><b>Login</b></span>
+      </div>
+      <%= form_with model:@user, url: user_session_path, local: true do |f| %>
+      <div class="offset-1 mt-3">
+        <%= f.label :name, class:"col-3" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"offset-1 col-7" %>
+      </div>
+    
+      <div class="offset-1 mt-3">
+        <%= f.label :password, class:"col-3" %>
+        <%= f.password_field :password, autocomplete: "current-password", class:"offset-1 col-7" %>
+      </div>
+    
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me, class:"offset-1 col-3 mt-3" %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+    
+      <div class="my-4">
+        <%= f.submit "Log in", class:"col-4 mx-auto btn btn-block btn-primary btn-sm" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="container py-1">
+    <div class="row w-50 mx-auto shadow-lg bg-white bg-opacity-50">
+      <div class="col-12 mt-3 text-center">
+        <span><b>会員登録がお済でない方</b></span>
+        <div class="my-4">
+          <%= link_to "新規会員登録", new_user_registration_path, class:"col-4 mx-auto btn btn-block btn-primary btn-sm" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

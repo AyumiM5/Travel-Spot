@@ -32,6 +32,7 @@
 UI Flow:https://drive.google.com/file/d/1ZDuSsHf4PCciTxt1bzlfFoHEhMp4yH-4/view?usp=sharing  
 ワイヤーフレーム:https://drive.google.com/file/d/1yPkYSrepZyEohwCOhA2ed7pPW--1NAW8/view?usp=sharing  
 ER図:https://drive.google.com/file/d/1PhBF-tOHbOXiJeyxMZYwOApWqbwhA5zP/view?usp=sharing  
+テーブル定義書:https://docs.google.com/spreadsheets/d/1a5HP3Kqas7QSm3EwwPGdtbtdSJpmIfVaTxqSV2mV8QA/edit?usp=sharing  
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1vzIoMLEoSJboj2mFdBZvZ04lFh9cI2qo4NinGBDPK_U/edit?usp=sharing
