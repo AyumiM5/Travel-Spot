@@ -20,12 +20,9 @@ ActiveRecord::Schema.define(version: 2021_11_06_032004) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "photo_id"
-    t.integer "schedule_id"
-    t.string "title", default: "", null: false
-    t.string "stays", default: "", null: false
-    t.text "body", default: "", null: false
+    t.string "title", null: false
+    t.integer "stays", default: 0, null: false
+    t.text "body", null: false
     t.integer "status", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

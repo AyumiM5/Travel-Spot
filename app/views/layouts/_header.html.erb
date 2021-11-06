@@ -1,5 +1,5 @@
 <div class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-light bg-secondary" id="mainNav">
     <div class="container">
       <%= link_to "Trabel Note", root_path, class:"navbar-brand" %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,6 +11,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-2"><%= link_to "ホーム", root_path %></li>
           <li class="nav-item mx-2"><%= link_to "マイページ", mypage_path %></li>
+          <li class="nav-item mx-2"><%= link_to "notes", new_note_path %></li>
           <li class="nav-item mx-2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         </ul>
         <% else %>
