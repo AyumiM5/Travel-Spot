@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  schedule_id: 1
+  row_order: 1
+  start_time: 2021-11-06 03:16:25
+  end_time: 2021-11-06 03:16:25
+
+two:
+  schedule_id: 1
+  row_order: 1
+  start_time: 2021-11-06 03:16:25
+  end_time: 2021-11-06 03:16:25
