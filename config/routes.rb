@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get 'mypage/edit' => 'users#edit'
   patch 'mypage/update' => 'users#update'
   
-  resources :notes
+  resources :notes do
+    resources :schedules, only: [:new, :create, :destroy] do
+      resource :spots, only: [:create, :destroy]
+    end
+  end
   
 end

@@ -1,5 +1,12 @@
 ja:
   enums:
+    schedule:
+      day_method:
+        1日目: "1日目"
+        2日目: "2日目"
+        3日目: "3日目"
+        4日目: "4日目"
+        5日目: "5日目"
     note:
       stays_method:
         日帰り: "日帰り"

@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   def index
+    @notes = Note.all
   end
 
   def show
@@ -13,21 +14,14 @@ class NotesController < ApplicationController
   def create
     @user = User.find(current_user.id)
     @note = Note.new(note_params)
-    @note.user_id = current_user
+    @note.user_id = current_user.id
     if @note.save
-      redirect_to mypage_path
+      redirect_to new_note_schedule_path(note_id: @note.id)
     else
-      render "create"
+      flash[:alert] = "必要事項を追加してください"
+      @user = User.find(current_user.id)
+      render 'new'
     end
-  end
-
-  def edit
-  end
-  
-  def update
-  end
-  
-  def destroy
   end
   
   private

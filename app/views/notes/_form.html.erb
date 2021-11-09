@@ -1,6 +1,6 @@
 <h2>New Notes</h2>
 <div class="my-3">
-  <%= form_with model:note, url: notes_path, local: true do |f| %>
+  <%= form_with model:note, local: true do |f| %>
   <div>
     <%= f.label "タイトル", class:"col-3" %>
     <%= f.text_field :title, autofocus: true, autocomplete: "title", class:"col-6" %>
@@ -13,9 +13,12 @@
     <%= f.label "説明", class:"col-3" %>
     <%= f.text_area :body, class:"col-6" %>
   </div>
+  <div class="my-3">
+    <div><%= f.radio_button :status, 0 %>全ユーザーに公開</div>
+    <div><%= f.radio_button :status, 1, checked: true %>非公開</div>
+  </div>
+  <div class="actions col-3 mx-auto">
+    <%= f.submit "スケジュール追加", class: "btn-block btn-sm btn btn-secondary" %>
+  </div>
   <% end %>
-</div>
-
-<div class="my-3">
-<h3 class="text-center">Schedule</h3>
 </div>
