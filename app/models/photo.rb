@@ -1,5 +1,5 @@
 class Photo < ApplicationRecord
   
-  belongs_to :note
+  belongs_to :schedule
   
 end

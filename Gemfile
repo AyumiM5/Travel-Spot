@@ -78,6 +78,10 @@ gem "enum_help"
 
 # GoogleMapAPIを使用するため
 gem "gmaps4rails"
+
+# 住所から緯度と経度を変換する
 gem "geocoder"
-gem "gon"
+
+# 環境変数を.envファイルで使うため
 gem "dotenv-rails"
+gem "gon"

@@ -1,30 +1,27 @@
 class SpotsController < ApplicationController
   
-  def new
-    @user = User.find(current_user.id)
-    @spot = Spot.new
-    @schedule = Schedule.find_by(id: params[:schedule_id])
-  end
-  
   def create
-    @schedule = Schedule.find(params[:schedule_id])
     @spot = Spot.new(spot_params)
+    @schedule = Schedule.find(params[:schedule_id])
     @spot.schedule_id = @schedule.id
-    if @spot.save
+    if @spot.save!
       redirect_to request.referer
     else
       @user = User.find(current_user.id)
-      render request.referer
+      redirect_to request.referer
     end
   end
   
   def destroy
+    spot = Spot.find(params[:id])
+    spot.destroy
+    redirect_to request.referer
   end
   
   private
   
-  def schedule_params
-    params.require(:spot).permit(:day)
+  def spot_params
+    params.require(:spot).permit(:address, :latitude, :longitude, :title, :start_time, :end_time)
   end
   
 end

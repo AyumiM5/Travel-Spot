@@ -16,3 +16,9 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+#map {
+   width: 100%;
+   height: 400px;
+   background-color: grey;
+ }

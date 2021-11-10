@@ -45,9 +45,12 @@ ActiveRecord::Schema.define(version: 2021_11_06_032004) do
 
   create_table "spots", force: :cascade do |t|
     t.integer "schedule_id"
-    t.integer "row_order"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.string "title", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.text "address", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

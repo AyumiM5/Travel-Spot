@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   resources :notes do
     resources :schedules, only: [:new, :create, :destroy] do
-      resource :spots, only: [:create, :destroy]
+      resources :spots, only: [:create, :destroy]
     end
   end
   

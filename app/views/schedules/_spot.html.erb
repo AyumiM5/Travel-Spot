@@ -1,0 +1,158 @@
+
+<div class="container my-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Map</h2>
+      <div id="map"></div>
+      <script>
+      function initMap() {
+          var latlng = new google.maps.LatLng( 35.661039, 139.755248 );//中心の緯度, 経度(東京タワー)
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,//ズームの調整
+            center: latlng//上で設定した中心
+          });
+          var marker = new google.maps.Marker({
+            position: latlng,
+            map: map
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"]%>&callback=initMap"async></script>
+    </div>
+    <div class="col-md-2 offset-md-1">
+      <h2>Notes</h2>
+      <% schedules.each do |schedule| %>
+        <div class="schedule">
+          <div class="schedule_header">
+            <div class="schedule_header_title"><%= schedule.day %>日目</div>
+            <input id="address" type="textbox" value="東京タワー">
+            <input type="button" value="検索" onclick="codeAddress()">
+              <!-- 地図情報を保存するフォーム -->
+            <%= form_with model:map, local: true do |f| %>
+            <!-- 検索値を隠しデータとして送信-->
+              <input type="hidden" name="map[address]" id="hidden_address">
+              <%= f.submit "保存" %>
+            <% end %>
+            <script>
+            /*
+            mapを関数の外で定義(codeAddressでも使うため)
+            geocoderを用意
+            */
+              let map
+              let geocoder
+            
+              function initMap() {
+                // geocoderを初期化
+                // 引用者注:google.maps.Geocoderインスタンスを生成
+                geocoder = new google.maps.Geocoder()
+            
+                // 引用者注:google.maps.Mapインスタンスを生成することで、地図のデフォルト位置(緯度経度、ズーム)を設定
+                map = new google.maps.Map(document.getElementById('map'), {
+                  center: {
+                    lat: -34.397,
+                    lng: 150.644
+                  },
+                  zoom: 8
+                });
+              }
+            
+              function codeAddress() {
+                // 入力を取得
+                let inputAddress = document.getElementById('address').value;
+            
+                // geocodingしたあとmapを移動
+                geocoder.geocode({
+                  'address': inputAddress
+                }, function (results, status) {
+                  if (status == 'OK') {
+                    // map.setCenterで地図が移動
+                    map.setCenter(results[0].geometry.location);
+            
+                    // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+                    // google.maps.Markerインスタンスを生成
+                    var marker = new google.maps.Marker({
+                      map: map,
+                      position: results[0].geometry.location
+                    });
+                  } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                  }
+                });
+              }
+            </script>
+            <script>
+              let map
+              let geocoder
+              // 変数を追加
+              let marker
+            
+              function initMap() {
+                geocoder = new google.maps.Geocoder()
+            
+                // 変数の名前をmapInstanceに変更、デフォルト位置を東京に変更
+                mapInstance = new google.maps.Map(document.getElementById('map'), {
+                  center: {
+                    lat: 35.681,
+                    lng: 139.767
+                  },
+                  zoom: 8
+                });
+            
+                // 保存された地図情報からピンをさす
+                <% @spot.each do || %>
+                // google.maps.LatLngインスタンスを生成
+                pos = new google.maps.LatLng(
+                <%=map.latitude%>, //latitude
+                <%=map.longitude%> //longitude
+                );
+                default_marker = new google.maps.Marker({
+                map: mapInstance,
+                position: pos,
+                icon: {
+                url: ' https://maps.google.com/mapfiles/ms/icons/green-dot.png', //アイコンのURL
+                scaledSize: new google.maps.Size(40, 40) //サイズ
+                }
+                });
+                <% end %>
+              }
+            
+              function codeAddress() {
+                let inputAddress = document.getElementById('address').value;
+            
+                geocoder.geocode({
+                  'address': inputAddress
+                }, function (results, status) {
+                  if (status == 'OK') {
+                    // map→mapInstanceに変更
+                    mapInstance.setCenter(results[0].geometry.location);
+            
+                    // 既存の検索マーカーを削除
+                    if(marker != null){
+                    marker.setMap(null);
+                    }
+                    marker = null;
+            
+                    // var marker → markerへ変更
+                    marker = new google.maps.Marker({
+                      //map→mapInstanceに変更
+                      map: mapInstance,
+                      position: results[0].geometry.location
+                    });
+            
+                    let title = document.getElementById('map_title');
+                    title.setAttribute("value", inputAddress);
+            
+                    let hidden_address = document.getElementById('hidden_address');
+                    hidden_address.setAttribute("value", inputAddress);
+                  } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                  }
+                });
+              }
+            </script>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
