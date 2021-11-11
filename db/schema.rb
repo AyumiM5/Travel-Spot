@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_11_06_032004) do
     t.string "title", null: false
     t.integer "stays", default: 0, null: false
     t.text "body", null: false
+    t.string "image_id"
     t.integer "status", null: false
     t.boolean "posted", default: false, null: false
     t.datetime "created_at", null: false

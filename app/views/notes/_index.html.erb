@@ -6,6 +6,9 @@
           <%= attachment_image_tag note.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg" %>
           <%= note.user.name %>
         </div>
+        <div>
+          <%= attachment_image_tag note, :image, size: "150x110", format: 'jpg', fallback: "no_image.jpg" %>
+        </div>
         <div class="my-2">
           <table class="table">
             <tbody>
@@ -24,13 +27,25 @@
             </tbody>
           </table>
         </div>
+        <div class="border border-secondary rounded p-2 my-2">
+        <small>
+          <%= note.schedules[0].day %>日目
+        </small>
+        <% note.schedules[0].spots.each do |spot| %>
+          <div class="border border-secondary rounded p-2 my-1">
+            <div><%= spot.address %></div>
+            <div><%= spot.start_time.strftime("%H:%M") %>～<%= spot.end_time.strftime("%H:%M") %></div>
+          </div>
+          <div class="text-center">▽</div>
+        <% end %>
+        </div>
+        <% if note.user == current_user %>
+          <%= link_to "投稿の詳細を見る", note_path(note.id) %>
+          <%= link_to "投稿を削除", note_path(note.id), method: :delete %>
+        <% else %>
+          <%= link_to "投稿の詳細を見る", note_path(note.id) %>
+        <% end %>
       </div>
-      <% if note.user == current_user %>
-        <%= link_to "投稿の詳細を見る", note_path(note.id) %>
-        <%= link_to "投稿を削除", note_path(note.id), method: :delete %>
-      <% else %>
-        <%= link_to "投稿の詳細を見る", note_path(note.id) %>
-      <% end %>
     <% end %>
   </div>
 </div>

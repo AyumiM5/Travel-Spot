@@ -2,6 +2,7 @@ class Note < ApplicationRecord
   
   belongs_to :user
   has_many :schedules, dependent: :destroy
+  attachment :image 
   
   validates :title, presence: true, length: { minimum: 2, maximum: 20 }
   validates :stays, presence: true

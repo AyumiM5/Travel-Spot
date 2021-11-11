@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   
   def index
+    @user = User.find(current_user.id)
     @notes = Note.where(status: true, status: 0)
   end
 
@@ -48,7 +49,7 @@ class NotesController < ApplicationController
   private
   
   def note_params
-    params.require(:note).permit(:title, :stays, :body, :status, :post)
+    params.require(:note).permit(:title, :stays, :body, :status, :image)
   end
   
 end

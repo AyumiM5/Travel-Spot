@@ -8,17 +8,17 @@
         <%= render "devise/shared/error_messages", resource: resource %>
         
         <div class="offset-1 mt-3">
-          <%= f.label :name, class:"col-3" %>
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"offset-1 col-7" %>
+          <div class="col-5"><%= f.label :name %></div>
+          <div class="offset-1 col-7"><%= f.text_field :name, autofocus: true, autocomplete: "name" %></div>
         </div>
       
         <div class="offset-1 mt-3">
-          <%= f.label :email, class:"col-3" %>
+          <%= f.label :email, class:"col-5" %>
           <%= f.email_field :email, autocomplete: "email", class:"offset-1 col-7" %>
         </div>
       
         <div class="offset-1 mt-3">
-          <div class="col-3">
+          <div class="col-5">
             <%= f.label :password %>
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> 以上で登録して下さい)</em>

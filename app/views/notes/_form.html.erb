@@ -1,15 +1,19 @@
 <h2><u>New Notes</u></h2>
 <div class="my-3">
   <%= form_with model:note, local: true do |f| %>
-  <div>
+  <div class="my-3 border-bottom">
     <%= f.label "タイトル", class:"col-3" %>
     <%= f.text_field :title, autofocus: true, autocomplete: "title", class:"col-6" %>
   </div>
-  <div>
+  <div class="my-3 border-bottom">
     <%= f.label "宿泊数", class:"col-3" %>
     <%= f.select :stays, Note.stays_methods.keys.map {|k| [I18n.t("enums.note.stays_method.#{k}"), k]}, {prompt: "日程を選択してください"}, class:"col-3" %>
   </div>
-  <div>
+  <div class="my-3 border-bottom">
+    <%= f.label "画像", class:"col-3" %>
+    <%= f.attachment_field :image, class:"col-6" %>
+  </div>
+  <div class="my-3 border-bottom">
     <%= f.label "説明", class:"col-3" %>
     <%= f.text_area :body, class:"col-6" %>
   </div>
