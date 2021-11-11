@@ -74,6 +74,7 @@ gem "refile-mini_magick"
 gem 'carrierwave'
 
 # enumを使用して、宿泊数を選択する
+gem 'rails-i18n'
 gem "enum_help"
 
 # GoogleMapAPIを使用するため

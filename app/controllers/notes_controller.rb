@@ -1,10 +1,12 @@
 class NotesController < ApplicationController
   
   def index
-    @notes = Note.all
+    @notes = Note.where(status: true, status: 0)
   end
 
   def show
+    @note = Note.find(params[:id])
+    @user = @note.user
   end
 
   def new
@@ -25,10 +27,28 @@ class NotesController < ApplicationController
     end
   end
   
+  def edit
+  end
+  
+  def update
+  end
+  
+  def post
+    note = Note.find(params[:id])
+    note.update(posted: true)
+    redirect_to note_path(note.id)
+  end
+  
+  def destroy
+    note = Note.find(params[:id])
+    note.destroy
+    redirect_to request.referer
+  end
+  
   private
   
   def note_params
-    params.require(:note).permit(:title, :stays, :body, :status)
+    params.require(:note).permit(:title, :stays, :body, :status, :post)
   end
   
 end

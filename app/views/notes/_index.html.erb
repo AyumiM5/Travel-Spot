@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row mx-auto">
+    <% notes.each do |note| %>
+      <div class="col-md-3 m-2 border border-secondary rounded">
+        <div class="mb-2">
+          <%= attachment_image_tag note.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg" %>
+          <%= note.user.name %>
+        </div>
+        <div class="my-2">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Title:</td>
+                <td><%= note.title %></td>
+              </tr>
+              <tr>
+                <td>Stays:</td>
+                <td><%= note.stays %></td>
+              </tr>
+              <tr>
+                <td>Boby:</td>
+                <td><%= note.body %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <% if note.user == current_user %>
+        <%= link_to "投稿の詳細を見る", note_path(note.id) %>
+        <%= link_to "投稿を削除", note_path(note.id), method: :delete %>
+      <% else %>
+        <%= link_to "投稿の詳細を見る", note_path(note.id) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

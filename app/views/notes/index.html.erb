@@ -5,12 +5,7 @@
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Notes</h2>
-      <% @notes.each do |note| %>
-        <%= link_to user_path(note.user_id) do %>
-          %= attachment_image_tag note.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg" %>
-        <% end %>
-        <%= link_to "#{note.title}", note_path(note.id) %>
-      <% end %>
+      <%= render 'notes/index', notes: @notes %>
     </div>
   </div>
 </div>

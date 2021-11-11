@@ -6,6 +6,7 @@ class CreateNotes < ActiveRecord::Migration[5.2]
       t.integer :stays, null: false, default: "0"
       t.text :body, null: false
       t.integer :status, null: false
+      t.boolean :posted, null: false, default: "false"
 
       t.timestamps
     end

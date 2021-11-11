@@ -42,6 +42,7 @@
               <%= link_to "削除", note_schedule_spot_path(note.id, schedule.id, spot.id), method: :delete, class: 'ml-1 btn btn-sm btn-secondary' %></div>
             <div><%= spot.start_time.strftime("%H:%M") %>～<%= spot.end_time.strftime("%H:%M") %></div>
           </div>
+          <div class="text-center">▽</div>
           <% end %>
           </div>
         <% end %>

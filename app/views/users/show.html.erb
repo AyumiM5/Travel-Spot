@@ -3,8 +3,9 @@
     <div class="col-md-3">
       <%= render 'users/info', user: @user %>
     </div>
-    <div class="col-md-8 offset-md-1">
-      <h2>Notes</h2>
+    <div class="col-md-8">
+      <h2>Mypage</h2>
+      <%= render 'notes/index', notes: @notes %>
     </div>
   </div>
 </div>

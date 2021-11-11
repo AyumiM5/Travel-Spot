@@ -6,6 +6,7 @@
     <div class="col-md-8">
       <%= render 'schedules/form', schedule: @schedule, schedules: @schedules, note: @note, spot: @spot  %>
       <%= render 'spots/form', schedule: @schedule, schedules: @schedules, note: @note, spot: @spot  %>
+      <%= link_to "投稿", notes_post_path(@note), method: :put %>
     </div>
   </div>
 </div>

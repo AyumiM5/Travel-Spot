@@ -7,7 +7,7 @@
   </div>
   <div>
     <%= f.label "宿泊数", class:"col-3" %>
-    <%= f.select :stays, Note.stays_methods.keys, {prompt: "選択してください"}, class:"col-6" %>
+    <%= f.select :stays, Note.stays_methods.keys.map {|k| [I18n.t("enums.note.stays_method.#{k}"), k]}, {prompt: "日程を選択してください"}, class:"col-3" %>
   </div>
   <div>
     <%= f.label "説明", class:"col-3" %>

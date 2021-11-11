@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
+    @notes = current_user.notes.where(status: true)
   end
   
   def edit
