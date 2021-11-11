@@ -21,6 +21,9 @@ class SchedulesController < ApplicationController
   end
   
   def destroy
+    schedule = Schedule.find(params[:id])
+    schedule.destroy
+    redirect_to request.referer
   end
   
   private

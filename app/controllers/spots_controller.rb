@@ -4,7 +4,7 @@ class SpotsController < ApplicationController
     @spot = Spot.new(spot_params)
     @schedule = Schedule.find(params[:schedule_id])
     @spot.schedule_id = @schedule.id
-    if @spot.save!
+    if @spot.save
       redirect_to request.referer
     else
       @user = User.find(current_user.id)
