@@ -5,6 +5,8 @@
     </div>
     <div class="col-md-9">
       <%= render 'notes/show', note: @note %>
+      <%= render 'note_comments/index', note: @note %>
+      <%= render 'note_comments/form', note: @note, note_comment: @note_comment %>
     </div>
   </div>
 </div>

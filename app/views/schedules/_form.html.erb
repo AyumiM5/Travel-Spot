@@ -1,9 +1,0 @@
-<h2><u>New Schedule</u></h2>
-<div class="my-3">
-  <%= form_with(model:[note, schedule], local: true) do |f| %>
-    <%= f.label "日程", class:"col-3" %>
-    <%= f.select :day, Schedule.day_methods.keys.map {|k| [I18n.t("enums.schedule.day_method.#{k}"), k]}, {prompt: "日程を選択してください"}, class:"col-3" %>
-    <%= f.submit "スケジュール追加", class: "offset-3 col-3 btn-sm btn btn-secondary" %>
-  <% end %>
-</div>
-

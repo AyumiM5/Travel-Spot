@@ -1,9 +1,11 @@
 class Spot < ApplicationRecord
   
-  belongs_to :schedule
+  belongs_to :note
   
   # 存在性のバリデーション
-  validates :schedule_id, presence: true
+  validates :note_id, presence: true
+  validates :title, presence: true
+  validates :body, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true
 

@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>TrabelNotes</title>
+    <meta charset="UTF-8" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -13,7 +14,7 @@
 
   </head>
 
-  <body>
+  <body style="padding-top: 3rem">
     <%= render "layouts/header" %>
     <%= yield %>
   </body>

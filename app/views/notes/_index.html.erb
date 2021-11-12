@@ -18,7 +18,7 @@
               </tr>
               <tr>
                 <td>Stays:</td>
-                <td><%= note.stays %></td>
+                <td><%= note.stay_i18n %></td>
               </tr>
               <tr>
                 <td>Boby:</td>
@@ -27,24 +27,34 @@
             </tbody>
           </table>
         </div>
-        <div class="border border-secondary rounded p-2 my-2">
-        <small>
-          <%= note.schedules[0].day %>日目
-        </small>
-        <% note.schedules[0].spots.each do |spot| %>
-          <div class="border border-secondary rounded p-2 my-1">
-            <div><%= spot.address %></div>
-            <div><%= spot.start_time.strftime("%H:%M") %>～<%= spot.end_time.strftime("%H:%M") %></div>
-          </div>
-          <div class="text-center">▽</div>
-        <% end %>
+        <div>
+          <% if note.user == current_user %>
+            <%= link_to "投稿詳細", note_path(note.id) %>
+            <%= link_to "削除", note_path(note.id), method: :delete %>
+          <% else %>
+            <%= link_to "投稿詳細", note_path(note.id) %>
+          <% end %>
         </div>
-        <% if note.user == current_user %>
-          <%= link_to "投稿の詳細を見る", note_path(note.id) %>
-          <%= link_to "投稿を削除", note_path(note.id), method: :delete %>
-        <% else %>
-          <%= link_to "投稿の詳細を見る", note_path(note.id) %>
-        <% end %>
+        <div>
+          <span>コメント:<%= note.note_comments.count %></span>
+          <span>
+            <% if note.favorited_by?(current_user) %>
+              <p>
+                <%= link_to note_favorites_path(note), method: :delete do %>
+                  <i class="fas fa-heart"></i>
+                  <%= note.favorites.count %>
+                <% end %>
+              </p>
+              <% else %>
+              <p>
+                <%= link_to note_favorites_path(note), method: :post do %>
+                  <i class="far fa-heart"></i>
+                  <%= note.favorites.count %>
+                <% end %>
+              </p>
+            <% end %>
+          </span>
+        </div>
       </div>
     <% end %>
   </div>

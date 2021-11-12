@@ -8,6 +8,7 @@ class NotesController < ApplicationController
   def show
     @note = Note.find(params[:id])
     @user = @note.user
+    @note_comment = NoteComment.new
   end
 
   def new
@@ -20,7 +21,7 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.user_id = current_user.id
     if @note.save
-      redirect_to new_note_schedule_path(note_id: @note.id)
+      redirect_to  new_note_spot_path(note_id: @note.id)
     else
       flash[:alert] = "必要事項を追加してください"
       @user = User.find(current_user.id)
@@ -29,9 +30,23 @@ class NotesController < ApplicationController
   end
   
   def edit
+    @user = User.find(current_user.id)
+    @note = Note.find(params[:id])
+    @spot = Spot.new
+    if @note.user = current_user
+      render 'edit'
+    else
+      redirect_to note_path(@note)
+    end
   end
   
   def update
+    note = Note.find(params[:id])
+    if note.update(note_params)
+      redirect_to note_path(note)
+    else
+      render 'edit'
+    end
   end
   
   def post

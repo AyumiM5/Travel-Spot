@@ -1,15 +1,14 @@
-
 ja:
   enums:
     note:
-      stays_method:
+      stay:
         day_trip: "日帰り"
         1n_2d: "1泊2日"
         2n_3d: "2泊3日"
         3n_4d: "3泊4日"
         4n_5d: "4泊5日"
     schedule:
-      day_method:
+      day:
         1day: "1日目"
         2day: "2日目"
         3day: "3日目"

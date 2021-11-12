@@ -1,7 +1,7 @@
 <div>
   <h2 class="my-3"><u>Note detail</u></h2>
   <% if note.user == current_user %>
-    <%= link_to "投稿の編集", note_path(note.id) %>
+    <%= link_to "投稿の編集", edit_note_path(note.id) %>
     <%= link_to "投稿を削除", note_path(note.id), method: :delete %>
   <% end %>
   <div class="row">
@@ -13,11 +13,11 @@
         <tbody>
           <tr>
             <td>Title:</td>
-            <td><%= note.title %></td>
+            <td><%= note.title %></t>
           </tr>
           <tr>
             <td>Stays:</td>
-            <td><%= note.stays %></td>
+            <td><%= note.stay_i18n %></td>
           </tr>
           <tr>
             <td>Boby:</td>
@@ -28,99 +28,89 @@
     </div>
   </div>
 </div>
-<% note.schedules.each do |schedule| %>
-  <div class="row my-5">
-    <div class="col-md-5 border border-secondary rounded">
-      <h2><u>Spots</u></h2>
-      <div class="schedule">
-        <h4 class="schedule_header_title">
-          <small>
-            <%= schedule.day %>日目
-          </small>
-        </h4>
-        <div class="border border-secondary rounded p-2 my-2">
-        <% schedule.spots.each do |spot| %>
-          <div class="border border-secondary rounded p-2 my-1">
-            <div><%= spot.address %></div>
-            <div><%= spot.start_time.strftime("%H:%M") %>～<%= spot.end_time.strftime("%H:%M") %></div>
-          </div>
-          <div class="text-center">▽</div>
-        <% end %>
-        </div>
-      </div>
+<h2 class="mt-5"><u>Spots</u></h2>
+<div class="row my-5">
+  <div class="col-4 border border-secondary rounded p-2 my-2">
+  <% note.spots.each do |spot| %>
+    <div class="border border-secondary rounded p-2 my-1">
+      <div><%= spot.address %></div>
+      <div><%= spot.body %></div>
     </div>
-    <div class="col-md-7">
-      <div id="map"></div>
-      <script>
-        let map
-        let geocoder
+    <div class="text-center">▽</div>
+  <% end %>
+  </div>
+  <div class="col-md-7">
+    <div id="map"></div>
+    <script>
+      let map
+      let geocoder
 
-        function initMap() {
-          geocoder = new google.maps.Geocoder()
+      function initMap() {
+        geocoder = new google.maps.Geocoder()
 
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: {
-              lat: <%= schedule.spots[0].latitude %>,
-              lng: <%= schedule.spots[0].longitude %>
-            },
-            zoom: 12
-          });
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {
+            lat: <%= note.spots[0].latitude %>,
+            lng: <%= note.spots[0].longitude %>
+          },
+          zoom: 12
+        });
 
-          
-          <% schedule.spots.each do |m| %>
-            (function(){
-            var marker = new google.maps.Marker({
-                position:{lat: <%= m.latitude %>, lng: <%= m.longitude %>},
-                map: map,
-            });
-  
-            })();
-          <% end %>
-        }
-
-        function codeAddress(){
-          let inputAddress = document.getElementById('address').value;
-
-          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-            if (status == 'OK') {
-              map.setCenter(results[0].geometry.location);
-              var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-              });
-
-              let title = document.getElementById('spot_title');
-              title.setAttribute("value", inputAddress);
-
-              let hidden_address = document.getElementById('hidden_address');
-              hidden_address.setAttribute("value", inputAddress);
-              
-              let hidden_latitude = document.getElementById('hidden_latitude');
-              hidden_latitude.setAttribute("value", marker.position.lat());
-              
-              let hidden_longitude = document.getElementById('hidden_longitude');
-              hidden_longitude.setAttribute("value", marker.position.lng());
-
-            } else {
-              alert('該当する結果がありません：' + status);
-            }
-          });
-          
-          <% schedule.spots.each do |spot| %>
+        
+        <% note.spots.each do |m| %>
           (function(){
-          var contentString = "住所：<%= spot.address %>"; 
-
           var marker = new google.maps.Marker({
-              position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
+              position:{lat: <%= m.latitude %>, lng: <%= m.longitude %>},
               map: map,
-              title: contentString
           });
 
           })();
-          <% end %>
-        }
-      </script>
-      <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
-    </div>
+        <% end %>
+      }
+
+      function codeAddress(){
+        let inputAddress = document.getElementById('address').value;
+
+        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+          if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+
+            let title = document.getElementById('spot_title');
+            title.setAttribute("value", inputAddress);
+
+            let hidden_address = document.getElementById('hidden_address');
+            hidden_address.setAttribute("value", inputAddress);
+            
+            let hidden_latitude = document.getElementById('hidden_latitude');
+            hidden_latitude.setAttribute("value", marker.position.lat());
+            
+            let hidden_longitude = document.getElementById('hidden_longitude');
+            hidden_longitude.setAttribute("value", marker.position.lng());
+
+          } else {
+            alert('該当する結果がありません：' + status);
+          }
+        });
+        
+        <% note.spots.each do |spot| %>
+        (function(){
+        var contentString = "住所：<%= spot.address %>"; 
+
+        var marker = new google.maps.Marker({
+            position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
+            map: map,
+            title: contentString
+        });
+
+        })();
+        <% end %>
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
   </div>
-<% end %>
+</div>
+<div>

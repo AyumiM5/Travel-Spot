@@ -3,7 +3,7 @@ class CreateNotes < ActiveRecord::Migration[5.2]
     create_table :notes do |t|
       t.integer :user_id
       t.string :title, null: false
-      t.integer :stays, null: false, default: "0"
+      t.integer :stay, null: false, default: "0"
       t.text :body, null: false
       t.string :image_id
       t.integer :status, null: false

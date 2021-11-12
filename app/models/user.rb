@@ -8,5 +8,7 @@ class User < ApplicationRecord
   validates :name, uniqueness: true, presence: true, length: { minimum: 2, maximum: 20 }
   
   has_many :notes, dependent: :destroy
+  has_many :note_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
 end

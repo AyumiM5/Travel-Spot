@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_032004) do
+ActiveRecord::Schema.define(version: 2021_11_12_094659) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "note_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "note_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "note_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "note_tags", force: :cascade do |t|
     t.integer "tag_id"
@@ -22,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_11_06_032004) do
   create_table "notes", force: :cascade do |t|
     t.integer "user_id"
     t.string "title", null: false
-    t.integer "stays", default: 0, null: false
+    t.integer "stay", default: 0, null: false
     t.text "body", null: false
     t.string "image_id"
     t.integer "status", null: false
@@ -38,18 +53,10 @@ ActiveRecord::Schema.define(version: 2021_11_06_032004) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "schedules", force: :cascade do |t|
-    t.integer "note_id"
-    t.integer "day", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "spots", force: :cascade do |t|
-    t.integer "schedule_id"
-    t.string "title", null: false
-    t.datetime "start_time", null: false
-    t.datetime "end_time", null: false
+    t.integer "note_id"
+    t.string "title"
+    t.text "body"
     t.text "address", null: false
     t.float "latitude", null: false
     t.float "longitude", null: false

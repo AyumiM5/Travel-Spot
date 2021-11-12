@@ -1,9 +1,15 @@
 class SpotsController < ApplicationController
   
+  def new
+    @spot = Spot.new
+    @note = Note.find(params[:note_id])
+    @user = User.find(current_user.id)
+  end
+  
   def create
     @spot = Spot.new(spot_params)
-    @schedule = Schedule.find(params[:schedule_id])
-    @spot.schedule_id = @schedule.id
+    note = Note.find(params[:note_id])
+    @spot.note_id = note.id
     if @spot.save
       redirect_to request.referer
     else
@@ -21,7 +27,7 @@ class SpotsController < ApplicationController
   private
   
   def spot_params
-    params.require(:spot).permit(:address, :latitude, :longitude, :title, :start_time, :end_time)
+    params.require(:spot).permit(:address, :latitude, :longitude, :title, :body)
   end
   
 end

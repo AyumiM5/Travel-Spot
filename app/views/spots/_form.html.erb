@@ -1,21 +1,14 @@
+<h2><u>Spots</u></h2>
 <div class="container my-5 px-sm-0">
-<% schedules.each do |schedule| %>
   <div class="row my-5">
     <div class="col-md-5 border border-secondary rounded">
-      <h2><u>Spots</u></h2>
       <div class="schedule">
-        <h4 class="schedule_header_title">
-          <small>
-            <%= schedule.day %>日目
-            <%= link_to "削除", note_schedule_path(note.id, schedule.id), method: :delete, class: 'ml-1 btn btn-sm btn-secondary' %>
-          </small>
-        </h4>
-        <div class="border border-secondary rounded p-2">
+        <div class="p-2">
           <input id="address" type="textbox" value="東京タワー">
           <input type="button" value="検索" onclick="codeAddress()" class='btn btn-sm btn-secondary'>
         </div>
         <div class="border border-secondary rounded p-2 mt-2">
-        <%= form_with(model:[note, schedule, spot], local: true) do |f| %>
+        <%= form_with(model:[note, spot], local: true) do |f| %>
           <!-- 検索値を隠しデータとして送信-->
           <input type="hidden" name="spot[address]" id="hidden_address">
           <input type="hidden" name="spot[latitude]" id="hidden_latitude">
@@ -23,26 +16,23 @@
           <%= f.label :title, "タイトル" %>
           <%= f.text_field :title %>
           <div>
-            <%= f.label :start_time, class: 'control-label col-5' %>
-            <%= f.time_select :start_time, class: 'form-control' %>
+            <%= f.label :body, "コメント" %><br />
+            <%= f.text_area :body, class: "form-control" %>
           </div>
           <div>
-            <%= f.label :end_time, class: 'control-label col-5' %>
-            <%= f.time_select :end_time, class: 'form-control' %>
             <%= f.submit "保存", class: 'btn btn-sm btn-secondary' %>
           </div>
         <% end %>
         </div>
-        <% if schedule.spots.exists? %>
+        <% if note.spots.exists? %>
           <div class="border border-secondary rounded p-2 my-2">
-          <% schedule.spots.each do |spot| %>
+          <% note.spots.each do |spot| %>
           <div class="border border-secondary rounded p-2 my-1">
             <div>
               <%= spot.address %>
-              <%= link_to "削除", note_schedule_spot_path(note.id, schedule.id, spot.id), method: :delete, class: 'ml-1 btn btn-sm btn-secondary' %></div>
-            <div><%= spot.start_time.strftime("%H:%M") %>～<%= spot.end_time.strftime("%H:%M") %></div>
+              <%= link_to "削除", note_spot_path(note.id, spot.id), method: :delete, class: 'ml-1 btn btn-sm btn-secondary' %></div>
+            <div><%= spot.body %></div>
           </div>
-          <div class="text-center">▽</div>
           <% end %>
           </div>
         <% end %>
@@ -66,7 +56,7 @@
           });
 
           
-          <% schedule.spots.each do |m| %>
+          <% note.spots.each do |m| %>
             (function(){
             var marker = new google.maps.Marker({
                 position:{lat: <%= m.latitude %>, lng: <%= m.longitude %>},
@@ -105,7 +95,7 @@
             }
           });
           
-          <% schedule.spots.each do |spot| %>
+          <% note.spots.each do |spot| %>
           (function(){
           var contentString = "住所：<%= spot.address %>"; 
 
@@ -122,5 +112,4 @@
       <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
     </div>
   </div>
-<% end %>
 </div>
