@@ -21,39 +21,46 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans JP", メイリオ, Meiryo, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
 }
- 
- #map2day {
-   width: 100%;
-   height: 400px;
-   background-color: grey;
- }
- 
+
+header {
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
+}
+
+.navbar {
+  background-color: #d2b48c;
+}
+
+.navbar-brand, .navbar-toggler {
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
+  padding: 0 30px;
+}
+
  .login {
   padding: 20px 0;
   width: 100%;
-  height: auto;
+  height : 700px;
   background-image: image-url('login_background.jpg');
   background-size: cover;
-  background-position: 0 90%;
 }
 
  .sign-in {
   padding: 20px 0;
   width: 100%;
-  height: 100%;
+  height : 700px;
   background-image: image-url('sign_in_background.JPG');
   background-size: cover;
-  background-position: 0 90%;
+  background-position: 0 80%;
 }
 
 .sign-in-form, .login-form {
   width : 60%;
+  hight : 100%;
   margin: 10px auto;
   padding: 10px 0;
+  border-radius : 20px;
   background-color: rgba(255,255,255,0.8);
-  height: auto;
 }
 
 .input-form {

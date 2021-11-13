@@ -1,3 +1,22 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+ .main {
+  margin : 50px 200px;
+  width : auto;
+  height : 600px;
+  background-image : image-url('sign_in_background.JPG');
+  background-size : cover;
+  background-position : 0 90%;
+  border : 3px solid white;
+  border-radius : 20px;
+  font-family : 'Caveat', cursive;
+}
+
+.main-title {
+  font-size : 80px;
+  text-align : center;
+  margin-top : 250px;
+}
