@@ -6,7 +6,7 @@
   <% end %>
   <div class="row">
     <div class="border border-secondary rounded p-2">
-      <%= attachment_image_tag note, :image, :fill, 200, 300, format: 'jpg', fallback: "no_image.jpg" %>
+      <%= attachment_image_tag note, :image, size: "200x200", format: 'jpg', fallback: "no_image.jpg" %>
     </div>
     <div class="col-7 border border-secondary rounded ml-2 p-2">
       <table class="table">
