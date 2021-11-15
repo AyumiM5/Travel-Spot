@@ -1,8 +1,9 @@
 class NotesController < ApplicationController
+  before_action :authenticate_user!
   
   def index
     @user = User.find(current_user.id)
-    @notes = Note.where(status: true, status: 0)
+    @notes = Note.where(posted: true, status: 0).order(created_at: :desc)
   end
 
   def show

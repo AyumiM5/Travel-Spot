@@ -1,61 +1,65 @@
 <div class="container">
   <div class="row mx-auto">
-    <% notes.each do |note| %>
-      <div class="col-md-3 m-2 border border-secondary rounded">
-        <div class="mb-2">
-          <%= attachment_image_tag note.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg" %>
-          <%= note.user.name %>
-        </div>
-        <div>
-          <%= attachment_image_tag note, :image, size: "150x110", format: 'jpg', fallback: "no_image.jpg" %>
-        </div>
-        <div class="my-2">
-          <table class="table">
-            <tbody>
-              <tr>
-                <td>Title:</td>
-                <td><%= note.title %></td>
-              </tr>
-              <tr>
-                <td>Stays:</td>
-                <td><%= note.stay_i18n %></td>
-              </tr>
-              <tr>
-                <td>Boby:</td>
-                <td><%= note.body %></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <% if note.user == current_user %>
-            <%= link_to "投稿詳細", note_path(note.id) %>
-            <%= link_to "削除", note_path(note.id), method: :delete %>
-          <% else %>
-            <%= link_to "投稿詳細", note_path(note.id) %>
-          <% end %>
-        </div>
-        <div>
-          <span>コメント:<%= note.note_comments.count %></span>
-          <span>
-            <% if note.favorited_by?(current_user) %>
-              <p>
-                <%= link_to note_favorites_path(note), method: :delete do %>
-                  <i class="fas fa-heart"></i>
-                  <%= note.favorites.count %>
-                <% end %>
-              </p>
-              <% else %>
-              <p>
-                <%= link_to note_favorites_path(note), method: :post do %>
-                  <i class="far fa-heart"></i>
-                  <%= note.favorites.count %>
-                <% end %>
-              </p>
+    <% if notes.count == 0 %>
+      <div>投稿はまだありません</div>
+    <% else %>
+      <% notes.each do |note| %>
+        <div class="col-md-4 m-2 border border-secondary rounded">
+          <div class="my-2">
+            <%= attachment_image_tag note.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
+            <%= note.user.name %>
+          </div>
+          <div>
+            <%= attachment_image_tag note, :image, size: "150x110", format: 'jpg', fallback: "no_image.jpg" %>
+          </div>
+          <div class="my-2">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Title:</td>
+                  <td><%= note.title %></td>
+                </tr>
+                <tr>
+                  <td>Stays:</td>
+                  <td><%= note.stay_i18n %></td>
+                </tr>
+                <tr>
+                  <td>Boby:</td>
+                  <td><%= note.body %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <% if note.user == current_user %>
+              <%= link_to "投稿詳細", note_path(note.id) %>
+              <%= link_to "削除", note_path(note.id), method: :delete %>
+            <% else %>
+              <%= link_to "投稿詳細", note_path(note.id) %>
             <% end %>
-          </span>
+          </div>
+          <div>
+            <span>コメント:<%= note.note_comments.count %></span>
+            <span>
+              <% if note.favorited_by?(current_user) %>
+                <p>
+                  <%= link_to note_favorites_path(note), method: :delete do %>
+                    <i class="fas fa-heart"></i>
+                    <%= note.favorites.count %>
+                  <% end %>
+                </p>
+                <% else %>
+                <p>
+                  <%= link_to note_favorites_path(note), method: :post do %>
+                    <i class="far fa-heart"></i>
+                    <%= note.favorites.count %>
+                  <% end %>
+                </p>
+              <% end %>
+            </span>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

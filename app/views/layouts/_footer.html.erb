@@ -1,0 +1,42 @@
+ <div class="container">
+    <div class="row no-gutters">
+      <div class="col-md-4 my-3">
+        <p>私のお気に入りSpot</p>
+        <%= link_to "Trabel Note", root_path, class:"footer-brand text-white" %>
+      </div>
+      <div class="col-md-4 my-3">
+        <h6 class="text-white mt-2 mb-3">Menu</h6>
+        <ul class="p-0 list-unstyled">
+          <% if user_signed_in? %>
+            <li><%= link_to "Notes", notes_path, class:"text-white-50" %></li>
+            <li><%= link_to "ホーム", root_path, class:"text-white-50" %></li>
+            <li><%= link_to "マイページ", mypage_path, class:"text-white-50" %></li>
+            <li><%= link_to "投稿を作成する", new_note_path, class:"text-white-50" %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-white-50" %></li>
+          <% else %>
+            <li><%= link_to "ホーム", root_path, class:"text-white-50" %></li>
+            <li><%= link_to "TrabelNoteとは", homes_about_path, class:"text-white-50" %></li>
+            <li><%= link_to "新規登録", new_user_registration_path, class:"text-white-50" %></li>
+            <li><%= link_to "ログイン", new_user_session_path, class:"text-white-50" %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-md-4 my-3">
+        <h6 class="text-white mt-2 mb-3">Link</h6>
+        <ul class="p-0 list-unstyled">
+          <li>
+            <a href="" title="About" class="text-white-50">お問い合わせ</a>
+          </li>
+          <li>
+            <%= link_to "/" do %>
+              <i class="fab fa-instagram text-white-50"></i>
+            <% end %>
+            <%= link_to "/" do %>
+              <i class="fab fa-twitter-square text-white-50"></i>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

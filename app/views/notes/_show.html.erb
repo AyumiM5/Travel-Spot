@@ -5,10 +5,10 @@
     <%= link_to "投稿を削除", note_path(note.id), method: :delete %>
   <% end %>
   <div class="row">
-    <div class="col-5">
-      <%= attachment_image_tag note, :image, size: "300x200", format: 'jpg', fallback: "no_image.jpg" %>
+    <div class="border border-secondary rounded p-2">
+      <%= attachment_image_tag note, :image, :fill, 200, 300, format: 'jpg', fallback: "no_image.jpg" %>
     </div>
-    <div class="col-7">
+    <div class="col-7 border border-secondary rounded ml-2 p-2">
       <table class="table">
         <tbody>
           <tr>
@@ -28,15 +28,14 @@
     </div>
   </div>
 </div>
-<h2 class="mt-5"><u>Spots</u></h2>
-<div class="row my-5">
+<h2 class="my-3"><u>Spots</u></h2>
+<div class="row">
   <div class="col-4 border border-secondary rounded p-2 my-2">
   <% note.spots.each do |spot| %>
     <div class="border border-secondary rounded p-2 my-1">
-      <div><%= spot.address %></div>
-      <div><%= spot.body %></div>
+      <div>spot：<%= spot.address %></div>
+      <div>point：<%= spot.body %></div>
     </div>
-    <div class="text-center">▽</div>
   <% end %>
   </div>
   <div class="col-md-7">

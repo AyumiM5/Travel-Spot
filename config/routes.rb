@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   patch 'mypage/update' => 'users#update'
   
   put "new/:id/post" => "notes#post", as: 'notes_post'
+  get "favorite-notes" => "users#favorite", as: "favorite_notes"
   
   resources :notes do
     resources :note_comments, only: [:create, :new, :destroy]

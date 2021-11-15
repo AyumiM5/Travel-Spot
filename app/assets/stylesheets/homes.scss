@@ -20,7 +20,7 @@
 }
 
 #main {
- margin : 50px 200px 20px 200px;
+ margin : 50px 100px 20px 100px;
  width : auto;
  height : 550px;
  font-family : 'Caveat', cursive;
@@ -33,7 +33,7 @@
 }
 
 .about {
- margin : 30px 200px 30px 200px;
+ margin : 2px 100px 30px 100px;
  width : auto;
  height : 550px;
  background-color : #D7D7D9;
@@ -42,11 +42,36 @@
  font-family : 'Caveat', cursive;
 }
 
+.top-notes {
+ margin : 2px 100px 30px 100px;
+ width : auto;
+ height : 550px;
+ background-color : #D7D7D9;
+ border : 3px solid grey;
+ border-radius : 20px;
+ font-family : 'Caveat', cursive;
+}
+
+.top-notes-item {
+ height : 450px;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-around;
+}
+
+.top-notes-item > div {
+ padding : 2% 5%;
+ width : 23%;
+ height : 100%;
+ background-color : #D7D7D9;
+ border : 3px solid grey;
+}
+
 .fa-arrow-circle-down {
  color: grey;
 }
 
-.Instructions-about {
+.Instructions-about, .go-signin {
  font-size: 70px;
  font-family : 'Caveat', cursive;
 }
@@ -55,4 +80,13 @@
  height: 90%;
  width: 50%;
  margin: 2% 2%;
+}
+
+.notes-link {
+ margin-right : 30px;
+ color : black;
+ text-align : right;
+ color: #625757;
+ font-size: 30px;
+ text-decoration: none;
 }

@@ -13,16 +13,20 @@
   <table class="table my-4">
     <tbody>
       <tr>
-        <th>follows</th>
+        <th>Follows</th>
         <th>〇〇</th>
       </tr>
       <tr>
-        <th>followers</th>
+        <th>Followers</th>
         <th>〇〇</th>
       </tr>
       <tr>
-        <th>notes</th>
-        <th>〇〇</th>
+        <th>Notes</th>
+        <th><%= user.notes.count %></th>
+      </tr>
+      <tr>
+        <th>Favorites</th>
+        <th><%= link_to user.favorites.count, favorite_notes_path %></th>
       </tr>
     </tbody>
   </table>

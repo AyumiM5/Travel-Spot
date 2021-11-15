@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = User.find(current_user.id)
     @notes = current_user.notes.all
@@ -23,6 +25,12 @@ class UsersController < ApplicationController
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
+  end
+  
+  def favorite
+    @user = User.find(current_user.id)
+    favorites = Favorite.where(user_id: @user.id).pluck(:note_id)
+    @favorites_notes = Note.find(favorites)
   end
   
   private
