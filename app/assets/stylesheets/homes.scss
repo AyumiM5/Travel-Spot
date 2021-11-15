@@ -45,26 +45,10 @@
 .top-notes {
  margin : 2px 100px 30px 100px;
  width : auto;
- height : 550px;
+ height : 600px;
  background-color : #D7D7D9;
  border : 3px solid grey;
  border-radius : 20px;
- font-family : 'Caveat', cursive;
-}
-
-.top-notes-item {
- height : 450px;
- display: flex;
- flex-wrap: wrap;
- justify-content: space-around;
-}
-
-.top-notes-item > div {
- padding : 2% 5%;
- width : 23%;
- height : 100%;
- background-color : #D7D7D9;
- border : 3px solid grey;
 }
 
 .fa-arrow-circle-down {
@@ -89,4 +73,24 @@
  color: #625757;
  font-size: 30px;
  text-decoration: none;
+}
+
+.top-notes-item {
+ height : 500px;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-around;
+}
+
+.top-notes-item > div {
+ width : 25%;
+ height : 100%;
+ background-color : #D7D7D9;
+ border : 1px solid grey;
+ border-radius : 10px;
+}
+
+.top-notes-item-image {
+ width : 100%;
+ height : 100%;
 }

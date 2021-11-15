@@ -78,7 +78,37 @@
   </div>
   <div class="top-notes-item">
     <% @notes.each do |note| %>
-      <div><%= attachment_image_tag note, :image, :fill, 200, 200, format: 'jpg', fallback: "no_image.jpg" %></div>
+    <div class="shadow-lg">
+      <div class="h-50 m-2 bg-dark">
+        <%= attachment_image_tag note, :image, class:"top-notes-item-image" %>
+      </div>
+      <div class="row">
+        <div class="col-2">
+          <div class="d-flex m-2">
+            <%= attachment_image_tag note.user, :profile_image, size: "40x40", format: 'jpg', fallback: "no_image.jpg", class:"rounded-circle" %>
+          </div>
+          <div class="ml-2 text-center">
+            <%= note.user.name %>
+          </div>
+        </div>
+        <div class="col-9 ml-3">
+          <p class="card-title">
+            <%= link_to(note_path(note.id), class:"text-dark") do %>
+              <strong><i class="far fa-flag"></i><span><%= note.title %>~<%= note.stay_i18n %>~</span></strong>
+            <% end %>
+          </p>
+          <span><i class="fas fa-heart"></i><%= note.favorites.count %></span>
+        </div>
+      </div>
+      <div class="row">
+        <% note.spots.each do |spot| %>
+          <div class="col-10 m-auto border border-secondary rounded p-2 my-1">
+            <div>spot：<%= spot.address %></div>
+            <div>point：<%= spot.body %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
     <% end %>
   </div>
 </div>
