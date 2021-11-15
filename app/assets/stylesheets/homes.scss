@@ -2,21 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.image1 {
+ background-image: url("home/img1.jpg");
+ background-size : cover;
+}
+.image2 {
+ background-image: url("home/img2.jpg");
+}
+.image3 {
+ background-image: url("home/img3.jpg");
+}
+.image4 {
+ background-image: url("home/img4.jpg");
+}
+.image5 {
+ background-image: url("home/img5.jpg");
+}
 
- .main {
-  margin : 50px 200px;
-  width : auto;
-  height : 600px;
-  background-image : image-url('sign_in_background.JPG');
-  background-size : cover;
-  background-position : 0 90%;
-  border : 3px solid white;
-  border-radius : 20px;
-  font-family : 'Caveat', cursive;
+#main {
+ margin : 50px 200px 20px 200px;
+ width : auto;
+ height : 550px;
+ font-family : 'Caveat', cursive;
 }
 
 .main-title {
-  font-size : 80px;
-  text-align : center;
-  margin-top : 250px;
+ font-size : 80px;
+ text-align : center;
+ margin-top : 250px;
+}
+
+.about {
+ margin : 30px 200px 30px 200px;
+ width : auto;
+ height : 550px;
+ background-color : #D7D7D9;
+ border : 3px solid grey;
+ border-radius : 20px;
+ font-family : 'Caveat', cursive;
+}
+
+.fa-arrow-circle-down {
+ color: grey;
+}
+
+.Instructions-about {
+ font-size: 70px;
+ font-family : 'Caveat', cursive;
+}
+
+#aboutmap {
+ height: 90%;
+ width: 50%;
+ margin: 2% 2%;
 }
