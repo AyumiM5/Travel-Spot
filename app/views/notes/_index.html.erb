@@ -4,7 +4,7 @@
       <div>投稿はまだありません</div>
     <% else %>
       <% notes.each do |note| %>
-        <div class="col-md-4 m-2 border border-secondary rounded">
+        <div class="col-md- m-2 border border-secondary rounded">
           <div class="my-2">
             <%= attachment_image_tag note.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %>
             <%= note.user.name %>
@@ -26,6 +26,14 @@
                 <tr>
                   <td>Boby:</td>
                   <td><%= note.body %></td>
+                </tr>
+                <tr>
+                  <td>Tag:</td>
+                  <td>
+                    <% note.tags.each do |tag| %>
+                      <p><%= tag.tag_name %></p>
+                    <% end %>
+                  </td>
                 </tr>
               </tbody>
             </table>

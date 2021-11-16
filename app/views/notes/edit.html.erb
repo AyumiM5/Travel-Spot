@@ -4,7 +4,7 @@
       <%= render 'users/info', user: @user %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <%= render 'notes/edit', note: @note %>
+      <%= render 'notes/edit', note: @note, tag_list: @tag_list %>
       <%= render 'spots/form', spot: @spot, note: @note  %>
     </div>
   </div>

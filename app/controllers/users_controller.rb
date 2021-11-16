@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    @notes = current_user.notes.all
+    @notes = current_user.notes.all.order(created_at: :desc)
   end
   
   def edit

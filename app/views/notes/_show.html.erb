@@ -9,7 +9,7 @@
       <%= attachment_image_tag note, :image, size: "200x200", format: 'jpg', fallback: "no_image.jpg" %>
     </div>
     <div class="col-7 border border-secondary rounded ml-2 p-2">
-      <table class="table">
+      <table class="table col-12">
         <tbody>
           <tr>
             <td>Title:</td>
@@ -23,6 +23,14 @@
             <td>Boby:</td>
             <td><%= note.body %></td>
           </tr>
+          <tr>
+            <td>Tag:</td>
+            <td>
+              <% note.tags.each do |tag| %>
+                <p><%= tag.tag_name %></p>
+              <% end %>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -34,7 +42,7 @@
   <% note.spots.each do |spot| %>
     <div class="border border-secondary rounded p-2 my-1">
       <div>spot：<%= spot.address %></div>
-      <div>point：<%= spot.body %></div>
+      <div class="body">point：<%= spot.body %></div>
     </div>
   <% end %>
   </div>
