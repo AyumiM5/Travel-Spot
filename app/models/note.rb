@@ -32,7 +32,6 @@ class Note < ApplicationRecord
       new_note_tag = Tag.find_or_create_by(tag_name: new)
       self.tags << new_note_tag
     end
-    
   end
   
 end
