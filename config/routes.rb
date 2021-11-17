@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'homes/about' => 'homes#about'
   devise_for :users
   
-  get 'notes/search' => "searchs#search", as: 'notes_search'
+  get 'search' => "searchs#search", as: 'search'
   
   get 'mypage' => 'users#mypage', as: 'mypage'
   patch 'withdraw' => 'users#withdraw'

@@ -34,4 +34,8 @@ class Note < ApplicationRecord
     end
   end
   
+  def self.search_for(word)
+    Note.where("title like? OR body like?", "%#{word}%", "%#{word}")
+  end
+  
 end

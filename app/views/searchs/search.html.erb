@@ -1,12 +1,20 @@
-<div class="container py-5">
+<div class="container my-5 px-sm-0">
   <div class="row">
     <div class="col-3">
-      <%= render 'users/info', user: @user %>
+      <h1><b style="color: #E08504;">S</b>each</h1>
+      <p>検索</p>
+      <%= render 'searchs/form', tags: @tags %>
     </div>
     <div class="col-9">
-      <h1><b style="color: #E08504;">S</b>earch</h1>
-      <p>検索ページ</p>
-      <%= render 'searchs/tags', tags: @tags %>
+      <h1><b style="color: #E08504;">N</b>otes</h1>
+      <p>検索結果</p>
+      <% if @model == 'user' %>
+      	<h3>"<%= @word %>"の検索結果</h3>
+        <%= render 'users/index', users: @records %>
+      <% elsif @model == 'note' %>
+      	<h3>"<%= @word %>"の検索結果</h3>
+        <%= render 'notes/index', notes: @records %>
+      <% end %>
     </div>
   </div>
 </div>

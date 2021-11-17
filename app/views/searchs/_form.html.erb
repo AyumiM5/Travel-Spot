@@ -1,0 +1,8 @@
+<%= form_with url: search_path, method: :get, local: :true do |f| %>
+  <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "note" }) %>
+  <%= f.text_field :word %>
+  <%= f.submit "検索" %>
+<% end %>
+<% tags.each do |tag| %>
+  <%= link_to tag.tag_name, "/" %>
+<% end %>

@@ -1,0 +1,25 @@
+<table class="table tabel-hover table-inverse">
+  <tbody>
+    <% users.each do |user| %>
+    <tr>
+      <td>
+        <%= link_to user_path(user.name) do %>
+          <%= attachment_image_tag user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg" %></br>
+          <%= user.name %>
+        <% end %>
+      </td>
+      <td>
+        <% if current_user != user %>
+          <div class="text-center border border-secondary rounded-pill">
+            <% if current_user.following?(user) %>
+              <%= link_to "フォローを外す", user_relationship_path(user.name), method: :delete %>
+            <% else %>
+              <%= link_to "フォローする", user_relationship_path(user.name), method: :post %>
+            <% end %>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

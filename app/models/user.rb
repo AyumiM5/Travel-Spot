@@ -38,4 +38,8 @@ class User < ApplicationRecord
     name
   end
   
+  def self.search_for(word)
+    User.where("name like?", "%#{word}%")
+  end
+  
 end
