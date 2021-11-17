@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+  <i class="fas fa-arrow-circle-down fa-4x col-6 d-flex align-items-center justify-content-center">
+    <h1 class="Instructions-about">Notes</h1>
+  </i>
+</div>
+
+<div class="top-notes shadow-lg">
+  <div class="my-3">
+    <%= link_to new_user_session_path do %>
+      <h1 class="notes-link">もっとNoteを見る<i class="fas fa-book-open"></i></h1>
+    <% end %>
+  </div>
+  <div class="top-notes-item row">
+    <% best_notes.each do |note| %>
+      <div>
+        <div class="text-center">
+          <%= attachment_image_tag note.user, :profile_image, size: "40x40", format: 'jpg', fallback: "no_image.jpg", class:"rounded-circle" %>
+          <%= note.user.name %>
+        </div>
+        <div class="f-note-spot">
+          <% note.spots.first(2).each do |spot| %>
+            <div class="f-note-spot-item">
+              <div class="flag">
+                <i class="far fa-bookmark fa-3x"></i>
+              </div>
+              <div class="f-spot-contents">
+                <h2><b><%= spot.address %></b></h2>
+                <p><%= spot.body %></p>
+              </div>
+            </div>
+          <% end %>
+          <% if note.spots.count > 2 %>
+            <p class="text-center">
+              <%= link_to note_path(note.id) do %>
+                <i class="fas fa-caret-down fa-2x"></i>
+              <% end %>
+            </p>
+          <% end %>
+        </div>
+        <div class="text-center f-note-img">
+          <%= attachment_image_tag note, :image, size: "200x100" %>
+        </div>
+        <div class="text-center">
+          <%= link_to "詳細を見る" , note_path(note.id) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

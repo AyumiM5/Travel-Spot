@@ -1,4 +1,3 @@
-
   <div class=row>
     <%= link_to mypage_edit_path, class: "col-2 btn btn-sm btn-secondary" do %>
       <i class="fas fa-cog"></i>
@@ -10,19 +9,28 @@
   <div class="my-2 text-center">
     <b><%= user.name %></b>
   </div>
+  <% if user != current_user %>
+    <div class="text-center border border-secondary rounded-pill">
+      <% if current_user.following?(user) %>
+        <%= link_to "フォローを外す", user_relationship_path(user.name), method: :delete %>
+      <% else %>
+        <%= link_to "フォローする", user_relationship_path(user.name), method: :post %>
+      <% end %>
+    </div>
+  <% end %>
   <table class="table my-4">
     <tbody>
       <tr>
-        <th>Follows</th>
-        <th>〇〇</th>
+        <th>フォロー中</th>
+        <th><%= link_to user.following.count, user_followings_path(user.name) %></th>
       </tr>
       <tr>
-        <th>Followers</th>
-        <th>〇〇</th>
+        <th>フォロワー</th>
+        <th><%= link_to user.followers.count, user_followers_path(user.name) %></th>
       </tr>
       <tr>
         <th>Notes</th>
-        <th><%= user.notes.count %></th>
+        <th><%= link_to user.notes.count, mypage_path %></th>
       </tr>
       <tr>
         <th>Favorites</th>
@@ -30,5 +38,25 @@
       </tr>
     </tbody>
   </table>
+  <div class="text-center border border-secondary rounded">
+    <div class="my-1">
+      <% if user == current_user %>
+        <b>Your Tag</b>
+      <% else %>
+        <b><%= user.name %>'s Tag</b>
+      <% end %>
+    </div>
+    <div>
+      <% if user.notes.exists? %>
+        <% user.notes.each do |note| %>
+          <% note.tags.each do |tag| %>
+            <%= tag.tag_name %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p>Tagはまだありません</p>
+      <% end %>
+    </div>
+  </div>
 
 

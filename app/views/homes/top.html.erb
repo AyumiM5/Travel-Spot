@@ -1,123 +1,28 @@
-<div id="main">
-  <div id="theTarget">
-    <div class="image1"><h1 class="main-title">Travel Notes</h1></div>
-    <div class="image2"><h1 class="main-title">Travel Notes</h1></div>
-    <div class="image3"><h1 class="main-title">Travel Notes</h1></div>
-    <div class="image4"><h1 class="main-title">Travel Notes</h1></div>
-    <div class="image5"><h1 class="main-title">Travel Notes</h1></div>
-  </div>
-</div>
-
-<div class="row justify-content-center">
-  <i class="fas fa-arrow-circle-down fa-4x col-6 d-flex align-items-center justify-content-center">
-    <h1 class="Instructions-about">about</h1>
-  </i>
-</div>
-
-<div class="about">
-  <div id="aboutmap"></div>
-  <script>
-    let map
-    let geocoder
-
-    function initMap() {
-      geocoder = new google.maps.Geocoder()
-
-      map = new google.maps.Map(document.getElementById('aboutmap'), {
-        center: {
-          lat: 35.6585848,
-          lng: 139.7432389
-        },
-        zoom: 15
-      });
-    }
-    
-    function codeAddress(){
-      let inputAddress = document.getElementById('address').value;
-  
-      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-        if (status == 'OK') {
-          map.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-          });
-  
-          let title = document.getElementById('spot_title');
-          title.setAttribute("value", inputAddress);
-  
-          let hidden_address = document.getElementById('hidden_address');
-          hidden_address.setAttribute("value", inputAddress);
-          
-          let hidden_latitude = document.getElementById('hidden_latitude');
-          hidden_latitude.setAttribute("value", marker.position.lat());
-          
-          let hidden_longitude = document.getElementById('hidden_longitude');
-          hidden_longitude.setAttribute("value", marker.position.lng());
-  
-        } else {
-          alert('該当する結果がありません：' + status);
-        }
-      });
-      
-    }
-  </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
-</div>
-
-<div class="row justify-content-center">
-  <i class="fas fa-arrow-circle-down fa-4x col-6 d-flex align-items-center justify-content-center">
-    <h1 class="Instructions-about">Notes</h1>
-  </i>
-</div>
-
-<div class="top-notes">
-  <div class="my-3">
-    <%= link_to new_user_session_path do %>
-      <h1 class="notes-link">もっとNoteを見る<i class="fas fa-book-open"></i></h1>
-    <% end %>
-  </div>
-  <div class="top-notes-item">
-    <% @best_notes.each do |note| %>
-    <div class="shadow-lg">
-      <div class="m-2">
-        <%= attachment_image_tag note, :image, size: "200x200" %>
-      </div>
-      <div class="row my-2">
-        <div class="col-2">
-          <%= attachment_image_tag note.user, :profile_image, size: "40x40", format: 'jpg', fallback: "no_image.jpg", class:"rounded-circle" %>
-          <span><%= note.user.name %></span>
-        </div>
-        <div class="col-9 ml-3">
-          <%= link_to(note_path(note.id), class:"text-dark") do %>
-            <strong><%= note.title %>~<%= note.stay_i18n %>~</strong>
-          <% end %>
-          <span><i class="fas fa-heart"></i><%= note.favorites.count %></span>
-        </div>
-      </div>
-      <div class="row mx-auto ">
-        <div class="col-1">
-          <i class="mt-3 far fa-flag fa-2x d-flex align-items-center justify-content-center"></i>
-        </div>
-        <div class="col-10">
-          <table class="table note-table">
-            <tbody>
-              <tr>
-                <th>spot：</th>
-                <th><%= note.spots[0].address %></th>
-              </tr>
-              <tr>
-                <th>point：</th>
-                <th><%= note.spots[0].body %></th>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-11 m-auto">
+      <%= render "homes/main" %>
     </div>
-    <% end %>
   </div>
 </div>
+
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-11 m-auto">
+      <%= render "homes/about" %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-11 m-auto">
+      <%= render "homes/notes", best_notes: @best_notes %>
+    </div>
+  </div>
+</div>
+
+
 
 <div class="row justify-content-center">
   <%= link_to new_user_registration_path, class:"col-6 d-flex align-items-center justify-content-center" do %>

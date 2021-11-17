@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <i class="fas fa-arrow-circle-down fa-4x col-6 d-flex align-items-center justify-content-center">
+    <h1 class="Instructions-about">about</h1>
+  </i>
+</div>
+
+<div class="about shadow-lg">
+  <div id="aboutmap"></div>
+  <script>
+    let map
+    let geocoder
+
+    function initMap() {
+      geocoder = new google.maps.Geocoder()
+
+      map = new google.maps.Map(document.getElementById('aboutmap'), {
+        center: {
+          lat: 35.6585848,
+          lng: 139.7432389
+        },
+        zoom: 15
+      });
+    }
+    
+    function codeAddress(){
+      let inputAddress = document.getElementById('address').value;
+  
+      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+        if (status == 'OK') {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+          });
+  
+          let title = document.getElementById('spot_title');
+          title.setAttribute("value", inputAddress);
+  
+          let hidden_address = document.getElementById('hidden_address');
+          hidden_address.setAttribute("value", inputAddress);
+          
+          let hidden_latitude = document.getElementById('hidden_latitude');
+          hidden_latitude.setAttribute("value", marker.position.lat());
+          
+          let hidden_longitude = document.getElementById('hidden_longitude');
+          hidden_longitude.setAttribute("value", marker.position.lng());
+  
+        } else {
+          alert('該当する結果がありません：' + status);
+        }
+      });
+      
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
+</div>

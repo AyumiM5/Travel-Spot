@@ -4,9 +4,9 @@
       <%= render 'users/info', user: @user %>
     </div>
     <div class="col-9">
-      <h1><b><%= @user.name %>'s</b> <b style="color: #E08504;">N</b>ote</h1>
-      <p><%= @user.name %>の投稿</p>
-      <%= render 'notes/index', notes: @notes %>
+      <h1><b style="color: #E08504;">S</b>earch</h1>
+      <p>検索ページ</p>
+      <%= render 'searchs/tags', tags: @tags %>
     </div>
   </div>
 </div>

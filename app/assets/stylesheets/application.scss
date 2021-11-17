@@ -32,7 +32,7 @@ header, footer {
 }
 
 .navbar {
-  background-color: #5D8AA6;
+  background-color: #75AED1;
 }
 
 .navbar-brand, .navbar-toggler {
@@ -105,4 +105,10 @@ footer {
 
 table td {
   word-break : break-all;
+}
+
+h1, p, a　{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

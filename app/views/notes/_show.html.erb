@@ -1,5 +1,4 @@
 <div>
-  <h2 class="my-3"><u>Note detail</u></h2>
   <% if note.user == current_user %>
     <%= link_to "投稿の編集", edit_note_path(note.id) %>
     <%= link_to "投稿を削除", note_path(note.id), method: :delete %>
@@ -27,7 +26,7 @@
             <td>Tag:</td>
             <td>
               <% note.tags.each do |tag| %>
-                <p><%= tag.tag_name %></p>
+                <%= tag.tag_name %>
               <% end %>
             </td>
           </tr>

@@ -20,7 +20,6 @@
 }
 
 #main {
- margin : 50px 100px 20px 100px;
  width : auto;
  height : 550px;
  font-family : 'Caveat', cursive;
@@ -33,21 +32,15 @@
 }
 
 .about {
- margin : 2px 100px 30px 100px;
- width : auto;
  height : 500px;
- background-color : #D7D7D9;
- border : 3px solid grey;
+ border : 3px solid #FFA11F;
  border-radius : 20px;
  font-family : 'Caveat', cursive;
 }
 
 .top-notes {
- margin : 2px 100px 30px 100px;
- width : auto;
  height : 500px;
- background-color : #D7D7D9;
- border : 3px solid grey;
+ border : 3px solid #FFA11F;
  border-radius : 20px;
 }
 
@@ -68,20 +61,60 @@
 }
 
 .top-notes-item > div {
- width : auto;
+ width : 25%;
  height : 100%;
- background-color : #D7D7D9;
  border : 1px solid grey;
  border-radius : 10px;
 }
 
-.fa-arrow-circle-down {
+.f-note-spot {
+ height : 45%;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}
+
+.f-note-spot-item {
+ height : 40%;
+ display: flex;
+ margin: 3px;
+ flex-wrap: wrap;
+ justify-content: space-around;
+}
+
+.f-note-spot-item > div {
+ height : 100%;
+ border-bottom : 1px solid grey;
+}
+
+.flag {
+ width : 25%;
+ padding: 10px 0 0 10px;
  color: grey;
 }
+
+.f-spot-contents {
+ padding: 10px 0 0 10px;
+ width : 75%;
+}
+
+.f-spot-contents > h2 {
+ font-size : 20px;
+}
+
+.f-note-img {
+ height : 35%;
+}
+
 
 .Instructions-about, .go-signin {
  font-size: 70px;
  font-family : 'Caveat', cursive;
+ color : #E08404;
+}
+
+.fa-arrow-circle-down {
+ color: #FFA11F;
 }
 
 #aboutmap {

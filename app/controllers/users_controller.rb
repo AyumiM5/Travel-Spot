@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-
-  def show
+  
+  def mypage
     @user = User.find(current_user.id)
     @notes = current_user.notes.all.order(created_at: :desc)
+  end
+
+  def show
+    @user = User.find_by(name: params[:name])
+    @notes = @user.notes.all.order(created_at: :desc)
   end
   
   def edit

@@ -10,14 +10,14 @@
         <ul class="navbar-nav mr-2 text-right">
           <% if user_signed_in? %>
             <li class="nav-item mx-2 px-2 rounded"><%= link_to "ホーム", root_path, class:"text-white" %></li>
-            <li class="nav-item mx-2 px-2 rounded"><%= link_to "Notes", notes_path, class:"text-white" %></li>
-            <li class="nav-item mx-2 px-2 rounded"><%= link_to "マイページ", mypage_path, class:"text-white" %></li>
-            <li class="nav-item mx-2 px-2 rounded"><%= link_to "投稿を作成する", new_note_path, class:"text-white" %></li>
-            <li class="nav-item mx-2 px-2 rounded"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-white" %></li>
+            <li class="nav-item mx-2 px-2 rounded"><%= link_to "Notes 投稿一覧", notes_path, class:"text-white" %></li>
+            <li class="nav-item mx-2 px-2 rounded"><%= link_to "Mypage マイページ", mypage_path, class:"text-white" %></li>
+            <li class="nav-item mx-2 px-2 rounded"><%= link_to "NewNote 投稿作成", new_note_path, class:"text-white" %></li>
+            <li class="nav-item mx-2 px-2 rounded"><%= link_to "Logout ログアウト", destroy_user_session_path, method: :delete, class:"text-white" %></li>
           <% else %>
             <li class="nav-item mx-2 px-2 rounded"><%= link_to "ホーム", root_path, class:"text-white" %></li>
-            <li class="nav-item mx-2 px-2 rounded"><%= link_to "新規登録", new_user_registration_path, class:"text-white" %></li>
-            <li class="nav-item mx-2 px-2 rounded"><%= link_to "ログイン", new_user_session_path, class:"text-white" %></li>
+            <li class="nav-item mx-2 px-2 rounded"><%= link_to "Signin新規登録", new_user_registration_path, class:"text-white" %></li>
+            <li class="nav-item mx-2 px-2 rounded"><%= link_to "Login ログイン", new_user_session_path, class:"text-white" %></li>
           <% end %>
         </ul>
       </div>
