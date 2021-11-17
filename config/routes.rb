@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   get 'search' => "searchs#search", as: 'search'
+  get 'search/tag/:tag_name' => "searchs#tag_search", as: 'tag_search'
   
   get 'mypage' => 'users#mypage', as: 'mypage'
   patch 'withdraw' => 'users#withdraw'
@@ -18,11 +19,13 @@ Rails.application.routes.draw do
   
   put "new/:id/post" => "notes#post", as: 'notes_post'
   get "favorite-notes" => "users#favorite", as: "favorite_notes"
-  
+
+  get 'notes/draft' => 'notes#draft', as: 'notes_draft'
+   
   resources :notes do
     resources :note_comments, only: [:create, :new, :destroy]
     resource :favorites, only: [:create, :destroy]
     resources :spots, only: [:new, :create, :destroy]
   end
-  
+    
 end

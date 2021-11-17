@@ -6,6 +6,11 @@ class NotesController < ApplicationController
     @user = User.find(current_user.id)
     @tags = Tag.all
   end
+  
+  def draft
+    @user = User.find(current_user.id)
+    @notes = current_user.notes.where(posted: false).order(created_at: :desc)
+  end
 
   def show
     @note = Note.find(params[:id])
@@ -21,7 +26,7 @@ class NotesController < ApplicationController
   def create
     @user = User.find(current_user.id)
     @note = current_user.notes.new(note_params)
-    tag_lists = params[:note][:tag_name].split(/[[:blank:]]+/)
+    tag_list = params[:note][:tag_name].split(/[[:blank:]]+/)
     if @note.save
       # save_tagはnote.rbにて定義
       @note.save_tag(tag_list)
@@ -46,11 +51,11 @@ class NotesController < ApplicationController
   end
 
   def update
-    note = Note.find(params[:id])
+    @note = Note.find(params[:id])
     tag_list = params[:note][:tag_name].split(/[[:blank:]]+/)
-    if note.update(note_params)
-      note.save_tag(tag_list)
-      redirect_to note_path(note)
+    if @note.update(note_params)
+      @note.save_tag(tag_list)
+      redirect_to  new_note_spot_path(note_id: @note.id)
     else
       render 'edit'
     end

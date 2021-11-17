@@ -7,12 +7,9 @@
     </div>
     <div class="col-9">
       <h1><b style="color: #E08504;">N</b>otes</h1>
-      <p>すべての投稿</p>
-      <% if @notes.count == 0 %>
-        <div>投稿はありません</div>
-      <% else %>
-        <%= render 'notes/index', notes: @notes %>
-      <% end %>
+      <p>検索結果</p>
+    	<h3>"<%= @tag.tag_name %>"の検索結果</h3>
+      <%= render 'notes/index', notes: @notes %>
     </div>
   </div>
 </div>

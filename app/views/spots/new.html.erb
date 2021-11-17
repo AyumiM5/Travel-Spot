@@ -4,11 +4,21 @@
       <%= render 'users/info', user: @user %>
     </div>
     <div class="col-9">
-      <%= render 'notes/edit', note: @note, tag_list: @tag_list %>
       <h1><b style="color: #E08504;">S</b>pot</h1>
       <p>スポットを追加</p>
       <%= render 'spots/form', spot: @spot, note: @note  %>
-      <%= link_to "投稿", notes_post_path(@note), method: :put %>
+      <% if @note.posted == false %>
+        <div class="actions col-3 mx-auto">
+          <%= link_to "投稿", notes_post_path(@note), method: :put, class: "btn-block btn-sm btn btn-secondary" %>
+        </div>
+        <div class="actions col-3 mx-auto">
+          <%= link_to "下書きに保存", notes_draft_path, class: "btn-block btn-sm btn btn-secondary" %>
+        </div>
+      <% else %>
+        <div class="actions col-3 mx-auto">
+          <%= link_to "編集完了", notes_post_path(@note), method: :put, class: "btn-block btn-sm btn btn-secondary" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

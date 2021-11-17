@@ -86,3 +86,7 @@ gem "geocoder"
 # 環境変数を.envファイルで使うため
 gem "dotenv-rails"
 gem "gon"
+
+group :production do
+  gem 'mysql2'
+end

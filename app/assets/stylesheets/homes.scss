@@ -3,20 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .image1 {
- background-image: url("home/img1.jpg");
+ background-image: image-url("home/img1.jpg");
  background-size : cover;
 }
 .image2 {
- background-image: url("home/img2.jpg");
+ background-image: image-url("home/img2.jpg");
 }
 .image3 {
- background-image: url("home/img3.jpg");
+ background-image: image-url("home/img3.jpg");
 }
 .image4 {
- background-image: url("home/img4.jpg");
+ background-image: image-url("home/img4.jpg");
 }
 .image5 {
- background-image: url("home/img5.jpg");
+ background-image: image-url("home/img5.jpg");
 }
 
 #main {
