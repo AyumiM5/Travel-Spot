@@ -1,3 +1,11 @@
+<% if flash[:notice] %>
+  <div class="container">
+    <div class="row mt-5 ml-5">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="row mt-5">
     <div class="col-11 m-auto">

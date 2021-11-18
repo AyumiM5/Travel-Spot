@@ -19,7 +19,7 @@
           </div>
           <div class="form">
             <%= f.label :password, "パスワード" %><span class="mandatory border border-danger">必須</span><br>
-            <em>※6~16字で入力してください</em>
+            <em>※6~22字で入力してください</em>
             <%= f.password_field :password, autocomplete: "new-password", class:"input" %>
           </div>
           <div class="form">
@@ -37,6 +37,15 @@
           <span><b>既に会員登録がお済の方</b></span>
           <div class="text-center mt-3">
             <%= link_to "ログイン", new_user_session_path, class:"btn btn-secondary btn-sm" %>
+          </div>
+        </div>
+      </div>
+      <div class="sign-in-form">
+        <div class="col-12 mt-3 text-center">
+          <span><b>ゲストログイン(閲覧用)</b></span></br>
+          <span>ゲストユーザーの投稿は、日付が変わるごとに削除されます。</span>
+          <div class="text-center mt-3">
+            <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-secondary btn-sm" %>
           </div>
         </div>
       </div>

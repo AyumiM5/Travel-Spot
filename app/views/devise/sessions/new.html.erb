@@ -32,6 +32,15 @@
           </div>
         </div>
       </div>
+      <div class="login-form">
+        <div class="col-12 mt-3 text-center">
+          <span><b>ゲストログイン(閲覧用)</b></span></br>
+          <span>ゲストユーザーの投稿は、日付が変わるごとに削除されます。</span>
+          <div class="text-center mt-3">
+            <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class:"btn btn-secondary btn-sm" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

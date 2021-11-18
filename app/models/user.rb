@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   attachment :profile_image
-  validates :name, uniqueness: true, presence: true, length: { minimum: 2, maximum: 10 }
-  
+  validates :name, uniqueness: true, presence: true, length: { minimum: 2, maximum: 10 }, format: { with: /\A[a-zA-Z0-9]+\z/}
+  validates :email, uniqueness: true
+
   has_many :notes, dependent: :destroy
   has_many :note_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -40,6 +41,14 @@ class User < ApplicationRecord
   
   def self.search_for(word)
     User.where("name like?", "%#{word}%")
+  end
+  
+  def self.guest
+    find_or_create_by(name: 'Guest') do |user|
+      user.email    = SecureRandom.alphanumeric(15) + "@email.com"
+      user.password = SecureRandom.urlsafe_base64
+      # user.confirmed_at = Time.now
+    end
   end
   
 end

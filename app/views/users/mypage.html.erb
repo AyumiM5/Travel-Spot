@@ -6,7 +6,11 @@
     <div class="col-9">
       <h1><b style="color: #E08504;">M</b>y <b style="color: #E08504;">P</b>age</h1>
       <p>マイページ</p>
-      <%= render 'notes/index', notes: @notes %>
+      <% if @notes.count == 0 %>
+        <div>投稿はありません</div>
+      <% else %>
+        <%= render 'notes/index', notes: @notes %>
+      <% end %>
     </div>
   </div>
 </div>

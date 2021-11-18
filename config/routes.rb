@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'homes/about' => 'homes#about'
   devise_for :users
+  devise_scope :user do
+    post 'users/guest_sign_in' => 'users/sessions#new_guest'
+  end
   
   get 'search' => "searchs#search", as: 'search'
   get 'search/tag/:tag_name' => "searchs#tag_search", as: 'tag_search'
@@ -17,8 +20,8 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
   end
   
-  put "new/:id/post" => "notes#post", as: 'notes_post'
-  get "favorite-notes" => "users#favorite", as: "favorite_notes"
+  put 'new/:id/post' => 'notes#post', as: 'notes_post'
+  get 'favorite-notes' => 'users#favorite', as: 'favorite_notes'
 
   get 'notes/draft' => 'notes#draft', as: 'notes_draft'
    
