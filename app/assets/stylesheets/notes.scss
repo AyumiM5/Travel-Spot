@@ -7,91 +7,16 @@
   width: 100%;
 }
 
-.body {
-  word-break : break-word;
+.spot-name {
+  font-size : 20px;
 }
 
-td {
-  word-break : break-word;
-}
-
-.tag_caution{
-  font-size: 12px;
-  margin-left: 5px;
-  padding: 0 2px;
-}
-
-.notes {
-  width : 100%;
-  height : 500px;
-  display : flex;
-  overflow-x: scroll;
-}
-
-.notes > div {
-  margin-right : 15px;
-  min-width : 250px;
-  max-width : 250px;
-  height : 100%;
-  border : 1px solid grey;
-  border-radius : 10px;
-}
-
-.note-tag {
-  width : 100%;
-  height : 6%;
-  display : flex;
-  flex-wrap : wrap;
-  justify-content : space-around;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.note-spot {
-  height : 35%;
-}
-
-.note-spot-item {
- height : 35%;
- display: flex;
- margin: 3px;
- flex-wrap: wrap;
- justify-content: space-around;
-}
-
-.note-spot-item > div {
- height : 100%;
- border-bottom : 1px solid grey;
-}
-
-.fa-tag {
-  color: grey;
-}
-
-.flag {
- width : 25%;
- padding: 10px 0 0 10px;
- color: grey;
-}
-
-.spot-contents {
-  padding: 10px 0 0 10px;
-  width : 75%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.spot-contents > h2 {
-  font-size : 15px;
-}
-
-.spot-contents > p {
+.spot-body {
   font-size : 10px;
-  word-break : break-word;
 }
 
-.note-img {
- height : 30%;
+.word-search {
+  background-color : #F5EDE9;
+  border : 2px solid #FF7112;
+  border-radius : 20px;
 }

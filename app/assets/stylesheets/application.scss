@@ -21,34 +21,34 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Outfit', メイリオ, sans-serif;
 }
 
 a {
   text-decoration: none;
 }
 
-header, footer {
-  font-family: a-otf-midashi-go-mb31-pr6n, "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, sans-serif;
+body {
+  background-color : #E3DCD8;
 }
 
 .navbar {
-  background-color: #75AED1;
+  background-color: #75CCD1;
 }
 
 .navbar-brand, .navbar-toggler {
-  font-family: 'Caveat', cursive;
+  font-family: 'Outfit', sans-serif;
   font-size: 30px;
   padding: 0 30px;
   border: none;
 }
 
 footer {
-  background-color: #5D8AA6;
+  background-color: #75CCD1;
 }
 
 .footer-brand {
   font-size: 40px;
-  font-family: 'Caveat', cursive;
 }
 
 .login {
@@ -107,7 +107,13 @@ table td {
   word-break : break-all;
 }
 
-h1, p, a　{
+h1, p, a, div　{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tag　{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

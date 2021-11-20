@@ -1,29 +1,35 @@
-<div>
+<div class="ml-3">
   <% if note.user == current_user %>
     <%= link_to "投稿の編集", edit_note_path(note.id) %>
     <%= link_to "投稿を削除", note_path(note.id), method: :delete %>
   <% end %>
+  
+  <div class="row my-3">
+    <div class="col-5">
+      <h1><%= note.title %></h1>
+    </div>
+    <div class="col-6">
+      <span>コメント：<%= note.note_comments.count %>　/　</span>
+      <span id="favorite_button<%= note.id %>"><%= render "favorites/favorite-botton", note: @note %></span>
+    </div>
+  </div>
   <div class="row">
-    <div class="border border-secondary rounded p-2">
+    <div class="co-4 p-2">
       <%= attachment_image_tag note, :image, size: "200x200", format: 'jpg', fallback: "no_image.jpg" %>
     </div>
-    <div class="col-7 border border-secondary rounded ml-2 p-2">
-      <table class="table col-12">
+    <div class="col-8 ml-2 p-2">
+      <table class="table">
         <tbody>
           <tr>
-            <td>Title:</td>
-            <td><%= note.title %></t>
-          </tr>
-          <tr>
-            <td>Stays:</td>
+            <td nowrap>日程：</td>
             <td><%= note.stay_i18n %></td>
           </tr>
           <tr>
-            <td>Boby:</td>
+            <td>説明：</td>
             <td><%= note.body %></td>
           </tr>
           <tr>
-            <td>Tag:</td>
+            <td>タグ：</td>
             <td>
               <% note.tags.each do |tag| %>
                 <%= tag.tag_name %>
@@ -35,89 +41,95 @@
     </div>
   </div>
 </div>
-<% if note.spots.exists? %>
-<h2 class="my-3"><u>Spots</u></h2>
-<div class="row">
-  <div class="col-4 border border-secondary rounded p-2 my-2">
-  <% note.spots.each do |spot| %>
-    <div class="border border-secondary rounded p-2 my-1">
-      <div>spot：<%= spot.address %></div>
-      <div class="body">point：<%= spot.body %></div>
+
+<div class="mt-4 ml-3">
+  <% if note.spots.exists? %>
+  <div class="row">
+    <div class="col-7 mr-3">
+      <div id="map"></div>
+      <script>
+        let map
+        let geocoder
+  
+        function initMap() {
+          geocoder = new google.maps.Geocoder()
+  
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+              lat: <%= note.spots[0].latitude %>,
+              lng: <%= note.spots[0].longitude %>
+            },
+            zoom: 12
+          });
+  
+          
+          <% note.spots.each do |m| %>
+            (function(){
+            var marker = new google.maps.Marker({
+                position:{lat: <%= m.latitude %>, lng: <%= m.longitude %>},
+                map: map,
+            });
+  
+            })();
+          <% end %>
+        }
+  
+        function codeAddress(){
+          let inputAddress = document.getElementById('address').value;
+  
+          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+            if (status == 'OK') {
+              map.setCenter(results[0].geometry.location);
+              var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+              });
+  
+              let title = document.getElementById('spot_title');
+              title.setAttribute("value", inputAddress);
+  
+              let hidden_address = document.getElementById('hidden_address');
+              hidden_address.setAttribute("value", inputAddress);
+              
+              let hidden_latitude = document.getElementById('hidden_latitude');
+              hidden_latitude.setAttribute("value", marker.position.lat());
+              
+              let hidden_longitude = document.getElementById('hidden_longitude');
+              hidden_longitude.setAttribute("value", marker.position.lng());
+  
+            } else {
+              alert('該当する結果がありません：' + status);
+            }
+          });
+          
+          <% note.spots.each do |spot| %>
+          (function(){
+          var contentString = "住所：<%= spot.address %>"; 
+  
+          var marker = new google.maps.Marker({
+              position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
+              map: map,
+              title: contentString
+          });
+  
+          })();
+          <% end %>
+        }
+      </script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
+    </div>
+    <div class="col-4 ml-3">
+      <% note.spots.each do |spot| %>
+      <div class="row mb-2">
+        <div class="col-1">
+          <i class="far fa-bookmark fa-2x float-right"></i>
+        </div>
+        <div class="col-10">
+          <div class="spot-name"><b><%= spot.address %></b></div>
+          <div class="spot-name"><%= spot.body %></div>
+        </div>
+      </div>
+      <% end %>
     </div>
   <% end %>
-  </div>
-  <div class="col-md-7">
-    <div id="map"></div>
-    <script>
-      let map
-      let geocoder
-
-      function initMap() {
-        geocoder = new google.maps.Geocoder()
-
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {
-            lat: <%= note.spots[0].latitude %>,
-            lng: <%= note.spots[0].longitude %>
-          },
-          zoom: 12
-        });
-
-        
-        <% note.spots.each do |m| %>
-          (function(){
-          var marker = new google.maps.Marker({
-              position:{lat: <%= m.latitude %>, lng: <%= m.longitude %>},
-              map: map,
-          });
-
-          })();
-        <% end %>
-      }
-
-      function codeAddress(){
-        let inputAddress = document.getElementById('address').value;
-
-        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-          if (status == 'OK') {
-            map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location
-            });
-
-            let title = document.getElementById('spot_title');
-            title.setAttribute("value", inputAddress);
-
-            let hidden_address = document.getElementById('hidden_address');
-            hidden_address.setAttribute("value", inputAddress);
-            
-            let hidden_latitude = document.getElementById('hidden_latitude');
-            hidden_latitude.setAttribute("value", marker.position.lat());
-            
-            let hidden_longitude = document.getElementById('hidden_longitude');
-            hidden_longitude.setAttribute("value", marker.position.lng());
-
-          } else {
-            alert('該当する結果がありません：' + status);
-          }
-        });
-        
-        <% note.spots.each do |spot| %>
-        (function(){
-        var contentString = "住所：<%= spot.address %>"; 
-
-        var marker = new google.maps.Marker({
-            position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
-            map: map,
-            title: contentString
-        });
-
-        })();
-        <% end %>
-      }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
-  </div>
 </div>
-<% end %>

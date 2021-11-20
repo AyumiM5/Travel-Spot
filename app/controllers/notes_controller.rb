@@ -4,7 +4,7 @@ class NotesController < ApplicationController
   def index
     @notes = Note.where(posted: true, status: 0).order(created_at: :desc)
     @user = User.find(current_user.id)
-    @tags = Tag.all
+    @tags = Tag.all.order(created_at: :desc)
   end
   
   def draft

@@ -1,12 +1,12 @@
 <div class="container my-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-3">
       <%= render 'users/info', user: @user %>
     </div>
-    <div class="col-md-9">
-      <h1><b style="color: #E08504;">N</b>ote 
-      <b style="color: #E08504;">D</b>atail</h1>
-      <p>投稿の詳細</p>
+    <div class="col-9">
+      <div class="border-bottom border-secondary mb-3">
+        <h1><b style="color: #E08504;">投</b>稿の詳細</h1>
+      </div>
       <%= render 'notes/show', note: @note %>
       <%= render 'note_comments/index', note: @note %>
       <%= render 'note_comments/form', note: @note, note_comment: @note_comment %>

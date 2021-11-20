@@ -7,17 +7,17 @@ class Note < ApplicationRecord
   has_many :note_tags, dependent: :destroy
   has_many :tags, through: :note_tags
   attachment :image 
-    
-  def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
-  end
-  
+
   validates :title, presence: true, length: { minimum: 2, maximum: 20 }
   validates :stay, presence: true
   validates :body, presence: true, length: { maximum: 50 }
   validates :status, presence: true
   
   enum stay: { 'day_trip': 0, '1n_2d': 1, '2n_3d': 2, '3n_4d': 3, '4n_5d': 4 }
+ 
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
   
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
@@ -37,5 +37,5 @@ class Note < ApplicationRecord
   def self.search_for(word)
     Note.where("title like? OR body like?", "%#{word}%", "%#{word}")
   end
-  
+
 end

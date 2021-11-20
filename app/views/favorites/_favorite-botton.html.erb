@@ -1,0 +1,9 @@
+<% if note.favorited_by?(current_user) %>
+  <%= link_to note_favorites_path(note), method: :delete, remote: true do %>
+    <i class="fas fa-heart"></i><%= note.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to note_favorites_path(note), method: :post, remote: true do %>
+    <i class="far fa-heart"></i><%= note.favorites.count %>
+  <% end %>
+<% end %>

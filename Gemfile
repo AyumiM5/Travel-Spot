@@ -92,3 +92,6 @@ group :production do
 end
 
 gem 'rename'
+
+# crontab管理のため
+gem 'whenever', require: false

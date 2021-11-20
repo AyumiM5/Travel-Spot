@@ -22,7 +22,7 @@
 #main {
  width : auto;
  height : 550px;
- font-family : 'Caveat', cursive;
+ font-family: 'Outfit', sans-serif;
 }
 
 .main-title {
@@ -33,14 +33,16 @@
 
 .about {
  height : 500px;
- border : 3px solid #FFA11F;
+ background-color : #F5EDE9;
+ border : 3px solid #FF7112;
  border-radius : 20px;
- font-family : 'Caveat', cursive;
+ font-family: 'Outfit', sans-serif;
 }
 
 .top-notes {
  height : 500px;
- border : 3px solid #FFA11F;
+ background-color : #F5EDE9;
+ border : 3px solid #FF7112;
  border-radius : 20px;
 }
 
@@ -58,9 +60,11 @@
  display: flex;
  flex-wrap: wrap;
  justify-content: space-around;
+ backgroud-color : #F7F0EB;
 }
 
 .top-notes-item > div {
+ backgroud-color : #F5EDE9;
  width : 25%;
  height : 100%;
  border : 1px solid grey;
@@ -103,18 +107,17 @@
 }
 
 .f-note-img {
- height : 35%;
+ height : 30%;
 }
-
 
 .Instructions-about, .go-signin {
  font-size: 70px;
- font-family : 'Caveat', cursive;
- color : #E08404;
+ color : #FF7112;
+ padding-right : 10px;
 }
 
 .fa-arrow-circle-down {
- color: #FFA11F;
+ color: #FF7112;
 }
 
 #aboutmap {
