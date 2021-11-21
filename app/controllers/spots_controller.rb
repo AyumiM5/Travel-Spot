@@ -9,10 +9,9 @@ class SpotsController < ApplicationController
   
   def create
     @spot = Spot.new(spot_params)
-    note = Note.find(params[:note_id])
-    @spot.note_id = note.id
+    @note = Note.find(params[:note_id])
+    @spot.note_id = @note.id
     if @spot.save
-      redirect_to request.referer
     else
       @user = User.find(current_user.id)
       redirect_to request.referer
@@ -20,9 +19,8 @@ class SpotsController < ApplicationController
   end
   
   def destroy
-    spot = Spot.find(params[:id])
-    spot.destroy
-    redirect_to request.referer
+    @note = Note.find(params[:note_id])
+    Spot.find(params[:id]).destroy
   end
   
   private

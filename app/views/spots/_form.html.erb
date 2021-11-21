@@ -2,43 +2,28 @@
   <div class="row my-5">
     <div class="col-md-5 border border-secondary rounded">
       <div class="schedule">
-        <div class="p-2">
-          <input id="address" type="textbox" value="東京タワー">
-          <input type="button" value="検索" onclick="codeAddress()" class='btn btn-sm btn-secondary'>
-        </div>
-        <div class="border border-secondary rounded p-2 mt-2">
-        <%= form_with(model:[note, spot], local: true) do |f| %>
-          <!-- 検索値を隠しデータとして送信-->
-          <input type="hidden" name="spot[address]" id="hidden_address">
-          <input type="hidden" name="spot[latitude]" id="hidden_latitude">
-          <input type="hidden" name="spot[longitude]" id="hidden_longitude">
-          <%= f.label :title, "タイトル" %></br>
-          <%= f.text_field :title %>
-          <div>
-            <%= f.label :body, "コメント" %><br />
-            <%= f.text_area :body, class: "form-control" %>
+        <div class="mt-3">
+          <div class="row ml-2">
+            <input id="address" type="textbox" class="col-10" placeholder="Spot名を入力すると検索できます">
+            <input type="button" value="検索" onclick="codeAddress()" class='btn btn-sm btn-secondary'>
           </div>
-          <div>
-            <%= f.submit "保存", class: 'btn btn-sm btn-secondary' %>
-          </div>
-        <% end %>
-        </div>
-        <% if note.spots.exists? %>
-          <div class="border border-secondary rounded p-2 my-2">
-          <% note.spots.each do |spot| %>
-          <div class="border border-secondary rounded p-2 my-1">
-            <div>
-              <%= spot.address %>
-              <%= link_to "削除", note_spot_path(note.id, spot.id), method: :delete, class: 'ml-1 btn btn-sm btn-secondary' %></div>
-            <div>
-              <div>
-                <p class="body"><%= spot.body %></p>
+          <div class="my-3 ml-2">
+            <%= form_with model:[note, spot] do |f| %>
+              <!-- 検索値を隠しデータとして送信-->
+              <input type="hidden" name="spot[title]" id="hidden_title">
+              <input type="hidden" name="spot[address]" id="hidden_address">
+              <input type="hidden" name="spot[latitude]" id="hidden_latitude">
+              <input type="hidden" name="spot[longitude]" id="hidden_longitude">
+              <div  class="form-group">
+                <%= f.text_area :body, row: '5', class:"form-control input-lg", placeholder: "Spotの説明を記入→保存を押してください" %>
               </div>
-            </div>
+              <%= f.submit "保存", class:"btn btn-sm btn-secondary col-3" %>
+            <% end %>
           </div>
-          <% end %>
-          </div>
-        <% end %>
+        </div>
+        <div id="spot-index">
+          <%= render "spots/index", note: note %>
+        </div>
       </div>
     </div>
     <div class="col-md-7">
@@ -49,7 +34,6 @@
 
         function initMap() {
           geocoder = new google.maps.Geocoder()
-
           map = new google.maps.Map(document.getElementById('map'), {
             center: {
               lat: 35.6585848,
@@ -57,7 +41,6 @@
             },
             zoom: 12
           });
-
           
           <% note.spots.each do |m| %>
             (function(){
@@ -81,8 +64,8 @@
                 position: results[0].geometry.location
               });
 
-              let title = document.getElementById('spot_title');
-              title.setAttribute("value", inputAddress);
+              let hidden_title = document.getElementById('hidden_title');
+              hidden_title.setAttribute("value", inputAddress);
 
               let hidden_address = document.getElementById('hidden_address');
               hidden_address.setAttribute("value", inputAddress);

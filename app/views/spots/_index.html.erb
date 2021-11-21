@@ -1,0 +1,15 @@
+<% note.spots.each do |spot| %>
+  <div class="border border-secondary rounded p-2 my-1">
+    <div class="row ml-3">
+      <%= spot.address %>
+      <div class="text-right">
+        <%= link_to "削除", note_spot_path(note.id, spot.id), method: :delete, class: 'ml-3 btn btn-sm btn-secondary', remote: true %>
+      </div>
+    </div>
+    <div class="row ml-3 my-2">
+      <div>
+        <p class="body"><%= spot.body %></p>
+      </div>
+    </div>
+  </div>
+<% end %>

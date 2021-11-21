@@ -13,7 +13,7 @@
           </div>
       
           <div class="col-7">
-            <% note.spots.each do |spot| %>
+            <% note.spots.first(3).each do |spot| %>
             <div class="row mb-2">
               <div class="col-1">
                 <i class="far fa-bookmark fa-2x float-right"></i>
@@ -22,6 +22,9 @@
                 <div class="spot-name"><b><%= spot.address %></b></div>
               </div>
             </div>
+            <% end %>
+            <% if note.spots.count > 3 %>
+              <div>▼more</div>
             <% end %>
           </div>
         </div>
