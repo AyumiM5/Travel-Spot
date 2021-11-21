@@ -7,9 +7,16 @@
       <div class="border-bottom border-secondary mb-3">
         <h1><b style="color: #E08504;">投</b>稿の詳細</h1>
       </div>
-      <%= render 'notes/show', note: @note %>
-      <%= render 'note_comments/index', note: @note %>
-      <%= render 'note_comments/form', note: @note, note_comment: @note_comment %>
+      <div>
+        <%= render 'notes/show', note: @note %>
+      </div>
+      <div class="mt-5">
+        <h2 class="border-bottom border-secondary mb-3">コメント</h2>
+        <%= render 'note_comments/form', note: @note, note_comment: @note_comment %>
+      </div>
+      <div id="comment_index">
+        <%= render 'note_comments/index', note: @note %>
+      </div>
     </div>
   </div>
 </div>

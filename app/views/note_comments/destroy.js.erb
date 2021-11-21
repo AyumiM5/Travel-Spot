@@ -1,0 +1,2 @@
+$('#comment_index').html("<%= j(render "note_comments/index", note: @note) %>");
+$('#comment_quantity').html("コメント：<%= @note.note_comments.count %>");

@@ -1,15 +1,19 @@
+<% if @note.note_comments.exists? %>
+<div class="comment-tabel my-3">
   <table class="table tabel-hover table-inverse">
     <% note.note_comments.each do |note_comment| %>
     <tr>
       <td>
-        <%= attachment_image_tag note_comment.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg" %><br />
+        <%= attachment_image_tag note_comment.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %><br />
         <%= link_to "#{note_comment.user.name}", user_path(note_comment.user.id) %></td>
       <td><%= note_comment.comment %></td>
       <% if note_comment.user.id == current_user.id %>
         <td>
-          <%= link_to "Destroy", note_note_comment_path(note_comment.note_id, note_comment.id), method: :delete, class: "btn btn-sm btn-danger", remote: true %>
+          <%= link_to "コメントを削除", note_note_comment_path(note_comment.note_id, note_comment.id), method: :delete, class: "btn btn-sm btn-danger", remote: true %>
         </td>
       <% end %>
     </tr>
     <% end %>
   </table>
+</div>
+<% end %>

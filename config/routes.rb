@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get 'notes/draft' => 'notes#draft', as: 'notes_draft'
    
   resources :notes do
-    resources :note_comments, only: [:create, :new, :destroy]
+    resources :note_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
     resources :spots, only: [:new, :create, :destroy]
   end

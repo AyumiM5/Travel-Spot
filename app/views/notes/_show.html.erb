@@ -9,7 +9,7 @@
       <h1><%= note.title %></h1>
     </div>
     <div class="col-6">
-      <span>コメント：<%= note.note_comments.count %>　/　</span>
+      <span id="comment_quantity">コメント：<%= note.note_comments.count %>　/　</span>
       <span id="favorite_button<%= note.id %>"><%= render "favorites/favorite-botton", note: @note %></span>
     </div>
   </div>
