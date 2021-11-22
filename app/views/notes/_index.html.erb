@@ -1,49 +1,54 @@
 <div class="container">
   <div class="row">
     <% notes.each do |note| %>
-      <div class="col-5 m-3 border rounded bg-white">
-        <div class="row m-2 border-bottom">
-          <%= attachment_image_tag note.user, :profile_image, size: "40x40", format: 'jpg', fallback: "no_image.jpg", class:"rounded-circle" %>
-          <p class="ml-3"><%= link_to note.user.name, user_path(note.user.name) %></p>
+      <div class="col-11 m-3 border rounded bg-white">
+        <div class="row m-2 pb-2 border-bottom">
+          <div class="profile-img-container">
+            <%= attachment_image_tag note.user, :profile_image, format: 'jpg', fallback: "no_image.jpg" %>
+          </div>
+          <div class="d-flex align-items-center ml-2">
+            <%= link_to note.user.name, user_path(note.user.name) %>
+          </div>
         </div>
         
         <div class="row mb-3 border-bottom">
-          <div class="col-5">
-            <%= attachment_image_tag note, :image, size: "100x100" %>
+          <div class="m-3 index-note-img">
+            <%= attachment_image_tag note, :image %>
           </div>
       
-          <div class="col-7">
-            <% note.spots.first(3).each do |spot| %>
-            <div class="row mb-2">
-              <div class="col-1">
-                <i class="far fa-bookmark fa-2x float-right"></i>
+          <div class="col-7 my-3">
+            <div>
+              <% note.spots.first(2).each do |spot| %>
+              <div class="row mb-2">
+                <div class="col-1">
+                  <i class="far fa-bookmark fa-2x"></i>
+                </div>
+                <div class="col-9">
+                  <div class="spot-name"><b><%= spot.address %></b></div>
+                  <div class="spot-body"><%= spot.body %></div>
+                </div>
               </div>
-              <div class="col-10">
-                <div class="spot-name"><b><%= spot.address %></b></div>
+              <% end %>
+              <% if note.spots.count > 2 %>
+                <div><%= link_to "▼more", note_path(note.id) %></div>
+              <% end %>
+            </div>
+            <div class="mt-4">
+              <p>
+                タグ<i class="fas fa-tag"></i>：
+                <% note.tags.each do |tag| %>
+                  <%= link_to tag.tag_name, tag_search_path(tag.tag_name) %>
+                <% end %>
+              </p>
+              <div class="row m-auto">
+                <p>コメント：<%= note.note_comments.count %>　/　</p>
+                <span id="favorite_button<%= note.id %>"><%= render "favorites/favorite-botton", note: note %></span>
               </div>
             </div>
-            <% end %>
-            <% if note.spots.count > 3 %>
-              <div>▼more</div>
-            <% end %>
           </div>
         </div>
     
-        <div class="row m-auto">
-          <p>
-            タグ<i class="fas fa-tag m-0"></i>：
-            <% note.tags.each do |tag| %>
-              <%= tag.tag_name %>
-            <% end %>
-          </p>
-        </div>
-        
-        <div class="row m-auto">
-          <p>コメント：<%= note.note_comments.count %>　/  </p>
-          <span id="favorite_button<%= note.id %>"><%= render "favorites/favorite-botton", note: note %></span>
-        </div>
-    
-        <div class="row m-auto">
+        <div class="text-center">
           <% if note.user == current_user %>
             <%= link_to "投稿詳細", note_path(note.id) %>　/　
             <%= link_to "削除", note_path(note.id), method: :delete %>

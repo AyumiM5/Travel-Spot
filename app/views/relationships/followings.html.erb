@@ -17,13 +17,15 @@
               <% end %>
             </td>
             <td>
-              <div class="text-center border border-secondary rounded-pill">
-                <% if current_user.following?(user) %>
-                  <%= link_to "フォローを外す", user_relationship_path(user.name), method: :delete %>
-                <% else %>
-                  <%= link_to "フォローする", user_relationship_path(user.name), method: :post %>
-                <% end %>
-              </div>
+              <% if current_user != user %>
+                <div class="text-center border border-secondary rounded-pill">
+                  <% if current_user.following?(user) %>
+                    <%= link_to "フォローを外す", user_relationship_path(user.name), method: :delete %>
+                  <% else %>
+                    <%= link_to "フォローする", user_relationship_path(user.name), method: :post %>
+                  <% end %>
+                </div>
+              <% end %>
             </td>
           </tr>
           <% end %>

@@ -3,8 +3,8 @@
       <i class="fas fa-cog"></i>
     <% end %>
   </div>
-  <div class="text-center my-2">
-    <%= attachment_image_tag user, :profile_image, size: "150x150", format: 'jpg', fallback: "no_image.jpg", class:"rounded-circle" %>
+  <div class="usershow-profile-img-container m-auto">
+    <%= attachment_image_tag user, :profile_image, format: 'jpg', fallback: "no_image.jpg", class:"rounded-circle" %>
   </div>
   <div class="my-2 text-center">
     <b><%= user.name %></b>

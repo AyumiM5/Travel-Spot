@@ -1,21 +1,20 @@
 <div class="row justify-content-center">
   <i class="fas fa-arrow-circle-down fa-4x col-12 d-flex align-items-center justify-content-center">
-    <h1 class="Instructions-about">Everyone's Spot</h1>
+    <h1 class="Instructions-notes">Everyone's Spot</h1>
   </i>
 </div>
 
 <div class="top-notes shadow-lg">
-  <div class="my-3">
-    <%= link_to new_user_session_path do %>
-      <h1 class="notes-link">みんなのSpotを見る<i class="fas fa-book-open"></i></h1>
-    <% end %>
-  </div>
   <div class="top-notes-item row">
     <% best_notes.each do |note| %>
-      <div class="bg-white">
-        <div class="text-center">
-          <%= attachment_image_tag note.user, :profile_image, size: "40x40", format: 'jpg', fallback: "no_image.jpg", class:"rounded-circle" %>
-          <%= note.user.name %>
+      <div class="m-auto">
+        <div class="row ml-5 mt-1">
+          <div class="profile-img-container">
+            <%= attachment_image_tag note.user, :profile_image, format: 'jpg', fallback: "no_image.jpg" %>
+          </div>
+          <div class="d-flex align-items-center">
+            <%= note.user.name %>
+          </div>
         </div>
         <div class="f-note-spot">
           <% note.spots.first(2).each do |spot| %>
@@ -25,7 +24,7 @@
               </div>
               <div class="f-spot-contents">
                 <h2><b><%= spot.address %></b></h2>
-                <p><%= spot.body %></p>
+                <div class="spot-body"><%= spot.body %></div>
               </div>
             </div>
           <% end %>
@@ -37,8 +36,8 @@
             </p>
           <% end %>
         </div>
-        <div class="text-center f-note-img">
-          <%= attachment_image_tag note, :image, size: "200x100" %>
+        <div class="homes-note-img m-auto">
+          <%= attachment_image_tag note, :image %>
         </div>
         <div class="row">
           <p class="col-10 m-auto text-center">

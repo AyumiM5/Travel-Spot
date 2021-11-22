@@ -1,15 +1,12 @@
-<div class="row justify-content-center">
-  <i class="fas fa-arrow-circle-down fa-4x col-6 d-flex align-items-center justify-content-center">
-    <h1 class="Instructions-about">about</h1>
-  </i>
-</div>
-
-<div class="about shadow-lg">
-  <div id="aboutmap"></div>
+<div class="about row my-5">
+  <div class="col-6" id="aboutmap"></div>
   <script>
+    let geocoder
+    let map
+    
     function initMap() {
-      let geocoder = new google.maps.Geocoder()
-      let map = new google.maps.Map(document.getElementById('aboutmap'), {
+      geocoder = new google.maps.Geocoder()
+      map = new google.maps.Map(document.getElementById('aboutmap'), {
         center: {
           lat: 35.6585848,
           lng: 139.7432389
@@ -24,6 +21,48 @@
       });
       })();
     }
+    
+    function codeAddress(){
+      let inputAddress = document.getElementById('address').value;
+  
+      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+        if (status == 'OK') {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+          });
+  
+        } else {
+          alert('該当する結果がありません：' + status);
+        }
+      });
+    }
   </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
+  <div class="row col-5 my-5 mx-auto">
+    <div class="ml-4">
+      旅先で見つけたお気に入り<b>Spot</b>をシェア</br>
+      <span class="about-title">Travel-Spot</span></br>
+    </div>
+    <div class="ml-4 my-3">
+      Spotを地図上から検索して、投稿する事が出来ます
+      <input id="address" type="textbox" class="col-9" placeholder="Spot名を入力すると検索できます">
+      <input type="button" value="検索" onclick="codeAddress()" class='btn btn-sm btn-secondary'>
+    </div>
+    <div class="ml-4 mb-3">
+      #Spotの<b>シェア</b></br>
+      #Spotの<b>タグ検索</b></br>
+      #気になる投稿に<b>いいね</b></br>
+      #気になるユーザーの<b>フォロー</b></br>
+    </div>
+    <div class="ml-4">
+      Travel-Spotを<b>始めてみましょう</b></br>
+      <%= link_to new_user_registration_path do %>
+        <span class="go-signin">
+          Let's start
+        </span>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -13,9 +13,9 @@
       <span id="favorite_button<%= note.id %>"><%= render "favorites/favorite-botton", note: @note %></span>
     </div>
   </div>
-  <div class="row">
-    <div class="co-4 p-2">
-      <%= attachment_image_tag note, :image, size: "200x200", format: 'jpg', fallback: "no_image.jpg" %>
+  <div class="row ml-3">
+    <div class="show-note-img p-2">
+      <%= attachment_image_tag note, :image, format: 'jpg', fallback: "no_image.jpg" %>
     </div>
     <div class="col-8 ml-2 p-2">
       <table class="table">
@@ -45,7 +45,7 @@
 <div class="mt-4 ml-3">
   <% if note.spots.exists? %>
   <div class="row">
-    <div class="col-7 mr-3">
+    <div class="col-6 mr-3">
       <div id="map"></div>
       <script>
         function initMap() {
@@ -70,7 +70,7 @@
       </script>
       <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
     </div>
-    <div class="col-4 ml-3">
+    <div class="col-5 ml-3">
       <% note.spots.each do |spot| %>
       <div class="row mb-2">
         <div class="col-1">
@@ -78,7 +78,7 @@
         </div>
         <div class="col-10">
           <div class="spot-name"><b><%= spot.address %></b></div>
-          <div class="spot-name"><%= spot.body %></div>
+          <div class="show-spot-body mt-2 col-12"><%= spot.body %></div>
         </div>
       </div>
       <% end %>

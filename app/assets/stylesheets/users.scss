@@ -17,3 +17,30 @@
   border : 2px solid grey;
   border-radius : 20px;
 }
+
+.usershow-profile-img-container {
+  width : 150px;
+  height : 150px;
+  padding : 3px;
+  border : 5px solid white;
+  border-radius: 50%;
+}
+
+.usershow-profile-img-container img {
+  width : 100%;
+  height : 100%;
+  border-radius: 50%;
+  object-fit : cover;
+}
+
+.users-info {
+  padding : 30px;
+  border : 5px solid white;
+  border-radius: 20px;
+  background-color : #A4DBE0;
+}
+
+.search-box {
+  padding : 30px;
+  border-right: double 7px #F5EEE9;
+}

@@ -1,13 +1,10 @@
-<div class="container my-5 px-sm-0">
+<div class="container mt-5">
   <div class="row">
     <div class="col-3">
-      <h1><b style="color: #E08504;">S</b>each</h1>
-      <p>検索</p>
       <%= render 'searchs/form', tags: @tags %>
     </div>
     <div class="col-9">
-      <h1><b style="color: #E08504;">N</b>otes</h1>
-      <p>検索結果</p>
+      <h1><b style="color: #E08504;">検</b>索結果一覧</h1>
     	<h3>"<%= @tag.tag_name %>"の検索結果</h3>
       <%= render 'notes/index', notes: @notes %>
     </div>

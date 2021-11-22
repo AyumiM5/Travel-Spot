@@ -20,29 +20,49 @@
 }
 
 #main {
- width : auto;
- height : 550px;
+ width : 100%;
+ height : 680px;
  font-family: 'Outfit', sans-serif;
 }
 
 .main-title {
  font-size : 80px;
  text-align : center;
- margin-top : 250px;
+ margin-top : 300px;
+}
+
+.top-about {
+ background-color : #E3DCD8;
+ border-bottom-right-radius : 2000px 300px;
+ border-bottom-left-radius : 2000px 300px;
+ margin-left : -200px;
+ margin-right : -200px;
+ padding-left : 200px;
+ padding-right : 200px;
+}
+
+.about-note {
+ border-bottom-right-radius : 2000px 300px;
+ border-bottom-left-radius : 2000px 300px;
+ margin-left : -200px;
+ margin-right : -200px;
+ padding-left : 200px;
+ padding-right : 200px;
 }
 
 .about {
  height : 500px;
- background-color : #F5EDE9;
- border : 3px solid #FF7112;
- border-radius : 20px;
  font-family: 'Outfit', sans-serif;
+}
+
+.about-title, .go-signin {
+ color : #A1603A;
+ font-size : 55px;
 }
 
 .top-notes {
  height : 500px;
- background-color : #F5EDE9;
- border : 3px solid #FF7112;
+ padding : 15px 0;
  border-radius : 20px;
 }
 
@@ -56,7 +76,7 @@
 }
 
 .top-notes-item {
- height : 400px;
+ height : 470px;
  display: flex;
  flex-wrap: wrap;
  justify-content: space-around;
@@ -64,15 +84,15 @@
 }
 
 .top-notes-item > div {
- backgroud-color : #F5EDE9;
  width : 25%;
  height : 100%;
  border : 1px solid grey;
  border-radius : 10px;
+ background-color : #F5EEE9;
 }
 
 .f-note-spot {
- height : 45%;
+ height : 37%;
  overflow: hidden;
  text-overflow: ellipsis;
  white-space: nowrap;
@@ -81,7 +101,7 @@
 .f-note-spot-item {
  height : 40%;
  display: flex;
- margin: 3px;
+ margin: 2px;
  flex-wrap: wrap;
  justify-content: space-around;
 }
@@ -106,18 +126,26 @@
  font-size : 20px;
 }
 
-.f-note-img {
- height : 30%;
+.homes-note-img {
+ width : 200px;
+ height : 200px;
+ border : 2px solid grey;
 }
 
-.Instructions-about, .go-signin {
+.homes-note-img img {
+ width : 100%;
+ height : 100%;
+ object-fit : cover;
+}
+
+.Instructions-notes {
  font-size: 70px;
- color : #FF7112;
+ color : #A1603A;
  padding-right : 10px;
 }
 
 .fa-arrow-circle-down {
- color: #FF7112;
+ color: #A1603A;
 }
 
 #aboutmap {
@@ -129,3 +157,4 @@
 .note-table{
  font-size: 15px;
 }
+
