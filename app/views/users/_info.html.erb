@@ -29,13 +29,15 @@
         <th><%= link_to user.followers.count, user_followers_path(user.name), class:"text-secondary" %></th>
       </tr>
       <tr>
-        <th>Notes</th>
-        <th><%= link_to user.notes.count, mypage_path, class:"text-secondary" %></th>
+        <th>投稿</th>
+        <th><%= link_to notes.count, user_path(user.name), class:"text-secondary" %></th>
       </tr>
-      <tr>
-        <th>お気に入り</th>
-        <th><%= link_to user.favorites.count, favorite_notes_path, class:"text-secondary" %></th>
-      </tr>
+      <% if user == current_user %>
+        <tr>
+          <th>お気に入り</th>
+          <th><%= link_to user.favorites.count, favorite_notes_path, class:"text-secondary" %></th>
+        </tr>
+      <% end %>
     </tbody>
   </table>
   <div class="text-center my-tag">
@@ -47,8 +49,8 @@
       <% end %>
     </div>
     <div>
-      <% if user.notes.exists? %>
-        <% user.notes.each do |note| %>
+      <% if notes.exists? %>
+        <% notes.each do |note| %>
           <% note.tags.each do |tag| %>
             <%= link_to tag.tag_name, tag_search_path(tag.tag_name), class:"text-secondary" %>
           <% end %>

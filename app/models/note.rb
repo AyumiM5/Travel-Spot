@@ -37,5 +37,9 @@ class Note < ApplicationRecord
   def self.search_for(word)
     Note.where("title like? OR body like?", "%#{word}%", "%#{word}")
   end
+  
+  def self.best_note
+    self.find(Favorite.group(:note_id).order(Arel.sql('count(note_id) desc')).limit(3).pluck(:note_id))
+  end
 
 end

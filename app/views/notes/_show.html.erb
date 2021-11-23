@@ -5,10 +5,10 @@
   <% end %>
   
   <div class="row my-3">
-    <div class="col-5">
+    <div class="col-8">
       <h1><%= note.title %></h1>
     </div>
-    <div class="col-6">
+    <div class="col-4">
       <span id="comment_quantity">コメント：<%= note.note_comments.count %>　/　</span>
       <span id="favorite_button<%= note.id %>"><%= render "favorites/favorite-botton", note: @note %></span>
     </div>
@@ -25,7 +25,7 @@
             <td><%= note.stay_i18n %></td>
           </tr>
           <tr>
-            <td>説明：</td>
+            <td>本文：</td>
             <td><%= note.body %></td>
           </tr>
           <tr>

@@ -9,6 +9,9 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto text-right">
           <% if user_signed_in? %>
+            <li>
+              <%= flash[:notice] %>
+            </li>
             <li class="nav-item mx-2 px-2 rounded"><%= link_to "投稿一覧", notes_path, class:"text-secondary" %></li>
             <li class="nav-item mx-2 px-2 rounded"><%= link_to "投稿作成", new_note_path, class:"text-secondary" %></li>
             <li class="nav-item mx-2 px-2 rounded"><%= link_to "下書き", notes_draft_path, class:"text-secondary" %></li>

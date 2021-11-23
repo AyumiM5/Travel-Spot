@@ -3,11 +3,13 @@ class UsersController < ApplicationController
   
   def mypage
     @user = User.find(current_user.id)
+    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
     @notes = current_user.notes.all.order(created_at: :desc)
   end
 
   def show
     @user = User.find_by(name: params[:name])
+    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
     @notes = @user.notes.all.order(created_at: :desc)
   end
   
@@ -35,7 +37,8 @@ class UsersController < ApplicationController
   def favorite
     @user = User.find(current_user.id)
     favorites = Favorite.where(user_id: @user.id).pluck(:note_id)
-    @favorites_notes = Note.find(favorites)
+    @favorites_notes = Note.includes(:user, :tags).find(favorites)
+    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
   end
   
   private

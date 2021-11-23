@@ -5,6 +5,7 @@ class SpotsController < ApplicationController
     @spot = Spot.new
     @note = Note.find(params[:note_id])
     @user = User.find(current_user.id)
+    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
   end
   
   def create

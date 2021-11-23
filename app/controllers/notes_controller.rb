@@ -2,25 +2,28 @@ class NotesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @notes = Note.where(posted: true, status: 0).order(created_at: :desc)
-    @user = User.find(current_user.id)
+    @notes = Note.where(posted: true, status: 0).order(created_at: :desc).includes(:user, :spots, :tags)
     @tags = Tag.all.order(created_at: :desc)
   end
   
   def draft
     @user = User.find(current_user.id)
+    @user_notes = Note.find_by(user_id: current_user.id)
     @notes = current_user.notes.where(posted: false).order(created_at: :desc)
+    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
   end
 
   def show
-    @note = Note.find(params[:id])
-    @user = @note.user
+    @note = Note.includes(:tags).find(params[:id])
     @note_comment = NoteComment.new
+    @user = User.find(@note.user_id)
+    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
   end
 
   def new
     @note = Note.new
     @user = User.find(current_user.id)
+    @user_notes = Note.find_by(user_id: current_user.id)
   end
 
   def create
@@ -40,6 +43,7 @@ class NotesController < ApplicationController
 
   def edit
     @user = User.find(current_user.id)
+    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
     @note = Note.find(params[:id])
     @tag_list = @note.tags.pluck(:tag_name).join(" ")
     @spot = Spot.new

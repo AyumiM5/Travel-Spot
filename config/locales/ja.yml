@@ -14,3 +14,8 @@ ja:
         3day: "3日目"
         4day: "4日目"
         5day: "5日目"
+  activerecord:
+    attributes:
+      note:
+        title: タイトル
+        body: 本文

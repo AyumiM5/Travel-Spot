@@ -13,11 +13,13 @@ class RelationshipsController < ApplicationController
   def followings
     @user = User.find_by(name: params[:user_name])
     @users = @user.following
+    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
   end
 
   def followers
     @user = User.find_by(name: params[:user_name])
     @users = @user.followers
+    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
   end
   
 end
