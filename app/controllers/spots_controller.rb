@@ -4,18 +4,16 @@ class SpotsController < ApplicationController
   def new
     @spot = Spot.new
     @note = Note.find(params[:note_id])
-    @user = User.find(current_user.id)
-    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
+    @user_notes = Note.includes(:tags).where(user_id: current_user.id).all
   end
   
   def create
     @spot = Spot.new(spot_params)
     @note = Note.find(params[:note_id])
     @spot.note_id = @note.id
-    if @spot.save
-    else
-      @user = User.find(current_user.id)
-      redirect_to request.referer
+    unless @spot.save
+      @user_notes = Note.includes(:tags).where(user_id: current_user.id).all
+      render 'error'
     end
   end
   

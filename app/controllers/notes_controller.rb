@@ -22,8 +22,7 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
-    @user = User.find(current_user.id)
-    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
+    @user_notes = Note.includes(:tags).where(user_id: current_user.id).all
   end
 
   def create
@@ -35,17 +34,14 @@ class NotesController < ApplicationController
       @note.save_tag(tag_list)
       redirect_to  new_note_spot_path(note_id: @note.id)
     else
-      flash[:alert] = "必要事項を追加してください"
-      @user = User.find(current_user.id)
-      @user_notes = Note.includes(:tags).where(user_id: @user.id).all
+      @user_notes = Note.includes(:tags).where(user_id: current_user.id).all
       render 'new'
     end
   end
 
   def edit
     @note = Note.find(params[:id])
-    @user = User.find(@note.user_id)
-    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
+    @user_notes = Note.includes(:tags).where(user_id: current_user.id).all
     @tag_list = @note.tags.pluck(:tag_name).join(" ")
     if @note.user == current_user
       render 'edit'

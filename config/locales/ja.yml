@@ -23,6 +23,9 @@ ja:
         email: メールアドレス
         name: ユーザー名
         password: パスワード
+      spot:
+        address: 検索欄
+        body: 説明
   errors:
     messages:
       already_confirmed: は既に登録済みです。ログインしてください。

@@ -1,4 +1,7 @@
 <div class="container my-5 px-sm-0">
+  <div id="spot_error">
+    <%= render 'layouts/errors', model: @spot %>
+  </div>
   <div class="row my-5">
     <div class="col-md-5 border border-secondary rounded">
       <div class="schedule">
@@ -10,7 +13,6 @@
           <div class="my-3 ml-2">
             <%= form_with model:[note, spot] do |f| %>
               <!-- 検索値を隠しデータとして送信-->
-              <input type="hidden" name="spot[title]" id="hidden_title">
               <input type="hidden" name="spot[address]" id="hidden_address">
               <input type="hidden" name="spot[latitude]" id="hidden_latitude">
               <input type="hidden" name="spot[longitude]" id="hidden_longitude">
@@ -63,9 +65,6 @@
                 map: map,
                 position: results[0].geometry.location
               });
-
-              let hidden_title = document.getElementById('hidden_title');
-              hidden_title.setAttribute("value", inputAddress);
 
               let hidden_address = document.getElementById('hidden_address');
               hidden_address.setAttribute("value", inputAddress);
