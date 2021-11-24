@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @notes = Note.where(posted: true, status: 0).order(created_at: :desc).includes(:user, :spots, :tags)
+    @notes = Note.where(posted: true, status: 0).order(created_at: :desc).includes(:user, :spots, :tags).page(params[:page]).per(3)
     @tags = Tag.all.order(created_at: :desc)
   end
   
@@ -23,7 +23,7 @@ class NotesController < ApplicationController
   def new
     @note = Note.new
     @user = User.find(current_user.id)
-    @user_notes = Note.find_by(user_id: current_user.id)
+    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
   end
 
   def create
@@ -37,17 +37,17 @@ class NotesController < ApplicationController
     else
       flash[:alert] = "必要事項を追加してください"
       @user = User.find(current_user.id)
+      @user_notes = Note.includes(:tags).where(user_id: @user.id).all
       render 'new'
     end
   end
 
   def edit
-    @user = User.find(current_user.id)
-    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
     @note = Note.find(params[:id])
+    @user = User.find(@note.user_id)
+    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
     @tag_list = @note.tags.pluck(:tag_name).join(" ")
-    @spot = Spot.new
-    if @note.user = current_user
+    if @note.user == current_user
       render 'edit'
     else
       redirect_to note_path(@note)
@@ -61,6 +61,8 @@ class NotesController < ApplicationController
       @note.save_tag(tag_list)
       redirect_to  new_note_spot_path(note_id: @note.id)
     else
+      @user = User.find(current_user.id)
+      @user_notes = Note.includes(:tags).where(user_id: @user.id).all
       render 'edit'
     end
   end

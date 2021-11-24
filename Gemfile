@@ -96,3 +96,5 @@ gem 'rename'
 
 # crontab管理のため
 gem 'whenever', require: false
+
+gem 'kaminari'

@@ -51,4 +51,8 @@ class User < ApplicationRecord
     end
   end
   
+  def active_for_authentication?
+    super && (self.users_status == false)
+  end
+  
 end

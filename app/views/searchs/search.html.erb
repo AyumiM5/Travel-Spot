@@ -4,13 +4,12 @@
       <%= render 'searchs/form', tags: @tags %>
     </div>
     <div class="col-9">
-      <h1><b style="color: #E08504;">N</b>otes</h1>
-      <p>検索結果</p>
+      <h1><b style="color: #E08504;">検</b>索結果</h1>
       <% if @model == 'user' %>
-      	<h3>"<%= @word %>"の検索結果</h3>
+      	<h3>ユーザー「<%= @word %>」の検索結果</h3>
         <%= render 'users/index', users: @records %>
       <% elsif @model == 'note' %>
-      	<h3>"<%= @word %>"の検索結果</h3>
+      	<h3>"投稿「<%= @word %>」の検索結果</h3>
         <%= render 'notes/index', notes: @records %>
       <% end %>
     </div>

@@ -1,8 +1,15 @@
-  <div class=row>
-    <%= link_to mypage_edit_path, class: "col-2 btn btn-sm btn-secondary" do %>
-      <i class="fas fa-cog"></i>
-    <% end %>
-  </div>
+  <% if user == current_user %>
+    <div class=row>
+      <%= link_to mypage_edit_path, class: "col-2 btn btn-sm btn-secondary" do %>
+        <i class="fas fa-cog"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <% if user.users_status == true %>
+    <span class="user-status border border-danger">
+      退会済みユーザー
+    </span>
+  <% end %>
   <div class="usershow-profile-img-container m-auto">
     <%= attachment_image_tag user, :profile_image, format: 'jpg', fallback: "no_image.jpg", class:"rounded-circle" %>
   </div>
@@ -12,7 +19,7 @@
   <% if user != current_user %>
     <div class="text-center follow">
       <% if current_user.following?(user) %>
-        <%= link_to "フォローを外す", user_relationship_path(user.name), method: :delete, class:"text-secondary" %>
+        <%= link_to "フォロー中", user_relationship_path(user.name), method: :delete, class:"text-secondary" %>
       <% else %>
         <%= link_to "フォローする", user_relationship_path(user.name), method: :post %>
       <% end %>

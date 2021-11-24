@@ -4,8 +4,7 @@
       <%= render 'users/info', user: @user, notes: @user_notes %>
     </div>
     <div class="col-9">
-      <h1><b style="color: #E08504;">F</b>ollowers</h1>
-      <p>フォロワー</p>
+      <h1><b style="color: #E08504;">フ</b>ォロー中</h1>
       <table class="table tabel-hover table-inverse">
         <tbody>
           <% @users.each do |user| %>
@@ -31,6 +30,9 @@
           <% end %>
         </tbody>
       </table>
+      <div class="row col-10 m-auto">
+        <%= paginate @users %> 
+      </div>
     </div>
   </div>
 </div>

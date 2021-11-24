@@ -119,3 +119,13 @@ h1, p, a, div　{
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+#back {
+  position : fixed;
+  right : 80px;
+  bottom : 80px;
+}
+
+.fa-arrow-circle-up {
+ color : grey;
+}

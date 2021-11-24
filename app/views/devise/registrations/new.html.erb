@@ -6,6 +6,11 @@
           <h1 class="title"><b>Join to Trabel Notes</b></h1>
           <h6 class="border-bottom border-secondary">Trabel Notesに会員登録する</h6>
         </div>
+        <div>
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, class: "#{key}") %>
+          <% end %>
+        </div>
         <div class="input-form">
         <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>

@@ -15,11 +15,13 @@
         <%= f.label :email, "メールアドレス" %><span class="mandatory border border-danger">必須</span>
         <%= f.email_field :email, autocomplete: "email", class:"input" %>
       </div>
-      <div class="actions col-8 mx-auto mt-5">
+      <div class="actions col-9 mx-auto mt-4">
         <%= f.submit "変更を確定する", class: "btn-block btn-sm btn btn-secondary" %>
       </div>
-      <div class="actions col-8 mx-auto my-3">
-        <%= link_to "退会する", withdraw_path, class: "btn-block btn-sm btn btn-secondary", method: :patch, "data-confirm" => "本当に退会しますか？" %>
+      <div class="actions col-9 mx-auto my-3">
+        <%= link_to "退会する", withdraw_path, class: "text-center btn-block btn-sm btn btn-secondary", method: :patch, "data-confirm" => "本当に退会しますか？" %>
+        <div class="text-center" style="font-size: 10px">※退会しても、投稿は削除されません。</div>
+        <div class="text-center" style="font-size: 10px">※同一のユーザー名、メールアドレスでは再度登録出来なくなります。</div>
       </div>
       <% end %>
     </div>

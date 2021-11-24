@@ -8,7 +8,7 @@ class SearchsController < ApplicationController
     if @model == 'user'
       @records = User.search_for(@word)
     elsif @model == 'note'
-      @records = Note.search_for(@word)
+      @records = Note.includes(:user, :spots, :tags).search_for(@word)
     end
   end
   

@@ -21,6 +21,11 @@
     </header>
     <main>
       <%= yield %>
+      <span id="back">
+        <a href="#">
+          <i class="fas fa-arrow-circle-up fa-4x"></i>
+        </a>
+      </span>
     </main>
     <footer>
       <%= render "layouts/footer" %>

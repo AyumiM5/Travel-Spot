@@ -11,6 +11,9 @@
       <% else %>
         <%= render 'notes/index', notes: @notes %>
       <% end %>
+      <div class="row col-10 m-auto">
+        <%= paginate @notes %> 
+      </div>
     </div>
   </div>
 </div>
