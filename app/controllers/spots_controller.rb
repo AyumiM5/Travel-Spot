@@ -4,7 +4,7 @@ class SpotsController < ApplicationController
   def new
     @spot = Spot.new
     @note = Note.find(params[:note_id])
-    @user_notes = Note.includes(:tags).where(user_id: current_user.id).all
+    @user_notes = Note.user_notes(current_user)
   end
   
   def create
@@ -12,7 +12,6 @@ class SpotsController < ApplicationController
     @note = Note.find(params[:note_id])
     @spot.note_id = @note.id
     unless @spot.save
-      @user_notes = Note.includes(:tags).where(user_id: current_user.id).all
       render 'error'
     end
   end

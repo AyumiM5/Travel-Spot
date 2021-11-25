@@ -1,9 +1,7 @@
-<div class="container mt-5">
-  <div class="row pb-3">
-    <div class="col-3">
-      <%= render 'users/info', user: @user, notes: @user_notes %>
-    </div>
-    <div class="col-9">
+<div class="container mt-5 pb-5">
+  <div class="row">
+    <%= render 'users/info', user: current_user, notes: @user_notes %>
+    <div class="col-8 ml-3">
       <h1><b style="color: #E08504;">下</b>書き</h1>
       <% if @notes.count == 0 %>
         <div>下書きありません</div>

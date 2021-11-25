@@ -1,8 +1,6 @@
 <div class="container mt-5 pb-5">
   <div class="row">
-    <div class="col-3 users-info">
-      <%= render 'users/info', user: @user, notes: @user_notes %>
-    </div>
+    <%= render 'users/info', user: @user, notes: @user_notes %>
     <div class="col-8 ml-3">
       <h1><b><%= @user.name %></b>の<b style="color: #E08504;">投</b>稿</h1>
       <%= render 'notes/index', notes: @notes %>

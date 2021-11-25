@@ -1,3 +1,5 @@
 $('#spot-index').html("<%= j(render "spots/index", note: @note) %>");
+$("#spot_error").html("<%= j(render 'layouts/errors', model: @spot) %>");
 $("textarea").val('');
 $("#address").val('');
+$("#hidden_address").val('');

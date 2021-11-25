@@ -16,9 +16,10 @@
 
 //= require rails-ujs
 //= require activestorage
+//= require turbolinks
 //= require_tree .
 
-$(function () {
+$(document).on('turbolinks:load', function () {
   $("#theTarget").skippr({
     transition : 'fade',
     speed : 1000,
@@ -33,7 +34,7 @@ $(function () {
   });
 });
 
-$(function() {
+$(document).on('turbolinks:load', function() {
   $('#back a').on('click',function(event){
     $('body, html').animate({
       scrollTop:0

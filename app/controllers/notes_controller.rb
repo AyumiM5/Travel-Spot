@@ -2,27 +2,26 @@ class NotesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @notes = Note.where(posted: true, status: 0).order(created_at: :desc).includes(:user, :spots, :tags).page(params[:page]).per(3)
+    @notes = Note.public_note_created_desc.page(params[:page]).per(3)
     @tags = Tag.all.order(created_at: :desc)
   end
   
   def draft
-    @user = User.find(current_user.id)
     @user_notes = Note.find_by(user_id: current_user.id)
     @notes = current_user.notes.where(posted: false).order(created_at: :desc)
-    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
+    @user_notes = Note.user_notes(current_user)
   end
 
   def show
     @note = Note.includes(:tags).find(params[:id])
     @note_comment = NoteComment.new
     @user = User.find(@note.user_id)
-    @user_notes = Note.includes(:tags).where(user_id: @user.id).all
+    @user_notes = Note.user_notes(@user)
   end
 
   def new
     @note = Note.new
-    @user_notes = Note.includes(:tags).where(user_id: current_user.id).all
+    @user_notes = Note.user_notes(current_user)
   end
 
   def create
@@ -34,14 +33,14 @@ class NotesController < ApplicationController
       @note.save_tag(tag_list)
       redirect_to  new_note_spot_path(note_id: @note.id)
     else
-      @user_notes = Note.includes(:tags).where(user_id: current_user.id).all
+      @user_notes = Note.user_notes(current_user)
       render 'new'
     end
   end
 
   def edit
     @note = Note.find(params[:id])
-    @user_notes = Note.includes(:tags).where(user_id: current_user.id).all
+    @user_notes = Note.user_notes(current_user)
     @tag_list = @note.tags.pluck(:tag_name).join(" ")
     if @note.user == current_user
       render 'edit'

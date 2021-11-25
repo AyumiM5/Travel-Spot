@@ -2,7 +2,7 @@
     <div class="row no-gutters">
       <div class="col-8 text-center my-3">
         <p>私のお気に入りSpot</p>
-        <%= link_to "Trabel Spot", root_path, class:"footer-brand text-white" %>
+        <%= link_to "Trabel Spot", root_path, class:"footer-brand text-white", data: {"turbolinks" => false} %>
       </div>
       <div class="col-4 my-3">
         <h6 class="text-white mt-2 mb-3">Menu</h6>
@@ -18,7 +18,7 @@
             <li><%= link_to "下書き", notes_draft_path, class:"text-white-50" %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-white-50" %></li>
           <% else %>
-            <li><%= link_to "ホーム", root_path, class:"text-white-50" %></li>
+            <li><%= link_to "ホーム", root_path, class:"text-white-50", data: {"turbolinks" => false}%></li>
             <li><%= link_to "新規登録", new_user_registration_path, class:"text-white-50" %></li>
             <li><%= link_to "ログイン", new_user_session_path, class:"text-white-50" %></li>
           <% end %>

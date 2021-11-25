@@ -19,6 +19,7 @@ class Note < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
   
+  #タグの作成と編集
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - sent_tags
@@ -34,12 +35,24 @@ class Note < ApplicationRecord
     end
   end
   
+  #検索欄
   def self.search_for(word)
     Note.where("title like? OR body like?", "%#{word}%", "%#{word}")
   end
   
+  #Topページのいいねの多い投稿を表示
   def self.best_note
-    self.find(Favorite.group(:note_id).order(Arel.sql('count(note_id) desc')).limit(3).pluck(:note_id))
+    self.find(Favorite.group(:note_id).order(Arel.sql('count(note_id) desc')).limit(1).pluck(:note_id))
+  end
+  
+  #ユーザーの投稿数とタグを選ぶ
+  def self.user_notes(user)
+    self.includes(:tags).where(user_id: user.id).all
+  end
+  
+  #公開投稿を選び、最新順に並び替える
+  def self.public_note_created_desc
+    Note.where(posted: true, status: 0).order(created_at: :desc).includes(:user, :spots, :tags)
   end
 
 end
