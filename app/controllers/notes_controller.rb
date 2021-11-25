@@ -8,7 +8,7 @@ class NotesController < ApplicationController
   
   def draft
     @user_notes = Note.find_by(user_id: current_user.id)
-    @notes = current_user.notes.where(posted: false).order(created_at: :desc)
+    @notes = current_user.notes.where(posted: false).order(created_at: :desc).page(params[:page]).per(3)
     @user_notes = Note.user_notes(current_user)
   end
 

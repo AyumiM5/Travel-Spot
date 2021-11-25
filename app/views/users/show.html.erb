@@ -4,9 +4,6 @@
     <div class="col-8 ml-3">
       <h1><b><%= @user.name %></b>の<b style="color: #E08504;">投</b>稿</h1>
       <%= render 'notes/index', notes: @notes %>
-      <div class="row col-10 m-auto">
-        <%= paginate @notes %> 
-      </div>
     </div>
   </div>
 </div>
