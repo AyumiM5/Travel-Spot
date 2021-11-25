@@ -3,7 +3,7 @@
     <% users.each do |user| %>
     <tr>
       <td>
-        <div class="profile-img-container">
+        <div class="profile-img">
           <%= attachment_image_tag user, :profile_image, format: 'jpg', fallback: "no_image.jpg" %>
         </div>
         <%= link_to user.name, user_path(user.name) %>

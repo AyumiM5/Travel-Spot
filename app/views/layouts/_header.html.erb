@@ -17,10 +17,7 @@
             <li class="nav-item mx-2 px-2 rounded">
               <%= link_to(notifications_path, class: "ml-3 text-secondary") do %>
                 <% if unchecked_notifications.any? %>
-                  <span class="fa-stack">
-                    <i class="far fa-bell fa-lg fa-stack-2x" style="font-size: 1.5em;"></i>
-                    <i class="fas fa-circle n-circle fa-stack-1x" style="font-size: 1.5em;"></i>
-                  </span>
+                  <i class="far fa-bell fa-lg" style="color: #FF0033"></i>通知(<%= unchecked_notifications.count %>)
                 <% else %>
                   <i class="far fa-bell fa-lg"></i>通知
                 <% end %>

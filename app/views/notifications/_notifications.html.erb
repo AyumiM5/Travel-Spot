@@ -13,9 +13,9 @@
           <% when 'follow' then %>
             あなたを<span style="color: #FF0033"> フォロー </span>しました
           <% when 'like' then %>
-            「<%= notification.note.title %>」に<span style="color: #0033CC">いいね</span>しました
+            「<%= link_to notification.note.title, note_path(notification.note.id) %>」に<span style="color: #0033CC">いいね</span>しました
           <% when 'comment' then %>
-            「<%= notification.note.title %>」に<span style="color: #009966">コメント</span>しました
+            「<%= link_to notification.note.title, note_path(notification.note.id) %>」に<span style="color: #009966">コメント</span>しました
         <% end %>
       </td>
       <td>

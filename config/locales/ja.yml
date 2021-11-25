@@ -26,6 +26,8 @@ ja:
       spot:
         address: 検索欄
         body: 説明
+      note_comments:
+        comment: コメント
   errors:
     messages:
       already_confirmed: は既に登録済みです。ログインしてください。

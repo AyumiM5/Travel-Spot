@@ -10,6 +10,9 @@
       	<h3>"投稿「<%= @word %>」の検索結果</h3>
         <%= render 'notes/index', notes: @records %>
       <% end %>
+      <div class="row col-10 m-auto">
+        <%= paginate @records %> 
+      </div>
     </div>
   </div>
 </div>

@@ -1,3 +1,4 @@
 $('#comment_index').html("<%= j(render "note_comments/index", note_comments: @note_comments, note: @note) %>");
+$("#comment_error").html("<%= j(render 'layouts/errors', model: @note_comment) %>");
 $('#comment_quantity').html("コメント：<%= @note.note_comments.count %>");
 $("textarea").val('');

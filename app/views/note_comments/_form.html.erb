@@ -1,3 +1,6 @@
+<div id="comment_error">
+  <%= render 'layouts/errors', model: @note_comment %>
+</div>
 <div>
   <%= form_with model:[note, note_comment] do |f| %>
     <%= f.text_area :comment, row: '5', class: "form-control", placeholder: "コメントをここに", class:"rounded-pill col-12" %><br>
