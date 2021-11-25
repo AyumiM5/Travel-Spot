@@ -1,16 +1,18 @@
-<div class="row p-3 my-5 word-search">
-  <div>ワード検索</div>
-  <%= form_with url: search_path, method: :get, local: :true do |f| %>
-    <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "note" }) %>
-    <%= f.text_field :word %>
-    <%= f.submit "検索" %>
-  <% end %>
-</div>
-<div class="row p-3 mb-5 tag-search">
-  <div>タグ検索</div>
-  <div>
-    <% tags.last(20).each do |tag| %>
-      <%= link_to tag.tag_name, tag_search_path(tag.tag_name) %>　
+<div class="col-3">
+  <div class="row p-3 my-5 word-search">
+    <div>ワード検索</div>
+    <%= form_with url: search_path, method: :get, local: :true do |f| %>
+      <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "note" }) %>
+      <%= f.text_field :word %>
+      <%= f.submit "検索" %>
     <% end %>
+  </div>
+  <div class="row p-3 mb-5 tag-search">
+    <div>タグ検索</div>
+    <div>
+      <% tags.last(20).each do |tag| %>
+        <%= link_to tag.tag_name, tag_search_path(tag.tag_name) %>　
+      <% end %>
+    </div>
   </div>
 </div>

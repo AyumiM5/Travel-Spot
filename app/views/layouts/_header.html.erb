@@ -14,6 +14,18 @@
                 <i class="fas fa-user-circle"></i><%= current_user.name %> Page
               <% end %>
             </li>
+            <li class="nav-item mx-2 px-2 rounded">
+              <%= link_to(notifications_path, class: "ml-3 text-secondary") do %>
+                <% if unchecked_notifications.any? %>
+                  <span class="fa-stack">
+                    <i class="far fa-bell fa-lg fa-stack-2x" style="font-size: 1.5em;"></i>
+                    <i class="fas fa-circle n-circle fa-stack-1x" style="font-size: 1.5em;"></i>
+                  </span>
+                <% else %>
+                  <i class="far fa-bell fa-lg"></i>通知
+                <% end %>
+              <% end %>
+            </li>
             <li class="nav-item mx-2 px-2 rounded"><%= link_to "投稿一覧", notes_path, class:"text-secondary" %></li>
             <li class="nav-item mx-2 px-2 rounded"><%= link_to "投稿作成", new_note_path, class:"text-secondary" %></li>
             <li class="nav-item mx-2 px-2 rounded"><%= link_to "下書き", notes_draft_path, class:"text-secondary" %></li>

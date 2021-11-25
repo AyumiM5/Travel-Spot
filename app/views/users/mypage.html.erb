@@ -3,7 +3,6 @@
     <%= render 'users/info', user: current_user, notes: @user_notes %>
     <div class="col-8 ml-3">
       <h1><b style="color: #E08504;">M</b>y <b style="color: #E08504;">P</b>age</h1>
-      <p>マイページ</p>
       <% if @notes.count == 0 %>
         <div>投稿はありません</div>
       <% else %>

@@ -40,27 +40,27 @@
     }
   </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
-  <div class="row col-5 my-5 mx-auto">
-    <div class="ml-4">
+  <div class="row col-5 my-5 about-content">
+    <div class="m-auto">
       旅先で見つけたお気に入り<b>Spot</b>をシェア</br>
-      <span class="about-title">Travel-Spot</span></br>
+      <span class="about-title"><b>Travel-Spot</b></span></br>
     </div>
-    <div class="ml-4 my-3">
+    <div class="m-auto text-center my-4">
       Spotを地図上から検索して、投稿する事が出来ます
       <input id="address" type="textbox" class="col-9" placeholder="Spot名を入力すると検索できます">
       <input type="button" value="検索" onclick="codeAddress()" class='btn btn-sm btn-secondary'>
     </div>
-    <div class="ml-4 mb-3">
-      #Spotの<b>シェア</b></br>
-      #Spotの<b>タグ検索</b></br>
-      #気になる投稿に<b>いいね</b></br>
+    <div class="text-center m-auto">
       #気になるユーザーの<b>フォロー</b></br>
+      #気になる投稿に<b>いいね</b></br>
+      #Spotの<b>タグ検索</b></br>
+      #Spotの<b>シェア</b></br>
     </div>
-    <div class="ml-4">
+    <div class="text-center m-auto my-3">
       Travel-Spotを<b>始めてみましょう</b></br>
       <%= link_to new_user_registration_path do %>
         <span class="go-signin">
-          Let's start
+          <b>Let's start</b>
         </span>
       <% end %>
     </div>

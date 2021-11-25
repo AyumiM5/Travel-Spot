@@ -31,7 +31,7 @@ class NotesController < ApplicationController
     if @note.save
       # save_tagはnote.rbにて定義
       @note.save_tag(tag_list)
-      redirect_to  new_note_spot_path(note_id: @note.id)
+      redirect_to new_note_spot_path(note_id: @note.id)
     else
       @user_notes = Note.user_notes(current_user)
       render 'new'
@@ -41,7 +41,7 @@ class NotesController < ApplicationController
   def edit
     @note = Note.find(params[:id])
     @user_notes = Note.user_notes(current_user)
-    @tag_list = @note.tags.pluck(:tag_name).join(" ")
+    @tag_list = @note.tags.pluck(:tag_name).join(' ')
     if @note.user == current_user
       render 'edit'
     else
@@ -54,7 +54,7 @@ class NotesController < ApplicationController
     tag_list = params[:note][:tag_name].split(/[[:blank:]]+/)
     if @note.update(note_params)
       @note.save_tag(tag_list)
-      redirect_to  new_note_spot_path(note_id: @note.id)
+      redirect_to note_path(@note)
     else
       @user = User.find(current_user.id)
       @user_notes = Note.includes(:tags).where(user_id: @user.id).all
@@ -79,5 +79,4 @@ class NotesController < ApplicationController
   def note_params
     params.require(:note).permit(:title, :stays, :body, :status, :image)
   end
-
 end

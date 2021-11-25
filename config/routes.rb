@@ -29,5 +29,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :spots, only: [:new, :create, :destroy]
   end
+  
+  resources :notifications, only: :index
     
 end

@@ -1,9 +1,7 @@
 <div class="container py-5">
   <div class="row">
-    <div class="col-3">
-      <%= render 'users/info', user: @user, notes: @user_notes %>
-    </div>
-    <div class="col-9">
+    <%= render 'users/info', user: @user, notes: @user_notes %>
+    <div class="col-8 ml-3">
       <h1><b style="color: #E08504;">お</b>気に入り 
       <b style="color: #E08504;">投</b>稿</h1>
       <%= render 'notes/index', notes: @favorites_notes %>

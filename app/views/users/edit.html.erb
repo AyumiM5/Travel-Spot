@@ -7,9 +7,29 @@
         <%= f.label :name %><span class="mandatory border border-danger">必須</span><br />
         <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
       </div>
-      <div class="form-group">
-        <%= f.label :Image %><br />
-        <%= f.attachment_field :profile_image %>
+      <div class="form-group row mt-3">
+        <div class="col-6">
+          <%= f.label :プロフィール画像 %><br />
+          <%= f.attachment_field :profile_image, id: "profile_image" %>
+        </div>
+        <div class="profile-img-preview ml-5">
+          <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", class: "card img-rounded" %>
+        </div>
+        <script>
+        $(function() {
+            $('#profile_image').on('change', function() {
+                var selectedFile = this.files[0];
+                var fileReader = new FileReader();
+        
+                fileReader.onload = function(event) {
+                    var loadedImageUri = event.target.result;
+                     $('.img-rounded').attr('src', loadedImageUri);
+                };
+        
+                fileReader.readAsDataURL(selectedFile);
+            });
+        });
+        </script>
       </div>
       <div class="form-group">
         <%= f.label :email, "メールアドレス" %><span class="mandatory border border-danger">必須</span>

@@ -1,0 +1,27 @@
+<table class="table tabel-hover table-inverse">
+  <tbody>
+    <% notifications.each do |notification| %>
+    <tr>
+      <td>
+        <div class="profile-img-container">
+          <%= attachment_image_tag notification.visitor, :profile_image, format: 'jpg', fallback: "no_image.jpg" %>
+        </div>
+        <%= link_to notification.visitor.name, user_path(notification.visitor.name) %>
+      </td>
+      <td>
+        <% case notification.action %>
+          <% when 'follow' then %>
+            あなたを<span style="color: #FF0033"> フォロー </span>しました
+          <% when 'like' then %>
+            「<%= notification.note.title %>」に<span style="color: #0033CC">いいね</span>しました
+          <% when 'comment' then %>
+            「<%= notification.note.title %>」に<span style="color: #009966">コメント</span>しました
+        <% end %>
+      </td>
+      <td>
+        <%= notification.created_at.strftime("%Y/%m/%d %H:%M") %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,7 +1,7 @@
 <div class="col-3 users-info">
   <% if user == current_user %>
     <div class=row>
-      <%= link_to mypage_edit_path, class: "col-2 btn btn-sm btn-secondary" do %>
+      <%= link_to mypage_edit_path, class: "ml-2 col-2 btn btn-sm btn-secondary" do %>
         <i class="fas fa-cog"></i>
       <% end %>
     </div>
@@ -11,7 +11,7 @@
       退会済みユーザー
     </span>
   <% end %>
-  <div class="usershow-profile-img-container m-auto">
+  <div class="usershow-profile-img m-auto">
     <%= attachment_image_tag user, :profile_image, format: 'jpg', fallback: "no_image.jpg", class:"rounded-circle" %>
   </div>
   <div class="my-2 text-center">

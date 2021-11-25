@@ -38,17 +38,19 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'bullet'
+  gem 'rubocop'
+  gem 'rubocop-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'bullet'
 end
 
 group :test do
@@ -60,33 +62,33 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # ユーザー認証機能を導入するためのgem
 gem 'devise'
 
 gem 'bootstrap', '~> 4.5'
-gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
+gem 'jquery-rails'
 
 # 画像の投稿と、サイズ変更を可能にする
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
 gem 'carrierwave'
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+gem 'refile-mini_magick'
 
 # enumを使用して、宿泊数を選択する
+gem 'enum_help'
 gem 'rails-i18n'
-gem "enum_help"
 
 # GoogleMapAPIを使用するため
-gem "gmaps4rails"
+gem 'gmaps4rails'
 
 # 住所から緯度と経度を変換する
-gem "geocoder"
+gem 'geocoder'
 
 # 環境変数を.envファイルで使うため
-gem "dotenv-rails"
-gem "gon"
+gem 'dotenv-rails'
+gem 'gon'
 
 group :production do
   gem 'mysql2'

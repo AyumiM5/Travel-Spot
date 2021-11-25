@@ -35,24 +35,29 @@
  background-color : #E3DCD8;
  border-bottom-right-radius : 2000px 300px;
  border-bottom-left-radius : 2000px 300px;
- margin-left : -200px;
- margin-right : -200px;
- padding-left : 200px;
- padding-right : 200px;
-}
-
-.about-note {
- border-bottom-right-radius : 2000px 300px;
- border-bottom-left-radius : 2000px 300px;
- margin-left : -200px;
- margin-right : -200px;
- padding-left : 200px;
- padding-right : 200px;
 }
 
 .about {
- height : 500px;
+ height : 560px;
+ padding-bottom : 50px;
  font-family: 'Outfit', sans-serif;
+}
+
+.about-content {
+ position: relative;
+ z-index: 1;
+}
+
+.about-content:before {
+ content: '\f3c5';
+ font-family: "Font Awesome 5 Free";
+ font-weight: 900;
+ bottom: -200px;
+ left : 30px;
+ position: absolute;
+ font-size: 550px;
+ color : #F5EDE9;
+ z-index: -1;
 }
 
 .about-title, .go-signin {

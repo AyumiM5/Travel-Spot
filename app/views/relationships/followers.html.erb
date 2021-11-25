@@ -19,7 +19,7 @@
                   <% if current_user.following?(user) %>
                     <%= link_to "フォローを外す", user_relationship_path(user.name), method: :delete %>
                   <% else %>
-                    <%= link_to "フォローする", user_relationship_path(user.name), method: :post, class:"text-white-50" %>
+                    <%= link_to "フォローする", user_relationship_path(user.name), method: :post %>
                   <% end %>
                 </div>
               <% end %>

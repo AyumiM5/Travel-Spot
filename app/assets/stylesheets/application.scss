@@ -21,7 +21,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Outfit', メイリオ, sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 
 a {
@@ -38,7 +38,6 @@ main {
 }
 
 .navbar-brand, .navbar-toggler {
-  font-family: 'Outfit', sans-serif;
   font-size: 30px;
   padding: 0 30px;
   border: none;
@@ -122,8 +121,8 @@ h1, p, a, div　{
 
 #back {
   position : fixed;
-  right : 80px;
-  bottom : 80px;
+  right : 50px;
+  bottom : 30px;
 }
 
 .fa-arrow-circle-up {

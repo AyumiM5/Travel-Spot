@@ -3,8 +3,8 @@
     <div class="row m-auto">
       <div class="sign-in-form">
         <div class="col-12 text-center">
-          <h1 class="title"><b>Join to Trabel Notes</b></h1>
-          <h6 class="border-bottom border-secondary">Trabel Notesに会員登録する</h6>
+          <h1 class="title"><b>Join to Trabel Spot</b></h1>
+          <h6 class="border-bottom border-secondary">Trabel Spotに会員登録する</h6>
         </div>
         <div>
           <% flash.each do |key, value| %>
@@ -16,7 +16,7 @@
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="form">
             <%= f.label :name, "ユーザー名" %><span class="mandatory border border-danger">必須</span>
-            <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"input", placeholder:"例:Traveller"%>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"input", placeholder:"例:Traveller(英数字のみ)"%>
           </div>
           <div class="form">
             <%= f.label :email, "メールアドレス" %><span class="mandatory border border-danger">必須</span>
@@ -25,7 +25,7 @@
           <div class="form">
             <%= f.label :password, "パスワード" %><span class="mandatory border border-danger">必須</span><br>
             <em>※6~22字で入力してください</em>
-            <%= f.password_field :password, autocomplete: "new-password", class:"input" %>
+            <%= f.password_field :password, autocomplete: "new-password", class:"input", placeholder:"○○○○○○(英数字のみ)" %>
           </div>
           <div class="form">
             <%= f.label :password_confirmation, "パスワード確認用" %><span class="mandatory border border-danger">必須</span>
