@@ -13,10 +13,11 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note = Note.includes(:tags).find(params[:id])
+    @note = Note.includes(:tags, :user).find(params[:id])
     @note_comment = NoteComment.new
     @user = User.find(@note.user_id)
     @user_notes = Note.user_notes(@user)
+    @note_comments = @note.note_comments.includes(:user).all
   end
 
   def new

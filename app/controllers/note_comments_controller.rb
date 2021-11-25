@@ -6,7 +6,7 @@ class NoteCommentsController < ApplicationController
     note_comment = @note.note_comments.new(note_comment_params)
     note_comment.user_id = current_user.id
     note_comment.save
-    @note.save_notification_comment(current_user, note_comment.id, @note.user.)
+    @note.save_notification_comment(current_user, note_comment.id, @note.user_id)
   end
   
   def destroy
