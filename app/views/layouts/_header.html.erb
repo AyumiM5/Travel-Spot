@@ -10,12 +10,12 @@
         <ul class="navbar-nav ml-auto text-right">
           <% if user_signed_in? %>
             <li class="nav-item mx-2 px-2 rounded">
-              <%= link_to(mypage_path, class: "ml-3 text-secondary") do %>
+              <%= link_to(mypage_path, class: "text-secondary") do %>
                 <i class="fas fa-user-circle"></i><%= current_user.name %> Page
               <% end %>
             </li>
             <li class="nav-item mx-2 px-2 rounded">
-              <%= link_to(notifications_path, class: "ml-3 text-secondary") do %>
+              <%= link_to(notifications_path, class: "mr-5 text-secondary") do %>
                 <% if unchecked_notifications.any? %>
                   <i class="far fa-bell fa-lg" style="color: #FF0033"></i>通知(<%= unchecked_notifications.count %>)
                 <% else %>

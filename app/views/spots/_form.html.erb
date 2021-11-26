@@ -1,34 +1,40 @@
-<div class="container my-5 px-sm-0">
+<div class="container my-5">
   <div id="spot_error">
     <%= render 'layouts/errors', model: @spot %>
   </div>
-  <div class="row my-5">
-    <div class="col-md-5 border border-secondary rounded">
-      <div class="schedule">
-        <div class="mt-3">
-          <div class="row ml-2">
-            <input id="address" type="textbox" class="col-10" placeholder="Spot名を入力すると検索できます">
-            <input type="button" value="検索" onclick="codeAddress()" class='btn btn-sm btn-secondary'>
-          </div>
-          <div class="my-3 ml-2">
-            <%= form_with model:[note, spot] do |f| %>
-              <!-- 検索値を隠しデータとして送信-->
-              <input type="hidden" name="spot[address]" id="hidden_address">
-              <input type="hidden" name="spot[latitude]" id="hidden_latitude">
-              <input type="hidden" name="spot[longitude]" id="hidden_longitude">
-              <div  class="form-group">
-                <%= f.text_area :body, row: '5', class:"form-control input-lg", placeholder: "Spotの説明を記入→保存を押してください" %>
-              </div>
-              <%= f.submit "保存", class:"btn btn-sm btn-secondary col-3" %>
-            <% end %>
-          </div>
-        </div>
-        <div id="spot-index">
-          <%= render "spots/index", note: note %>
-        </div>
+  <div class="row mb-3">
+    <div class="col-5">
+      <div>
+        <div class="text-center"><b>ステップ1</b></div>
+        <div class="text-center">Spot名を入力して検索(20字以内)</br>地図にピンが表示されます</div>
+        <input id="address" type="textbox" class="col-12 mb-3" placeholder="Spot名を入力後、検索できます">
+        <input type="button" value="検索" onclick="codeAddress()" class='btn btn-sm btn-light btn-outline-dark col-12'>
       </div>
     </div>
-    <div class="col-md-7">
+    <div class="col-2">
+      <div class="mt-5 text-center">
+        <i class="fas fa-chevron-right fa-3x" style="color: #808080"></i></br>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="text-center"><b>ステップ2</b></div>
+      <div class="text-center">説明を入力(100字以内)</div>
+      <div>
+        <%= form_with model:[note, spot] do |f| %>
+          <!-- 検索値を隠しデータとして送信-->
+          <input type="hidden" name="spot[address]" id="hidden_address">
+          <input type="hidden" name="spot[latitude]" id="hidden_latitude">
+          <input type="hidden" name="spot[longitude]" id="hidden_longitude">
+          <div  class="form-group">
+            <%= f.text_area :body, rows: '3', class:"form-control", placeholder: "記入後、保存を押してください" %>
+          </div>
+          <%= f.submit "保存", class:"btn btn-sm btn-outline-dark btn-light col-12" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
       <div id="map"></div>
       <script>
         let map
@@ -95,6 +101,9 @@
         }
       </script>
       <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
+    </div>
+    <div class="col-5 ml-3" id="spot-index">
+      <%= render "spots/index", note: note %>
     </div>
   </div>
 </div>

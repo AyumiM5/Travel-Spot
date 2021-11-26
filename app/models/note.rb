@@ -1,4 +1,5 @@
 class Note < ApplicationRecord
+  default_scope -> { order(created_at: :desc) }
   belongs_to :user
   has_many :spots, dependent: :destroy
   has_many :note_comments, dependent: :destroy
@@ -52,7 +53,7 @@ class Note < ApplicationRecord
 
   # 公開投稿を選び、最新順に並び替える
   def self.public_note_created_desc
-    Note.where(posted: true, status: 0).order(created_at: :desc).includes(:user, :spots, :tags)
+    Note.where(posted: true, status: 0).includes(:user, :spots, :tags)
   end
   
   #いいね通知作成

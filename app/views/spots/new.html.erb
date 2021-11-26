@@ -6,15 +6,15 @@
       <p>スポットを追加</p>
       <%= render 'spots/form', spot: @spot, note: @note  %>
       <% if @note.posted == false %>
-        <div class="actions col-3 mx-auto">
-          <%= link_to "投稿", notes_post_path(@note), method: :put, class: "btn-block btn-sm btn btn-secondary" %>
+        <div class="actions col-3 mx-auto mb-3">
+          <%= link_to "投稿", notes_post_path(@note), method: :put, class: "col-12 btn btn-sm btn-light btn-outline-dark" %>
         </div>
         <div class="actions col-3 mx-auto">
-          <%= link_to "下書きに保存", notes_draft_path, class: "btn-block btn-sm btn btn-secondary" %>
+          <%= link_to "下書きに保存", notes_draft_path, class: "col-12 btn btn-sm btn-light btn-outline-dark" %>
         </div>
       <% else %>
         <div class="actions col-3 mx-auto">
-          <%= link_to "追加完了", notes_post_path(@note), method: :put, class: "btn-block btn-sm btn btn-secondary" %>
+          <%= link_to "追加完了", notes_post_path(@note), method: :put, class: "col-12 btn btn-sm btn-light btn-outline-dark" %>
         </div>
       <% end %>
     </div>
