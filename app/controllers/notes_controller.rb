@@ -2,13 +2,13 @@ class NotesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @notes = Note.public_note_created_desc.page(params[:page]).per(3)
+    @notes = Note.public_note.page(params[:page]).per(3)
     @tags = Tag.all.order(created_at: :desc)
   end
   
   def draft
     @user_notes = Note.find_by(user_id: current_user.id)
-    @notes = current_user.notes.where(posted: false).order(created_at: :desc).page(params[:page]).per(3)
+    @notes = current_user.notes.where(posted: false).page(params[:page]).per(3)
     @user_notes = Note.user_notes(current_user)
   end
 

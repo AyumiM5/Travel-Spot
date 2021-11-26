@@ -52,8 +52,8 @@ class Note < ApplicationRecord
   end
 
   # 公開投稿を選び、最新順に並び替える
-  def self.public_note_created_desc
-    Note.where(posted: true, status: 0).includes(:user, :spots, :tags)
+  def self.public_note
+    Note.includes(:user, :spots, :tags).where(posted: true, status: 0)
   end
   
   #いいね通知作成
