@@ -8,8 +8,8 @@
     <% end %>
   </div>
   <div class="row p-3 mb-5 tag-search">
-    <div>タグ検索</div>
     <div>
+      タグ検索</br>
       <% tags.last(20).each do |tag| %>
         <% if tag.notes.count >= 1 %>
           <%= link_to tag.tag_name, tag_search_path(tag.tag_name) %>

@@ -37,7 +37,7 @@
         <% end %>
       </div>
       <div class="homes-note-img m-auto">
-        <%= attachment_image_tag note, :image %>
+        <%= attachment_image_tag note, :image, fallback: "no_image.jpg" %>
       </div>
       <div class="row">
         <p class="col-10 m-auto text-center">

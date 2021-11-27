@@ -1,8 +1,8 @@
 <div class="ml-3">
   <% if note.user == current_user %>
-    <%= link_to "投稿の編集", edit_note_path(note.id) %>/
-    <%= link_to "Spotの追加", new_note_spot_path(note_id: note.id) %>/
-    <%= link_to "投稿を削除", note_path(note.id), method: :delete %>
+    <%= link_to "編集", edit_note_path(note.id) %>/
+    <%= link_to "Spot追加", new_note_spot_path(note_id: note.id) %>/
+    <%= link_to "削除", note_path(note.id), method: :delete %>
   <% end %>
   
   <div class="row my-3">

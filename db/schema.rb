@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 2021_11_25_082711) do
 
   create_table "spots", force: :cascade do |t|
     t.integer "note_id"
-    t.string "title"
     t.text "body"
     t.text "address", null: false
     t.float "latitude", null: false

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def mypage
     @user = User.find(current_user.id)
     @user_notes = Note.user_notes(@user)
-    @notes = current_user.notes.where(posted: true, status: 0).page(params[:page]).per(3)
+    @notes = current_user.notes.where(posted: true).page(params[:page]).per(3)
   end
 
   def show
