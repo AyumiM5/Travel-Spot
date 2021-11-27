@@ -7,9 +7,9 @@ class NotesController < ApplicationController
   end
   
   def draft
-    @user_notes = Note.find_by(user_id: current_user.id)
+    @user = User.find(current_user.id)
+    @user_notes = Note.user_notes(@user)
     @notes = current_user.notes.where(posted: false).page(params[:page]).per(3)
-    @user_notes = Note.user_notes(current_user)
   end
 
   def show
@@ -72,7 +72,7 @@ class NotesController < ApplicationController
   def destroy
     note = Note.find(params[:id])
     note.destroy
-    redirect_to notes_path
+    redirect_to mypage_path
   end
 
   private

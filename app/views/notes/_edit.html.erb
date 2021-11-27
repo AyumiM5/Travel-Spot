@@ -43,7 +43,12 @@
     <div><%= f.radio_button :status, 1, checked: true %>非公開</div>
   </div>
   <div class="actions col-5 mx-auto">
-    <%= f.submit "編集を保存する", class: "btn-block btn-sm btn btn-light btn-outline-dark" %>
+    <% if @note.posted == false %>
+      <%= link_to "投稿", notes_post_path(@note), method: :put, class: "col-12 btn btn-sm btn-light btn-outline-dark mb-3" %>
+      <%= f.submit "編集を保存する", class: "btn-block btn-sm btn btn-light btn-outline-dark" %>
+    <% else %>
+      <%= f.submit "編集を保存する", class: "btn-block btn-sm btn btn-light btn-outline-dark  mb-3" %>
+    <% end %>
   </div>
   <% end %>
 </div>

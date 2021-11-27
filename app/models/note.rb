@@ -48,7 +48,7 @@ class Note < ApplicationRecord
 
   # ユーザーの投稿数とタグを選ぶ
   def self.user_notes(user)
-    includes(:tags).where(user_id: user.id).all
+    includes(:tags).where(user_id: user.id, posted: true)
   end
 
   # 公開投稿を選び、最新順に並び替える

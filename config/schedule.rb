@@ -18,14 +18,18 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+def jst(time)
+  Time.zone = 'Asia/Tokyo'
+  Time.zone.parse(time).localtime($system_utc_offset)
+end
 
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
-set :environment, rails_env
+set :environment, :production
 set :output, 'log/cron.log'
-every :day, at: '17:05' do
+every 1.day, at: jst('7:20 pm')  do
   begin
-    runner "Batch::DataReset.data_reset"
+    runner "Batch::GuestUserReset.guest_user_reset"
   rescue => e
     Rails.logger.error("aborted rails runner")
     raise e
