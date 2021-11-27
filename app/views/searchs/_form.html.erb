@@ -11,7 +11,10 @@
     <div>タグ検索</div>
     <div>
       <% tags.last(20).each do |tag| %>
-        <%= link_to tag.tag_name, tag_search_path(tag.tag_name) %>　
+        <% if tag.notes.count >= 1 %>
+          <%= link_to tag.tag_name, tag_search_path(tag.tag_name) %>
+          <span>　</span>
+        <% end %>
       <% end %>
     </div>
   </div>
