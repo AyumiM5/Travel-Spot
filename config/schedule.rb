@@ -23,7 +23,7 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
 set :environment, rails_env
 set :output, 'log/cron.log'
-every 1.day, at: '16:50 pm' do
+every 1.day, at: '4:57 pm' do
   begin
     runner "Batch::DataReset.data_reset"
   rescue => e
