@@ -119,6 +119,9 @@
 .f-spot-contents {
  padding: 10px 0 0 10px;
  width : 75%;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
 }
 
 .f-spot-contents > h2 {
