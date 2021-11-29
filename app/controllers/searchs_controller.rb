@@ -8,7 +8,7 @@ class SearchsController < ApplicationController
     if @model == 'user'
       @records = User.search_for(@word).page(params[:page]).per(6)
     elsif @model == 'note'
-      @records = Note.includes(:user, :spots, :tags).search_for(@word).page(params[:page]).per(3)
+      @records = Note.public_note.search_for(@word).page(params[:page]).per(3)
     end
   end
 
