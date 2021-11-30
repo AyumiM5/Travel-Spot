@@ -22,7 +22,6 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
-    @user_notes = Note.user_notes(current_user)
   end
 
   def create

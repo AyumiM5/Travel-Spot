@@ -4,7 +4,6 @@ class SpotsController < ApplicationController
   def new
     @spot = Spot.new
     @note = Note.find(params[:note_id])
-    @user_notes = Note.user_notes(current_user)
   end
 
   def create

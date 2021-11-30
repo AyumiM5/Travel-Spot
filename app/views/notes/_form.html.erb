@@ -9,23 +9,23 @@
   <% end %>
   <%= form_with model:note, local: true do |f| %>
   <div class="my-3 border-bottom row">
-    <%= f.label "タイトル", class:"col-3" %>
+    <%= f.label "タイトル", class:"col-4 text-center" %>
     <%= f.text_field :title, autofocus: true, autocomplete: "title", class:"col-6" %>
   </div>
   <div class="my-3 border-bottom row">
-    <%= f.label "宿泊数", class:"col-3" %>
+    <%= f.label "宿泊数", class:"col-4 text-center" %>
     <%= f.select :stay, Note.stays.keys.map {|k| [I18n.t("enums.note.stay.#{k}"), k]}, {prompt: "日程を選択してください"}, class:"col-6" %>
   </div>
   <div class="my-3 border-bottom row">
-    <%= f.label "画像", class:"col-3" %>
+    <%= f.label "画像", class:"col-4 text-center" %>
     <%= f.attachment_field :image, class:"col-6" %>
   </div>
   <div class="my-3 border-bottom row">
-    <%= f.label "本文", class:"col-3" %>
+    <%= f.label "本文", class:"col-4 text-center" %>
     <%= f.text_area :body, class:"col-6" %>
   </div>
   <div class="my-3 border-bottom row">
-    <div class="col-3">
+    <div class="col-4 text-center">
       <%= f.label "タグ付け" %>
     </div>
     <div class="col-6">
@@ -38,9 +38,9 @@
       </div>
     </div>
   </div>
-  <div class="my-3">
-    <div><%= f.radio_button :status, 0 %>全ユーザーに公開</div>
+  <div class="my-3 text-center">
     <div><%= f.radio_button :status, 1, checked: true %>非公開</div>
+    <div><%= f.radio_button :status, 0 %>全ユーザーに公開</div>
   </div>
   <div class="actions col-3 mx-auto">
     <%= f.submit "Spotを追加", class: "btn-block btn-sm btn btn-light btn-outline-dark" %>

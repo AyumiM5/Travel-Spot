@@ -1,7 +1,6 @@
 <div class="container mt-5 pb-5">
   <div class="row">
-    <%= render 'users/info', user: current_user, notes: @user_notes %>
-    <div class="col-8 ml-3">
+    <div class="col-10 m-auto">
       <h1><b style="color: #E08504;">S</b>pot</h1>
       <p>スポットを追加</p>
       <%= render 'spots/form', spot: @spot, note: @note  %>
