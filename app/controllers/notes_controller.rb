@@ -33,14 +33,12 @@ class NotesController < ApplicationController
       @note.save_tag(tag_list)
       redirect_to new_note_spot_path(note_id: @note.id)
     else
-      @user_notes = Note.user_notes(current_user)
       render 'new'
     end
   end
 
   def edit
     @note = Note.find(params[:id])
-    @user_notes = Note.user_notes(current_user)
     @tag_list = @note.tags.pluck(:tag_name).join(' ')
     if @note.user == current_user
       render 'edit'

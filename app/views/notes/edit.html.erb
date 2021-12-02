@@ -1,10 +1,8 @@
 <div class="container mt-5 pb-5">
   <div class="row">
-    <%= render 'users/info', user: current_user, notes: @user_notes %>
-    <div class="col-8 ml-3">
-      <h1><b style="color: #E08504;">N</b>ote 
-      <b style="color: #E08504;">E</b>dit</h1>
-      <p>投稿の編集</p>
+    <div class="col-8 m-auto">
+      <h1><b style="color: #E08504;">投</b>稿の 
+      <b style="color: #E08504;">編</b>集</h1>
       <%= render 'notes/edit', note: @note, tag_list: @tag_list %>
     </div>
   </div>
