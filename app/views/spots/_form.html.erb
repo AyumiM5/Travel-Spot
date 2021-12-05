@@ -88,12 +88,10 @@
           
           <% note.spots.each do |spot| %>
           (function(){
-          var contentString = "住所：<%= spot.address %>"; 
 
           var marker = new google.maps.Marker({
               position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
               map: map,
-              title: contentString
           });
 
           })();
