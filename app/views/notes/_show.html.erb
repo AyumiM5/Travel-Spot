@@ -1,7 +1,7 @@
 <div class="ml-3">
   <% if note.user == current_user %>
     <%= link_to "編集", edit_note_path(note.id) %>/
-    <%= link_to "Spot追加", new_note_spot_path(note_id: note.id) %>/
+    <%= link_to "Spot追加", new_note_spot_path(note_id: note.id), data: {"turbolinks" => false} %>/
     <%= link_to "削除", note_path(note.id), method: :delete %>
   <% end %>
   
@@ -59,10 +59,10 @@
             zoom: 12
           });
           
-          <% note.spots.each do |m| %>
+          <% note.spots.each do |spot| %>
             (function(){
             var marker = new google.maps.Marker({
-                position:{lat: <%= m.latitude %>, lng: <%= m.longitude %>},
+                position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
                 map: map,
             });
             })();

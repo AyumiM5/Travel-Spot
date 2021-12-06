@@ -43,17 +43,25 @@
         function initMap() {
           geocoder = new google.maps.Geocoder()
           map = new google.maps.Map(document.getElementById('map'), {
+            <% if note.spots.exists? %>
+            center: {
+              lat: <%= note.spots[0].latitude %>,
+              lng: <%= note.spots[0].longitude %>
+            },
+            zoom: 12
+            <% else %>
             center: {
               lat: 35.6585848,
               lng: 139.7432389
             },
             zoom: 12
+            <% end %>
           });
           
-          <% note.spots.each do |m| %>
+          <% note.spots.each do |spot| %>
             (function(){
             var marker = new google.maps.Marker({
-                position:{lat: <%= m.latitude %>, lng: <%= m.longitude %>},
+                position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
                 map: map,
             });
   
@@ -85,17 +93,6 @@
               alert('該当する結果がありません：' + status);
             }
           });
-          
-          <% note.spots.each do |spot| %>
-          (function(){
-
-          var marker = new google.maps.Marker({
-              position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
-              map: map,
-          });
-
-          })();
-          <% end %>
         }
       </script>
       <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
