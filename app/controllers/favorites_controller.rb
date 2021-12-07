@@ -13,5 +13,5 @@ class FavoritesController < ApplicationController
     favorite = @note.favorites.find_by(user_id: current_user.id)
     favorite.destroy
   end
-  
+
 end

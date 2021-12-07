@@ -5,7 +5,7 @@ class NotesController < ApplicationController
     @notes = Note.public_note.page(params[:page]).per(3)
     @tags = Tag.all
   end
-  
+
   def draft
     @user = User.find(current_user.id)
     @user_notes = Note.user_notes(@user)

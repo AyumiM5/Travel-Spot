@@ -1,6 +1,6 @@
 class Note < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
-  
+
   belongs_to :user
   has_many :spots, dependent: :destroy
   has_many :note_comments, dependent: :destroy
@@ -56,8 +56,8 @@ class Note < ApplicationRecord
   def self.public_note
     Note.includes(:user, :spots, :tags).where(posted: true, status: 0)
   end
-  
-  #いいね通知作成
+
+  # いいね通知作成
   def create_notification_like(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and note_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
     if temp.blank?
@@ -71,7 +71,7 @@ class Note < ApplicationRecord
         notification.checked = true
       end
       if notification.valid?
-        notification.save 
+        notification.save
       end
     end
   end
@@ -89,8 +89,8 @@ class Note < ApplicationRecord
       notification.checked = true
     end
     if notification.valid?
-      notification.save 
+      notification.save
     end
   end
-  
+
 end

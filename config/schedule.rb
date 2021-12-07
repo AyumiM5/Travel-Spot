@@ -24,10 +24,9 @@ def jst(time)
 end
 
 require File.expand_path(File.dirname(__FILE__) + "/environment")
-rails_env = Rails.env.to_sym
 set :environment, :production
 set :output, 'log/cron.log'
-every 1.day, at: jst('2:00 am')  do
+every 1.day, at: jst('2:00 am') do
   begin
     runner "Batch::GuestUserReset.guest_user_reset"
   rescue => e

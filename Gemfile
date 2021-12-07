@@ -47,8 +47,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'bullet'
-  gem 'rubocop'
-  gem 'rubocop-rails'
+  gem 'rubocop-airbnb'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
@@ -64,29 +63,29 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-# ユーザー認証機能を導入するためのgem
+# ユーザー認証機能
 gem 'devise'
 
 gem 'bootstrap', '~> 4.5'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'jquery-rails'
 
-# 画像の投稿と、サイズ変更を可能にする
+# 画像の投稿と、サイズ変更
 gem 'carrierwave'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 
-# enumを使用して、宿泊数を選択する
+# enum
 gem 'enum_help'
 gem 'rails-i18n'
 
-# GoogleMapAPIを使用するため
+# GoogleMapAPI
 gem 'gmaps4rails'
 
-# 住所から緯度と経度を変換する
+# 住所から緯度と経度を変換
 gem 'geocoder'
 
-# 環境変数を.envファイルで使うため
+# 環境変数を.envファイルで使う
 gem 'dotenv-rails'
 gem 'gon'
 
