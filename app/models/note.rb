@@ -1,6 +1,4 @@
 class Note < ApplicationRecord
-  default_scope -> { order(created_at: :desc) }
-
   belongs_to :user
   has_many :spots, dependent: :destroy
   has_many :note_comments, dependent: :destroy
@@ -47,14 +45,24 @@ class Note < ApplicationRecord
     find(Favorite.group(:note_id).order(Arel.sql('count(note_id) desc')).limit(3).pluck(:note_id))
   end
 
-  # ユーザーの投稿数とタグを選ぶ
-  def self.user_notes(user)
-    includes(:tags).where(user_id: user.id, posted: true)
+  # ユーザーの全投稿とタグの取り出し
+  def self.user_notes_tag(user)
+    includes(:tags).where(user_id: user.id)
+  end
+  
+  # 公開投稿を選び、最新順に並び替える(index)
+  def self.public_note_index
+    Note.includes(:user, :spots, :tags).where(posted: true, status: 0).order(created_at: :desc)
   end
 
-  # 公開投稿を選び、最新順に並び替える
+  # 公開投稿を選び、最新順に並び替える(show)
   def self.public_note
-    Note.includes(:user, :spots, :tags).where(posted: true, status: 0)
+    Note.includes(:spots, :tags).where(posted: true, status: 0).order(created_at: :desc)
+  end
+
+  # 非公開、公開投稿を選び、最新順に並び替える(mypage)
+  def self.private_public_note
+    Note.includes(:spots, :tags).where(posted: true).order(created_at: :desc)
   end
 
   # いいね通知作成
@@ -92,5 +100,4 @@ class Note < ApplicationRecord
       notification.save
     end
   end
-
 end

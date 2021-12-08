@@ -7,7 +7,7 @@
       <div>
         <div class="text-center"><b>ステップ1</b></div>
         <div class="text-center">Spot名を入力して検索(20字以内)</br>地図にピンが表示されます</div>
-        <input id="address" type="textbox" class="col-12 mb-3" placeholder="Spot名を入力後、検索できます">
+        <input id="address" type="textbox" class="col-12 mb-3" placeholder="Spot名を入力→検索">
         <input type="button" value="検索" onclick="codeAddress()" class='btn btn-sm btn-light btn-outline-dark col-12'>
       </div>
     </div>
@@ -39,6 +39,7 @@
       <script>
         let map
         let geocoder
+        let marker
 
         function initMap() {
           geocoder = new google.maps.Geocoder()
@@ -61,8 +62,8 @@
           <% note.spots.each do |spot| %>
             (function(){
             var marker = new google.maps.Marker({
-                position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
-                map: map,
+              position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
+              map: map,
             });
   
             })();
@@ -71,11 +72,17 @@
 
         function codeAddress(){
           let inputAddress = document.getElementById('address').value;
-
+          
           geocoder.geocode( { 'address': inputAddress}, function(results, status) {
             if (status == 'OK') {
               map.setCenter(results[0].geometry.location);
-              var marker = new google.maps.Marker({
+              
+              if(marker != null){
+                marker.setMap(null);
+              }
+              marker = null;
+              
+              marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location
               });
@@ -87,7 +94,7 @@
               hidden_latitude.setAttribute("value", marker.position.lat());
               
               let hidden_longitude = document.getElementById('hidden_longitude');
-              hidden_longitude.setAttribute("value", marker.position.lng());
+              hidden_longitude.setAttribute("value", marker.position.lng())
 
             } else {
               alert('該当する結果がありません：' + status);

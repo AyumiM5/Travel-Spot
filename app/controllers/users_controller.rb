@@ -3,14 +3,14 @@ class UsersController < ApplicationController
 
   def mypage
     @user = User.find(current_user.id)
-    @user_notes = Note.user_notes(@user)
-    @notes = current_user.notes.where(posted: true).page(params[:page]).per(3)
+    @user_notes = Note.user_notes_tag(@user)
+    @notes = current_user.notes.private_public_note.page(params[:page]).per(4)
   end
 
   def show
     @user = User.find_by(name: params[:name])
-    @user_notes = Note.user_notes(@user)
-    @notes = @user.notes.includes(:spots, :tags).where(posted: true, status: 0).page(params[:page]).per(3)
+    @user_notes = Note.user_notes_tag(@user)
+    @notes = @user.notes.public_note.page(params[:page]).per(4)
   end
 
   def edit

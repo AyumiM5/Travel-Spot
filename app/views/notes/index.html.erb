@@ -3,11 +3,8 @@
     <%= render 'searchs/form', tags: @tags, notes: @notes %>
     <div class="col-8 ml-3">
       <h1><b style="color: #E08504;">投</b>稿一覧</h1>
-      <% if @notes.count == 0 %>
-        <div>投稿はありません</div>
-      <% else %>
-        <%= render 'notes/index', notes: @notes %>
-      <% end %>
+      <%= render 'notes/index', notes: @notes %>
+      
       <div class="row col-10 m-auto">
         <%= paginate @notes %> 
       </div>

@@ -19,5 +19,4 @@ class NoteCommentsController < ApplicationController
   def note_comment_params
     params.require(:note_comment).permit(:comment)
   end
-
 end
