@@ -8,7 +8,7 @@ class NotesController < ApplicationController
 
   def draft
     @user = User.find(current_user.id)
-    @user_notes = Note.user_notes(@user)
+    @user_notes = Note.user_notes_tag(@user)
     @notes = current_user.notes.where(posted: false).page(params[:page]).per(4)
   end
 

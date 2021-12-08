@@ -61,7 +61,7 @@
           
           <% note.spots.each do |spot| %>
             (function(){
-            var marker = new google.maps.Marker({
+            var spot_marker = new google.maps.Marker({
               position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
               map: map,
             });
