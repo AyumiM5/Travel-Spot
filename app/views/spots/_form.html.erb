@@ -60,13 +60,14 @@
           });
           
           <% note.spots.each do |spot| %>
-            (function(){
             var spot_marker = new google.maps.Marker({
               position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
               map: map,
             });
-  
-            })();
+            var infoWindow = new google.maps.InfoWindow({
+              content: "<%= spot.address %>"
+            });
+            infoWindow.open(map, spot_marker);
           <% end %>
         }
 
@@ -95,6 +96,11 @@
               
               let hidden_longitude = document.getElementById('hidden_longitude');
               hidden_longitude.setAttribute("value", marker.position.lng())
+              
+              var infoWindow = new google.maps.InfoWindow({
+                content: inputAddress
+              });
+              infoWindow.open(map, marker);
 
             } else {
               alert('該当する結果がありません：' + status);

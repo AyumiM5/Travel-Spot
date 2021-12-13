@@ -19,14 +19,6 @@
  background-image: image-url("home/img5.jpg");
 }
 
-@media screen and (max-width: 425px) {
- #main {
-  width : 100%;
-  height : 350px;
-  font-family: 'Outfit', sans-serif;
-  }
-}
-
 #main {
  width : 100%;
  height : 680px;
@@ -167,4 +159,3 @@
 .note-table{
  font-size: 15px;
 }
-

@@ -60,12 +60,14 @@
           });
           
           <% note.spots.each do |spot| %>
-            (function(){
             var marker = new google.maps.Marker({
-                position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
-                map: map,
+              position:{lat: <%= spot.latitude %>, lng: <%= spot.longitude %>},
+              map: map,
             });
-            })();
+            var infoWindow = new google.maps.InfoWindow({
+              content: "<%= spot.address %>"
+            });
+            infoWindow.open(map, marker);
           <% end %>
         }
       </script>
