@@ -49,7 +49,7 @@ class Note < ApplicationRecord
   def self.user_notes_tag(user)
     includes(:tags).where(user_id: user.id)
   end
-  
+
   # 公開投稿を選び、最新順に並び替える(index)
   def self.public_note_index
     Note.includes(:user, :spots, :tags).where(posted: true, status: 0).order(created_at: :desc)

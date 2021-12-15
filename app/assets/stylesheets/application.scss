@@ -28,24 +28,27 @@ a {
   text-decoration: none;
 }
 
+.navbar {
+  background-color: #75CCD1;
+}
+
 main {
-  padding-top : 3rem;
   background-color : #F5EDE9;
   min-height : 600px;
 }
 
-.navbar {
+footer {
   background-color: #75CCD1;
+}
+
+main {
+  padding-top : 3rem;
 }
 
 .navbar-brand, .navbar-toggler {
   font-size: 30px;
   padding: 0 30px;
   border: none;
-}
-
-footer {
-  background-color: #75CCD1;
 }
 
 .footer-brand {
@@ -69,6 +72,11 @@ footer {
   background-position: 0 80%;
 }
 
+.title {
+  padding-top: 20px;
+  font-size: 40px;
+}
+
 .sign-in-form, .login-form {
   width : 60%;
   hight : 100%;
@@ -84,17 +92,6 @@ footer {
   margin: auto;
 }
 
-.title {
-  padding-top: 20px;
-}
-
-.mandatory {
-  font-size: 10px;
-  color: red;
-  margin-left: 5px;
-  padding: 0 2px;
-}
-
 .form {
   width: 80%;
   margin: 20px auto;
@@ -102,6 +99,71 @@ footer {
 
 .input {
   width: 100%;
+}
+
+@media screen and (max-width:768px) {
+  main {
+    padding-top : 2.5rem;
+  }
+  .navbar-brand, .navbar-toggler {
+    font-size: 20px;
+    padding: 0 20px;
+    border: none;
+  }
+  .footer-brand {
+    font-size: 30px;
+  }
+  .title {
+    padding-top: 0px;
+    font-size: 30px;
+  }
+  .title_sub {
+    font-size: 15px;
+  }
+  .sign-in-form, .login-form {
+    margin: 5px auto;
+    width : 90%;
+  }
+  .form {
+    margin: 5px auto;
+  }
+}
+
+@media screen and (max-width:425px) {
+  main {
+    padding-top : 2rem;
+  }
+  .navbar-brand, .navbar-toggler {
+    font-size: 15px;
+    padding: 0 20px;
+    border: none;
+  }
+  .footer-brand {
+    font-size: 20px;
+  }
+  .title {
+    padding-top: 0px;
+    font-size: 20px;
+  }
+  .title_sub {
+    font-size: 12px;
+  }
+  .sign-in-form, .login-form {
+    width : 90%;
+  }
+  .form {
+    margin: 10px auto;
+  }
+  em {
+    font-size: 15px;
+  }
+}
+
+.mandatory {
+  font-size: 10px;
+  color: red;
+  margin-left: 5px;
+  padding: 0 2px;
 }
 
 table td {

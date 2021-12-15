@@ -63,29 +63,24 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-# ユーザー認証機能
 gem 'devise'
 
 gem 'bootstrap', '~> 4.5'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'jquery-rails'
 
-# 画像の投稿と、サイズ変更
 gem 'carrierwave'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 
-# enum
 gem 'enum_help'
 gem 'rails-i18n'
 
 # GoogleMapAPI
 gem 'gmaps4rails'
-
 # 住所から緯度と経度を変換
 gem 'geocoder'
 
-# 環境変数を.envファイルで使う
 gem 'dotenv-rails'
 gem 'gon'
 
@@ -94,8 +89,6 @@ group :production do
 end
 
 gem 'rename'
-
-# crontab管理のため
 gem 'whenever', require: false
 
 gem 'kaminari'

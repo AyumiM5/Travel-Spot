@@ -1,4 +1,4 @@
-<div class="about row my-5">
+<div class="about row my-lg-5 my-2">
   <div class="col-lg-6 col-12" id="aboutmap"></div>
   <script>
     let geocoder
@@ -39,9 +39,12 @@
       });
     }
   </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
-  <div class="row col-5 my-5 about-content">
-    <div class="m-auto">
+  <script 
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap&v=weekly"
+    async
+  ></script>
+  <div class="row col-lg-5 col-12 my-lg-5 my-1 about-content">
+    <div class="m-auto ">
       旅先で見つけたお気に入り<b>Spot</b>をシェア</br>
       <span class="about-title"><b>Travel-Spot</b></span></br>
     </div>
