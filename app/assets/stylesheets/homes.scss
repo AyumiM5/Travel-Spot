@@ -65,6 +65,60 @@
  z-index: -1;
 }
 
+.about-title, .go-signin {
+ color : #A1603A;
+ font-size : 55px;
+}
+
+.Instructions-notes {
+ font-size: 55px;
+ color : #A1603A;
+ padding-right : 10px;
+}
+
+@media screen and (max-width:992px) {
+ .top-about {
+  background-color : #E3DCD8;
+  border-bottom-right-radius : 1000px 150px;
+  border-bottom-left-radius : 1000px 150px;
+ }
+ .about {
+  height : 560px;
+  padding-bottom : 50px;
+  font-family: 'Outfit', sans-serif;
+ }
+ #aboutmap {
+  height: 90%;
+  width: 50%;
+  margin: 2% 2%;
+ }
+ .about-content {
+  position: relative;
+  z-index: 1;
+  font-size : 12px;
+ }
+ .about-content:before {
+  content: '\f3c5';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  bottom: -50px;
+  left : 10px;
+  position: absolute;
+  font-size: 380px;
+  color : #F5EDE9;
+  z-index: -1;
+ }
+ .about-title, .go-signin {
+  color : #A1603A;
+  font-size : 30px;
+ }
+ .Instructions-notes {
+  font-size: 30px;
+  color : #A1603A;
+  padding-right : 10px;
+ }
+}
+
 @media screen and (max-width:768px) {
  #main {
   width : 100%;
@@ -76,10 +130,45 @@
   text-align : center;
   margin-top : 200px;
  }
+ .top-about {
+  background-color : #E3DCD8;
+  border-bottom-right-radius : 1000px 150px;
+  border-bottom-left-radius : 1000px 150px;
+ }
  .about {
-  height : 560px;
-  padding-bottom : 50px;
+  height : 750px;
+  padding-bottom : 25px;
   font-family: 'Outfit', sans-serif;
+ }
+ #aboutmap {
+  height: 40%;
+  width: 30%;
+  margin: 2% 2%;
+ }
+ .about-content {
+  position: relative;
+  z-index: 1;
+  font-size : 20px;
+ }
+ .about-content:before {
+  content: '\f3c5';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  bottom: -150px;
+  left : 100px;
+  position: absolute;
+  font-size: 450px;
+  color : #F5EDE9;
+  z-index: -1;
+ }
+ .about-title, .go-signin {
+  color : #A1603A;
+  font-size : 30px;
+ }
+ .Instructions-notes {
+  font-size: 30px;
+  color : #A1603A;
+  padding-right : 10px;
  }
 }
 
@@ -107,23 +196,28 @@
  .about-content {
   position: relative;
   z-index: 1;
+  font-size : 15px;
  }
  .about-content:before {
   content: '\f3c5';
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
-  top: 10px;
-  left : 30px;
+  bottom: -130px;
+  left : 40px;
   position: absolute;
-  font-size: 500px;
+  font-size: 400px;
   color : #F5EDE9;
   z-index: -1;
  }
-}
-
-.about-title, .go-signin {
- color : #A1603A;
- font-size : 55px;
+ .about-title, .go-signin {
+  color : #A1603A;
+  font-size : 30px;
+ }
+ .Instructions-notes {
+  font-size: 30px;
+  color : #A1603A;
+  padding-right : 10px;
+ }
 }
 
 .notes-link {
@@ -201,17 +295,9 @@
  object-fit : cover;
 }
 
-.Instructions-notes {
- font-size: 70px;
- color : #A1603A;
- padding-right : 10px;
-}
-
 .fa-arrow-circle-down {
  color: #A1603A;
 }
-
-
 
 .note-table{
  font-size: 15px;

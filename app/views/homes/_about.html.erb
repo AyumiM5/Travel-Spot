@@ -1,5 +1,5 @@
 <div class="about row my-lg-5 my-2">
-  <div class="col-lg-6 col-12" id="aboutmap"></div>
+  <div class="col-lg-6 col-md-6 col-12" id="aboutmap"></div>
   <script>
     let geocoder
     let map
@@ -43,8 +43,8 @@
     src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap&v=weekly"
     async
   ></script>
-  <div class="row col-lg-5 col-12 my-lg-5 my-1 about-content">
-    <div class="m-auto ">
+  <div class="row col-lg-5 col-md-5 col-12 my-lg-5 my-md-5 m-1 about-content">
+    <div class="m-auto text-center">
       旅先で見つけたお気に入り<b>Spot</b>をシェア</br>
       <span class="about-title"><b>Travel-Spot</b></span></br>
     </div>
