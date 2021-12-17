@@ -101,6 +101,22 @@ main {
   width: 100%;
 }
 
+.profile-img-container {
+  width : 40px;
+  height : 40px;
+  border : 2px solid grey;
+  border-radius: 50%;
+}
+
+@media screen and (max-width:992px) {
+ .profile-img-container {
+  width : 35px;
+  height : 35px;
+  border : 2px solid grey;
+  border-radius: 50%;
+ }
+}
+
 @media screen and (max-width:768px) {
   main {
     padding-top : 2.5rem;
@@ -126,6 +142,12 @@ main {
   }
   .form {
     margin: 5px auto;
+  }
+  .profile-img-container {
+  width : 35px;
+  height : 35px;
+  border : 2px solid grey;
+  border-radius: 50%;
   }
 }
 

@@ -5,10 +5,10 @@
   </div>
 </div>
 
-<div class="top-notes row mb-3">
+<div class="top-notes mb-3">
   <% best_notes.each do |note| %>
-    <div class="m-auto shadow-lg">
-      <div class="row ml-5 mt-1">
+    <div class="m-auto m-sm-2 shadow-lg">
+      <div class="row ml-lg-5 ml-md-2 ml-3 mt-1">
         <div class="profile-img-container">
           <%= attachment_image_tag note.user, :profile_image, format: 'jpg', fallback: "no_image.jpg" %>
         </div>
@@ -39,7 +39,7 @@
       <div class="homes-note-img m-auto">
         <%= attachment_image_tag note, :image, fallback: "no_image.jpg" %>
       </div>
-      <div class="row">
+      <div class="row favorite-comment-count">
         <p class="col-10 m-auto text-center">
           コメント：<%= note.note_comments.count %>　/　
           <i class="fas fa-heart"></i> <%= note.favorites.count %>

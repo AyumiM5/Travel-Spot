@@ -1,7 +1,7 @@
 <div class="container mt-5 pb-5">
   <div class="row">
     <%= render 'users/info', user: current_user, notes: @user_notes %>
-    <div class="col-8 ml-3">
+    <div class="col-lg-8 col-md-7 ml-3">
       <h1><b style="color: #E08504;">M</b>y <b style="color: #E08504;">P</b>age</h1>
       <% if @notes.count == 0 %>
         <div>投稿はありません</div>
