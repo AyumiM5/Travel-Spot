@@ -2,7 +2,7 @@ class SearchsController < ApplicationController
   before_action :authenticate_user!
 
   def search
-    @tags = Tag.all
+    @tags = Tag.all.order(created_at: :desc)
     @model = params[:model]
     @word = params[:word]
     if @model == 'user'
@@ -13,7 +13,7 @@ class SearchsController < ApplicationController
   end
 
   def tag_search
-    @tags = Tag.all
+    @tags = Tag.all.order(created_at: :desc)
     @tag = Tag.find_by(tag_name: params[:tag_name])
     @notes = @tag.notes.where(posted: true, status: 0).order(created_at: :desc)
   end
