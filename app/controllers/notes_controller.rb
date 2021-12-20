@@ -3,7 +3,7 @@ class NotesController < ApplicationController
 
   def index
     @notes = Note.public_note_index.page(params[:page]).per(4)
-    @tags = Tag.order(created_at: :desc).first(20)
+    @tags = Tag.order(created_at: :desc).first(100)
   end
 
   def draft
