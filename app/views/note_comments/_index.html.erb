@@ -5,7 +5,7 @@
     <tr>
       <td>
         <%= attachment_image_tag note_comment.user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle" %><br />
-        <%= link_to "#{note_comment.user.name}", user_path(note_comment.user.id) %></td>
+        <%= link_to "#{note_comment.user.name}", user_path(note_comment.user.name) %></td>
       <td><%= note_comment.comment %></td>
       <% if note_comment.user.id == current_user.id %>
         <td>
