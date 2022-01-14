@@ -6,3 +6,17 @@
   border : 5px double #E3DCD8;
   border-radius: 25% 10%;
 }
+
+@media screen and (max-width:992px) {
+  .word-search, .tag-search {
+    border : 5px solid #E3DCD8;
+    border-radius: 0% 0%;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .word-search, .tag-search {
+    border : 5px solid #E3DCD8;
+    border-radius: 0% 0%;
+  }
+}

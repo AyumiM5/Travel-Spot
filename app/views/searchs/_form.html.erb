@@ -1,5 +1,5 @@
-<div class="col-3">
-  <div class="row p-3 my-5 word-search">
+<div class="col-lg-3 col-sm-12 col-10 m-lg-0 m-auto">
+  <div class="row p-3 my-lg-5 my-sm-2 my-1 word-search">
     <div>ワード検索</div>
     <%= form_with url: search_path, method: :get, local: :true do |f| %>
       <%= f.select :model, options_for_select({ "ユーザー" => "user", "投稿" => "note" }) %>
