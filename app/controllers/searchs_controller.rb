@@ -15,6 +15,6 @@ class SearchsController < ApplicationController
   def tag_search
     @tags = Tag.order(created_at: :desc).first(100)
     @tag = Tag.find_by(tag_name: params[:tag_name])
-    @notes = @tag.notes.where(posted: true, status: 0).order(created_at: :desc)
+    @notes = @tag.public_notes.order(created_at: :desc)
   end
 end
