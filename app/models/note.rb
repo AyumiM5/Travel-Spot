@@ -40,9 +40,9 @@ class Note < ApplicationRecord
     Note.where('title like? OR body like?', "%#{word}%", "%#{word}")
   end
 
-  # Topページのいいねの多い投稿を表示
+  # Topページのいいねの多い投稿を表示(週間ランキング)
   def self.best_note
-    find(Favorite.group(:note_id).order(Arel.sql('count(note_id) desc')).limit(3).pluck(:note_id))
+    find(Favorite.group(:note_id).where(created_at: Time.current.all_week).order(Arel.sql('count(note_id) desc')).limit(3).pluck(:note_id))
   end
 
   # ユーザーの全投稿とタグの取り出し
